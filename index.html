@@ -3,26 +3,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Chope ton bac STI2D</title>
-<meta name="description" content="Chope ton bac STI2D : les cours, à commencer par l’histoire (Chapitre 1, la période révolutionnaire).">
+<title>Chope ton bac STI2D | Cours d’histoire et d’allemand</title>
+<meta name="description" content="Cours et récaps de Première STI2D : histoire (la Révolution française) et allemand (exprimer son opinion, dass, weil, denn).">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://chopetonbacsti2d.netlify.app/">
+<meta name="theme-color" content="#efe9ff">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 
-<!-- Aperçu du lien (WhatsApp, Discord, Messenger, iMessage, réseaux sociaux…) -->
+<!-- Google Search Console : colle ici la balise de vérification, par exemple
+<meta name="google-site-verification" content="TON_CODE">
+-->
+
+<!-- Aperçu du lien (WhatsApp, Discord, Messenger, iMessage…) -->
+<meta property="og:locale" content="fr_FR">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://chopetonbacsti2d.netlify.app/">
 <meta property="og:site_name" content="Chope ton bac STI2D">
-<meta property="og:title" content="Chope ton bac STI2D">
-<meta property="og:description" content="Les cours pour chopper ton bac STI2D.">
+<meta property="og:title" content="Chope ton bac STI2D | Cours d’histoire et d’allemand">
+<meta property="og:description" content="Cours et récaps de Première STI2D : histoire (la Révolution française) et allemand (exprimer son opinion, dass, weil, denn).">
+<meta property="og:url" content="https://chopetonbacsti2d.netlify.app/">
 <meta property="og:image" content="https://chopetonbacsti2d.netlify.app/logo.png">
 <meta property="og:image:alt" content="Logo Chope ton bac STI2D">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chope ton bac STI2D">
-<meta name="twitter:description" content="Les cours pour chopper ton bac STI2D.">
+<meta name="twitter:title" content="Chope ton bac STI2D | Cours d’histoire et d’allemand">
+<meta name="twitter:description" content="Cours et récaps de Première STI2D : histoire (la Révolution française) et allemand (exprimer son opinion, dass, weil, denn).">
 <meta name="twitter:image" content="https://chopetonbacsti2d.netlify.app/logo.png">
-<meta name="theme-color" content="#efe9ff">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📖%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Chope ton bac STI2D",
+  "url": "https://chopetonbacsti2d.netlify.app/",
+  "inLanguage": "fr",
+  "description": "Cours et récaps de Première STI2D : histoire (la Révolution française) et allemand (exprimer son opinion, dass, weil, denn)."
+}
+</script>
 <style>
   :root {
     --bg: #efe9ff;
@@ -484,21 +503,177 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
   }
+
+  /* ================= Ajouts : pages séparées, allemand, référencement ================= */
+  .nowrap { white-space: nowrap; }
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  a.chap-btn { text-decoration: none; }
+  .chap-btn.menthe { background: var(--c2); }
+
+  .titre-section {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.4rem, 9vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .carte .titre-section { font-size: clamp(2rem, 7vw, 2.8rem); }
+  .carte > p { max-width: 62ch; }
+
+  /* Titre du terminal : le texte reste entier dans la page (lisible par Google),
+     seul son affichage est animé. */
+  .term-titre { display: flex; align-items: baseline; }
+  .term-titre .prompt { flex: none; }
+  .typed {
+    flex: none;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 14ch;
+    animation: ecrire 1.3s steps(14) 0.4s both;
+  }
+  @keyframes ecrire { from { width: 0; } to { width: 14ch; } }
+  .term-titre .curseur { flex: none; align-self: center; height: 1.1em; }
+
+  .intro-infos { width: min(100%, 34rem); text-align: center; }
+  .intro-infos p { margin: 0 0 0.7rem; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+  .intro-infos ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .intro-infos a {
+    display: inline-block;
+    padding: 0.25rem 0.85rem;
+    background: var(--panel);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .intro-infos a:hover { background: var(--hover); }
+  .intro-infos a:focus-visible, .fil a:focus-visible, .pied a:focus-visible, .sommaire a:focus-visible {
+    outline: 3px solid var(--ink); outline-offset: 3px;
+  }
+
+  /* Fil d'Ariane et pied de page */
+  .fil { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem; margin: 0 0 1.4rem; font-size: 1rem; }
+  .fil a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  .fil span { color: var(--muted); }
+  .pied { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 3px solid var(--ink); text-align: center; color: var(--muted); font-size: 1rem; }
+  .pied ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 1rem; margin: 0 0 0.6rem; padding: 0; list-style: none; }
+  .pied a { color: var(--ink); font-weight: 600; }
+  .pied p { margin: 0; }
+
+  /* Sommaire */
+  .cours h2[id], .cours h3[id] { scroll-margin-top: 1rem; }
+  .sommaire {
+    margin: 1.2rem 0 0.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--hover);
+    background: color-mix(in srgb, var(--c2) 22%, var(--panel));
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+  }
+  .sommaire p { margin: 0 0 0.3rem; font-weight: 700; }
+  .cours .sommaire ol { margin: 0; padding-left: 1.3rem; }
+  .sommaire li { margin-bottom: 0.25rem; }
+  .sommaire a { color: var(--ink); font-weight: 500; }
+
+  /* Allemand */
+  .de { font-weight: 600; }
+  .cours u { text-decoration-thickness: 3px; text-underline-offset: 3px; text-decoration-color: var(--c1); }
+
+  .table-scroll { overflow-x: auto; margin: 1rem 0 1.3rem; background: var(--panel); border: 3px solid var(--ink); border-radius: 1rem; }
+  .tableau { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: 1.45; }
+  .tableau th, .tableau td { padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; border-bottom: 2px solid var(--ink); }
+  .tableau th + th, .tableau td + td, .tableau th + td { border-left: 2px solid var(--ink); }
+  .tableau tbody tr:last-child > * { border-bottom: 0; }
+  .tableau thead th { background: var(--c3); color: var(--on-c); font-weight: 700; }
+  .tableau tbody th { font-weight: 700; }
+  .tableau.centre th, .tableau.centre td { text-align: center; }
+
+  .cas td { color: #111111; font-size: 1.4rem; font-weight: 700; }
+  .a-der { background: #9061ff; }
+  .a-die { background: #ff66b8; }
+  .a-das { background: #84dc5c; }
+  .a-den { background: #3ab4ff; }
+  .a-dem { background: #5ce0e6; }
+  .a-des { background: #00979a; }
+
+  .phrase { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.3rem 0 1rem; }
+  .mot {
+    padding: 0.2rem 0.8rem;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    border-radius: 0.8rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .mot small { display: block; font-size: 0.78rem; font-weight: 500; }
+  .mot.verbe { background: var(--c1); color: var(--on-c); }
+  .mot.compl { background: var(--c3); color: var(--on-c); }
+  .mot.sujet { background: var(--c2); color: var(--on-c); }
+
+  .mini .fr { display: block; margin-top: 0.2rem; color: var(--muted); font-size: 0.95rem; }
+  .mini .etiq {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0 0.6rem;
+    background: var(--panel);
+    border: 2px solid var(--ink);
+    border-radius: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .mini ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+  .mini li { margin-bottom: 0.3rem; }
+
+  .cours ul.coches { padding-left: 0; list-style: none; }
+  .cours ul.coches li { position: relative; padding-left: 1.7rem; }
+  .cours ul.coches li::before { content: "✓"; position: absolute; left: 0.1rem; font-weight: 700; }
+  .encadre .titre + ul { margin-top: 0.2rem; }
+  .modele { margin: 0.4rem 0 0.2rem; padding: 0; list-style: none; }
+  .modele li { margin-bottom: 0.4rem; }
+  .modele .de { display: block; }
+  .modele .fr { display: block; color: var(--muted); font-size: 0.95rem; }
+
+  /* Tableaux : sur petit écran, chaque ligne devient une petite fiche */
+  @media (max-width: 40rem) {
+    .tableau.empile thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .tableau.empile, .tableau.empile tbody, .tableau.empile tr, .tableau.empile th, .tableau.empile td { display: block; }
+    .tableau.empile tr { padding: 0.55rem 0; border-bottom: 2px solid var(--ink); }
+    .tableau.empile tbody tr:last-child { border-bottom: 0; }
+    .tableau.empile th, .tableau.empile td { padding: 0.2rem 0.9rem; border: 0; }
+    .tableau.empile td::before { content: attr(data-label); display: block; color: var(--muted); font-size: 0.85rem; font-weight: 700; }
+  }
+  @media (max-width: 30rem) {
+    .tableau { font-size: 0.95rem; }
+    .tableau th, .tableau td { padding: 0.5rem 0.5rem; }
+    .cas td { padding: 0.5rem 0.15rem; font-size: 1.15rem; }
+    .cas th { padding: 0.5rem 0.3rem; font-size: 0.82rem; }
+    .mot { padding: 0.15rem 0.5rem; border-width: 2px; }
+    .mot small { font-size: 0.72rem; }
+    .phrase { gap: 0.3rem; }
+  }
 </style>
 </head>
 <body>
   <div class="intro" id="intro">
     <div class="terminal">
       <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-      <h1 class="term-titre" aria-label="PREMIERE STI2D">
-        <span class="prompt" aria-hidden="true">&gt;</span><span id="typed" aria-hidden="true">PREMIERE STI2D</span><span class="curseur" aria-hidden="true"></span>
-      </h1>
+      <h1 class="term-titre"><span class="prompt" aria-hidden="true">&gt;</span><span class="typed">PREMIERE STI2D</span><span class="curseur" aria-hidden="true"></span></h1>
     </div>
     <button class="acces" id="acces" type="button">
       Accéder au cours
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
     </button>
+    <div class="intro-infos">
+      <p>Chope ton bac STI2D : cours et récaps de Première STI2D.</p>
+    </div>
   </div>
 
   <main class="page" id="site" hidden>
@@ -520,23 +695,26 @@
 
       <ul class="menu-list" id="menu-list">
         <li><button class="menu-item" type="button" data-target="histoire"><span class="emoji" aria-hidden="true">📜</span>Histoire</button></li>
+        <li><button class="menu-item" type="button" data-target="allemand"><span class="emoji" aria-hidden="true">🥨</span>Allemand</button></li>
+        <!-- Pour ajouter une rubrique :
+             <li><button class="menu-item" type="button" data-target="ID"><span class="emoji" aria-hidden="true">✨</span>Nom</button></li>
+             puis ajouter plus bas une <section id="ID" class="carte" hidden> ... </section> -->
       </ul>
     </div>
 
     <div class="contenu" id="contenu" aria-live="polite">
 
       <section id="accueil">
-        <h1>Bienvenue&nbsp;!</h1>
+        <h2 class="titre-section">Bienvenue&nbsp;!</h2>
         <p class="doux">Clique sur le menu pour choisir une rubrique.</p>
       </section>
 
+      <!-- ===================== HISTOIRE ===================== -->
       <section id="histoire" class="carte" hidden>
-
-        <!-- Liste des chapitres -->
-        <div id="liste-chapitres">
-          <h1>Histoire</h1>
+        <div class="liste-chapitres">
+          <h2 class="titre-section">Histoire</h2>
           <p class="doux">Choisis un chapitre.</p>
-          <button class="chap-btn" id="ouvrir-chap1" type="button">
+          <button class="chap-btn " type="button" data-ouvrir="chap-histoire-1">
             <span class="txt">
               <span class="chap-num">Chapitre 1</span>
               <span class="chap-titre">La période révolutionnaire (1789-1815)</span>
@@ -546,18 +724,15 @@
           </button>
         </div>
 
-        <!-- Chapitre 1 -->
-        <article class="cours" id="chap1" hidden>
-          <button class="retour" id="retour" type="button">
+        <article class="cours" id="chap-histoire-1" hidden>
+          <button class="retour" type="button">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-
-          <p class="chap-num">Chapitre 1</p>
-          <h2 class="cours-titre">La période révolutionnaire (1789-1815)</h2>
-
-          <h2>Introduction</h2>
+          <p class="chap-num">Histoire · Chapitre 1</p>
+          <h2 class="cours-titre">La période révolutionnaire <span class="nowrap">(1789-1815)</span></h2>
+<h2>Introduction</h2>
           <p>La Révolution française (1789-1799) est l’une des périodes les plus importantes de l’histoire du monde, qui connaît encore aujourd’hui un retentissement mondial&nbsp;:</p>
           <ul>
             <li>c’est le moment où le peuple apparaît comme un acteur majeur de l’histoire&nbsp;;</li>
@@ -795,85 +970,514 @@
             </div>
           </div>
 
+        
+    
         </article>
       </section>
+
+      <!-- ===================== ALLEMAND ===================== -->
+      <section id="allemand" class="carte" hidden>
+        <div class="liste-chapitres">
+          <h2 class="titre-section">Allemand</h2>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn menthe" type="button" data-ouvrir="chap-allemand-1">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">Grammaire : exprimer son opinion</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <article class="cours" id="chap-allemand-1" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+<p class="chap-num">Allemand · Chapitre 1</p>
+<h2 class="cours-titre">Grammaire : exprimer son opinion</h2>
+<p class="ref" lang="de">Meinungsäußerung</p>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#fonctions">Les fonctions à connaître</a></li>
+    <li><a href="#opinion">Grammatik 1 : exprimer son opinion</a></li>
+    <li><a href="#dass-weil-denn">Grammatik 2 : dass, weil et denn</a></li>
+    <li><a href="#objectifs">Les objectifs (CECRL)</a></li>
+    <li><a href="#recap">Récap : ce qu’il faut savoir pour les exercices</a></li>
+  </ol>
+</nav>
+
+<h2 id="fonctions">Les fonctions à connaître</h2>
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Fonctions linguistiques, exemples en allemand et objectif principal</caption>
+    <thead>
+      <tr><th scope="col">Fonction linguistique</th><th scope="col">Exemples en allemand</th><th scope="col">Objectif principal</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Exprimer un goût / une préférence</th>
+        <td lang="de" data-label="Exemples en allemand">Ich mag Fußball. / Ich mag Pizza.</td>
+        <td data-label="Objectif principal">Décrire son identité et ses centres d’intérêt.</td>
+      </tr>
+      <tr>
+        <th scope="row">Exprimer son avis</th>
+        <td lang="de" data-label="Exemples en allemand">Ich finde das Trikot schön. / Ich finde, dass Sport interessant ist.</td>
+        <td data-label="Objectif principal">Donner un jugement de valeur simple sur des éléments.</td>
+      </tr>
+      <tr>
+        <th scope="row">Justifier simplement</th>
+        <td lang="de" data-label="Exemples en allemand">Ich mag Fußball, weil es spannend ist.</td>
+        <td data-label="Objectif principal">Introduire la justification (connexion au point de grammaire ci-dessous).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="opinion"><span lang="de">Grammatik 1</span> : exprimer son opinion</h2>
+<p>En allemand, il y a plein de façons d’exprimer ton avis. Voici quelques phrases pour y arriver.</p>
+
+<span class="centre-crise" lang="de">Meine Meinung</span>
+<div class="grille">
+  <div class="mini t3">
+    <span class="nom de" lang="de">Ich denke, dass …</span>
+    <span class="fr">Je pense que…</span>
+    <span class="etiq">V à la fin</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom de" lang="de">Für mich …, weil …</span>
+    <span class="fr">Pour moi…, parce que…</span>
+    <span class="etiq">V2, puis V à la fin</span>
+  </div>
+  <div class="mini t1">
+    <span class="nom de" lang="de">Ich finde, dass …</span>
+    <span class="fr">Je trouve que…</span>
+    <span class="etiq">V à la fin</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom de" lang="de">Ich bin mit jemandem/X einverstanden, weil …</span>
+    <span class="fr">Je suis d’accord avec quelqu’un / X, parce que…</span>
+    <span class="etiq">V à la fin</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom de" lang="de">Ich bin der Meinung, dass …</span>
+    <span class="fr">Je suis d’avis que…</span>
+    <span class="etiq">V à la fin</span>
+  </div>
+  <div class="mini t1">
+    <span class="nom de" lang="de">X ist ein/kein Sport, weil …</span>
+    <span class="fr">X est / n’est pas un sport, parce que…</span>
+    <span class="etiq">V à la fin</span>
+  </div>
+</div>
+
+<h3>Attention à la place du verbe&nbsp;!</h3>
+<p>Dans certaines phrases, tu peux constater qu’il y a écrit «&nbsp;V&nbsp;2&nbsp;» ou «&nbsp;V à la fin&nbsp;». Mais qu’est-ce que ça veut dire&nbsp;?</p>
+
+<h4>V à la fin</h4>
+<p>Cette abréviation signifie que le verbe conjugué va à la <strong>fin de la phrase subordonnée</strong> (la phrase qui se trouve après la virgule).</p>
+<div class="encadre">
+  <p><strong>Exemple&nbsp;:</strong> <span class="de" lang="de">Ich denke, dass Deutsch fantastisch <u>ist</u>&nbsp;!</span></p>
+</div>
+
+<h4>V 2</h4>
+<p>Cette abréviation signifie que le verbe se trouve en <strong>deuxième position</strong> dans la phrase.</p>
+<p>Imagine que, dans ce cas, le verbe est l’anneau d’un trousseau de clés. Regarde bien&nbsp;:</p>
+
+<p class="ref">Sens A</p>
+<div class="phrase" lang="de">
+  <span class="mot compl">Heute<small lang="fr">complément</small></span>
+  <span class="mot verbe">bin<small lang="fr">verbe conjugué</small></span>
+  <span class="mot sujet">ich<small lang="fr">sujet</small></span>
+  <span class="mot">nett</span>
+</div>
+<p class="ref">Sens B</p>
+<div class="phrase" lang="de">
+  <span class="mot sujet">Ich<small lang="fr">sujet</small></span>
+  <span class="mot verbe">bin<small lang="fr">verbe conjugué</small></span>
+  <span class="mot">nett</span>
+  <span class="mot compl">heute<small lang="fr">complément</small></span>
+</div>
+
+<p>Dans l’exemple A, le complément est avant le verbe, comme dans la phrase&nbsp;: <span class="de" lang="de">Heute bin ich nett.</span></p>
+<p>Dans l’exemple B, le complément est après le verbe, comme dans la phrase&nbsp;: <span class="de" lang="de">Ich bin nett heute.</span></p>
+<p>Pourtant, les deux phrases ont exactement le même sens et sont correctes&nbsp;: «&nbsp;Aujourd’hui, je suis gentil.&nbsp;»</p>
+
+<h2 id="dass-weil-denn"><span lang="de">Grammatik 2</span> : <span lang="de">dass, weil und denn</span></h2>
+<p>On a plusieurs conjonctions en allemand, afin de détailler avec des subordonnées. Elles ont chacune leur particularité. Cependant, elles introduisent toutes une subordonnée. En voici trois&nbsp;:</p>
+
+<div class="encadre">
+  <p class="titre"><span class="de" lang="de">dass</span> = «&nbsp;que&nbsp;»</p>
+  <p>Il correspond au «&nbsp;que&nbsp;» français. Exemple&nbsp;: <em>Je pense que l’allemand, c’est cool</em> ⇒ <span class="de" lang="de">Ich denke, dass Deutsch cool <u>ist</u>.</span></p>
+  <p>Comme tu peux le remarquer, le «&nbsp;<u lang="de">ist</u>&nbsp;» souligné est à la fin de la subordonnée&nbsp;: avec <span class="de" lang="de">dass</span>, le <strong>verbe conjugué se place à la fin</strong> de la subordonnée.</p>
+</div>
+
+<div class="encadre">
+  <p class="titre"><span class="de" lang="de">weil</span> = «&nbsp;parce que&nbsp;»</p>
+  <p>Il correspond à «&nbsp;parce que&nbsp;». Exemple&nbsp;: <em>Je n’aime pas les maths, parce que c’est difficile</em> ⇒ <span class="de" lang="de">Ich mag Mathe nicht, weil es kompliziert <u>ist</u>.</span></p>
+  <p>Comme tu peux le remarquer, le «&nbsp;<u lang="de">ist</u>&nbsp;» souligné est à la fin de la subordonnée&nbsp;: avec <span class="de" lang="de">weil</span>, le <strong>verbe conjugué se place à la fin</strong> de la subordonnée.</p>
+</div>
+
+<div class="encadre">
+  <p class="titre"><span class="de" lang="de">denn</span> = «&nbsp;car&nbsp;»</p>
+  <p>Il correspond à «&nbsp;car&nbsp;». Exemple&nbsp;: <em>Je n’aime pas les maths, car c’est difficile</em> ⇒ <span class="de" lang="de">Ich mag Mathe nicht, denn es <u>ist</u> kompliziert.</span></p>
+  <p>Comme tu peux le remarquer, le «&nbsp;<u lang="de">ist</u>&nbsp;» souligné est en <strong>V2</strong> dans la subordonnée, parce que <span class="de" lang="de">denn</span> est considéré comme une «&nbsp;position zéro&nbsp;»&nbsp;: il ne compte pas dans la construction. Donc, après <span class="de" lang="de">denn</span>, on construit la subordonnée comme la principale (sujet + V2 + complément).</p>
+</div>
+
+<h3>À retenir</h3>
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Comparaison de dass, weil et denn</caption>
+    <thead>
+      <tr><th scope="col">Connecteur</th><th scope="col">Sens</th><th scope="col">Place du verbe conjugué</th><th scope="col">Exemple</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row" lang="de">dass</th><td data-label="Sens">que</td><td data-label="Place du verbe conjugué">à la fin (VL)</td><td lang="de" data-label="Exemple">Ich denke, dass Deutsch cool ist.</td></tr>
+      <tr><th scope="row" lang="de">weil</th><td data-label="Sens">parce que</td><td data-label="Place du verbe conjugué">à la fin (VL)</td><td lang="de" data-label="Exemple">Ich mag Mathe nicht, weil es kompliziert ist.</td></tr>
+      <tr><th scope="row" lang="de">denn</th><td data-label="Sens">car</td><td data-label="Place du verbe conjugué">en 2e position (V2)</td><td lang="de" data-label="Exemple">Ich mag Mathe nicht, denn es ist kompliziert.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="objectifs">Les objectifs selon le CECRL</h2>
+<p class="ref">CECRL : Cadre européen commun de référence pour les langues. VL = verbe à la fin, V2 = verbe en 2e position.</p>
+<div class="grille">
+  <div class="mini t2">
+    <span class="nom">A1</span>
+    <ul>
+      <li>Dire ce qu’on aime / n’aime pas&nbsp;: <span class="de" lang="de">Ich mag… / Ich mag nicht…</span></li>
+      <li>Donner une opinion simple&nbsp;: <span class="de" lang="de">Ich finde…</span></li>
+      <li>Première justification&nbsp;: <span class="de" lang="de">weil</span> + VL (guidé)</li>
+    </ul>
+  </div>
+  <div class="mini t3">
+    <span class="nom">A1+</span>
+    <ul>
+      <li>Donner son avis et le justifier</li>
+      <li>Utiliser&nbsp;: <span class="de" lang="de">weil</span> + VL, <span class="de" lang="de">denn</span> + V2, <span class="de" lang="de">dass</span> + VL (modèles)</li>
+      <li>Enchaîner plusieurs phrases courtes</li>
+    </ul>
+  </div>
+  <div class="mini t1">
+    <span class="nom">A2</span>
+    <ul>
+      <li>Exprimer une opinion développée</li>
+      <li>Utiliser différents connecteurs&nbsp;: <span class="de" lang="de">weil / denn / dass</span></li>
+      <li>Produire un petit texte structuré (5–7 phrases)</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="recap">Récap : ce qu’il faut savoir pour les exercices</h2>
+<p>Avant de te lancer dans les exercices (<span lang="de">Übungen</span>) A1, A1+ et A2, vérifie que tu maîtrises ces bases.</p>
+
+<h3>1. Le présent : radical + terminaison</h3>
+<p>En allemand, les verbes à l’infinitif (non conjugués) finissent souvent en <strong>-en</strong>. Pour les conjuguer, on a besoin d’un <strong>radical</strong> et d’une <strong>terminaison</strong>.</p>
+
+<div class="encadre">
+  <p class="titre">Comment trouver le radical&nbsp;?</p>
+  <p>Prenons l’exemple de <span class="de" lang="de">machen</span>. Il est composé de <span class="de" lang="de">mach</span> et de <span class="de" lang="de">en</span>. Le -en est la terminaison de l’infinitif&nbsp;: si on la retire, on obtient le radical.</p>
+  <p><span class="de" lang="de">mach + en = machen</span>, donc <span class="de" lang="de">machen − en</span> = le radical <span class="de" lang="de">mach-</span></p>
+</div>
+
+<p>Les terminaisons du présent&nbsp;:</p>
+<div class="table-scroll">
+  <table class="tableau">
+    <caption class="visually-hidden">Terminaisons du présent avec l’exemple de machen</caption>
+    <thead>
+      <tr><th scope="col">Sujet</th><th scope="col">Terminaison</th><th scope="col">Exemple avec <span lang="de">machen</span></th></tr>
+    </thead>
+    <tbody lang="de">
+      <tr><th scope="row">ich</th><td>-e</td><td>mache</td></tr>
+      <tr><th scope="row">du</th><td>-st</td><td>machst</td></tr>
+      <tr><th scope="row">er/sie/es/man</th><td>-t</td><td>macht</td></tr>
+      <tr><th scope="row">wir</th><td>-en</td><td>machen</td></tr>
+      <tr><th scope="row">ihr</th><td>-t</td><td>macht</td></tr>
+      <tr><th scope="row">Sie/sie</th><td>-en</td><td>machen</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>Comment conjuguer&nbsp;?</strong> Il faut prendre le radical, puis y ajouter la terminaison du bon sujet. Exemple avec <span class="de" lang="de">machen</span>, pour dire «&nbsp;je fais&nbsp;»&nbsp;:</p>
+<ol>
+  <li>je = <span class="de" lang="de">ich</span></li>
+  <li><span class="de" lang="de">ich</span> ⇒ la terminaison <span class="de" lang="de">-e</span></li>
+  <li>le radical ⇒ <span class="de" lang="de">mach-</span></li>
+  <li>radical + terminaison ⇒ <span class="de" lang="de">mach + e ⇒ mache</span></li>
+  <li><strong lang="de">ich mache</strong></li>
+</ol>
+
+<p>Attention, certains verbes sont irréguliers&nbsp;: il faudra alors apprendre leur changement avec <span lang="de">er/sie/es/man</span>. Voici les deux verbes les plus importants&nbsp;:</p>
+<div class="table-scroll">
+  <table class="tableau">
+    <caption class="visually-hidden">Conjugaison de sein et haben au présent</caption>
+    <thead>
+      <tr><th scope="col">Sujet</th><th scope="col" lang="de">sein</th><th scope="col" lang="de">haben</th></tr>
+    </thead>
+    <tbody lang="de">
+      <tr><th scope="row">ich</th><td>bin</td><td>habe</td></tr>
+      <tr><th scope="row">du</th><td>bist</td><td>hast</td></tr>
+      <tr><th scope="row">er/sie/es/man</th><td>ist</td><td>hat</td></tr>
+      <tr><th scope="row">wir</th><td>sind</td><td>haben</td></tr>
+      <tr><th scope="row">ihr</th><td>seid</td><td>habt</td></tr>
+      <tr><th scope="row">Sie/sie</th><td>sind</td><td>haben</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="encadre">
+  <p class="titre">Pour les exercices</p>
+  <ul>
+    <li><span class="de" lang="de">finden</span> → radical <span lang="de">find-</span> → <span class="de" lang="de">ich finde</span></li>
+    <li><span class="de" lang="de">spielen</span> → radical <span lang="de">spiel-</span> → <span class="de" lang="de">ich spiele</span></li>
+    <li><span class="de" lang="de">machen</span> → <span class="de" lang="de">es macht</span> (er/sie/es + -t)</li>
+    <li><span class="de" lang="de">mögen</span> (aimer) est irrégulier&nbsp;: <span class="de" lang="de">ich mag</span>, <span class="de" lang="de">er/sie/es mag</span></li>
+  </ul>
+</div>
+
+<h3>2. Les articles définis <span lang="de">(der, die, das)</span></h3>
+<p>Le genre d’un nom (<span lang="de">der</span> masculin, <span lang="de">die</span> féminin, <span lang="de">das</span> neutre) change l’article selon le cas. Lis le tableau par ligne (le cas), puis par colonne (le genre ou le pluriel).</p>
+<div class="table-scroll">
+  <table class="tableau centre cas" lang="de">
+    <caption class="visually-hidden">Articles définis selon le cas, le genre et le pluriel</caption>
+    <thead>
+      <tr>
+        <td class="visually-hidden">Cas</td>
+        <th scope="col" lang="fr">masculin</th><th scope="col" lang="fr">féminin</th><th scope="col" lang="fr">neutre</th><th scope="col" lang="fr">pluriel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row" lang="fr">nominatif</th><td class="a-der">der</td><td class="a-die">die</td><td class="a-das">das</td><td class="a-die">die</td></tr>
+      <tr><th scope="row" lang="fr">accusatif</th><td class="a-den">den</td><td class="a-die">die</td><td class="a-das">das</td><td class="a-die">die</td></tr>
+      <tr><th scope="row" lang="fr">datif</th><td class="a-dem">dem</td><td class="a-der">der</td><td class="a-dem">dem</td><td class="a-den">den</td></tr>
+      <tr><th scope="row" lang="fr">génitif</th><td class="a-des">des</td><td class="a-der">der</td><td class="a-des">des</td><td class="a-der">der</td></tr>
+    </tbody>
+  </table>
+</div>
+<ul>
+  <li>Le sujet de la phrase est au <strong>nominatif</strong>&nbsp;: c’est le cas que tu utilises le plus dans ces exercices.</li>
+  <li>Le genre du nom t’aide à choisir le pronom qui le remplace&nbsp;: <span class="de" lang="de">der → er</span>, <span class="de" lang="de">die → sie</span>, <span class="de" lang="de">das → es</span> (et <span class="de" lang="de">sie</span> au pluriel).</li>
+</ul>
+
+<h3>3. L’ordre des mots</h3>
+<ul class="coches">
+  <li><strong>Phrase simple</strong>&nbsp;: le verbe conjugué est en 2<sup>e</sup> position (V2). <span class="de" lang="de">Ich mag Kuchen.</span></li>
+  <li><strong>Négation</strong>&nbsp;: pour nier la phrase, <span class="de" lang="de">nicht</span> se place après le complément, à la fin. <span class="de" lang="de">Ich mag Hausaufgaben nicht.</span></li>
+  <li><strong><span lang="de">dass</span> et <span lang="de">weil</span></strong>&nbsp;: une virgule avant le connecteur, puis le sujet, le complément, et le verbe conjugué <strong>à la fin</strong> (VL). <span class="de" lang="de">Ich denke, dass Englisch wichtig ist.</span> / <span class="de" lang="de">Ich mag Sport, weil es gesund ist.</span></li>
+  <li><strong><span lang="de">denn</span></strong>&nbsp;: une virgule avant, puis on construit comme une phrase simple, avec le verbe en <strong>2<sup>e</sup> position</strong> (V2). <span class="de" lang="de">Ich mag Sport, denn es ist gesund.</span></li>
+</ul>
+
+<h3>4. Le vocabulaire utile</h3>
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">Goûts et avis</span>
+    <ul lang="de">
+      <li><span class="de">ich mag</span> <span class="fr" lang="fr">j’aime</span></li>
+      <li><span class="de">ich mag … nicht</span> <span class="fr" lang="fr">je n’aime pas …</span></li>
+      <li><span class="de">ich finde</span> <span class="fr" lang="fr">je trouve</span></li>
+      <li><span class="de">ich denke</span> <span class="fr" lang="fr">je pense</span></li>
+      <li><span class="de">gern</span> <span class="fr" lang="fr">volontiers (Ich spiele gern… : j’aime jouer…)</span></li>
+      <li><span class="de">die Meinung</span> <span class="fr" lang="fr">l’avis</span></li>
+      <li><span class="de">Spaß machen</span> <span class="fr" lang="fr">être amusant, faire plaisir</span></li>
+      <li><span class="de">viele Regeln haben</span> <span class="fr" lang="fr">avoir beaucoup de règles</span></li>
+    </ul>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Adjectifs</span>
+    <ul lang="de">
+      <li><span class="de">toll / super</span> <span class="fr" lang="fr">génial / super</span></li>
+      <li><span class="de">schön</span> <span class="fr" lang="fr">beau, joli</span></li>
+      <li><span class="de">interessant</span> <span class="fr" lang="fr">intéressant</span></li>
+      <li><span class="de">spannend</span> <span class="fr" lang="fr">passionnant</span></li>
+      <li><span class="de">langweilig</span> <span class="fr" lang="fr">ennuyeux</span></li>
+      <li><span class="de">schwierig</span> <span class="fr" lang="fr">difficile</span></li>
+      <li><span class="de">kompliziert</span> <span class="fr" lang="fr">compliqué</span></li>
+      <li><span class="de">logisch</span> <span class="fr" lang="fr">logique</span></li>
+      <li><span class="de">kreativ</span> <span class="fr" lang="fr">créatif</span></li>
+      <li><span class="de">entspannend</span> <span class="fr" lang="fr">relaxant</span></li>
+    </ul>
+  </div>
+  <div class="mini t3">
+    <span class="nom">Noms</span>
+    <ul lang="de">
+      <li><span class="de">Mathe</span> <span class="fr" lang="fr">les maths</span></li>
+      <li><span class="de">Deutsch</span> <span class="fr" lang="fr">l’allemand</span></li>
+      <li><span class="de">Kunst</span> <span class="fr" lang="fr">l’art</span></li>
+      <li><span class="de">Musik</span> <span class="fr" lang="fr">la musique</span></li>
+      <li><span class="de">Sport</span> <span class="fr" lang="fr">le sport</span></li>
+      <li><span class="de">Fußball, Volleyball, Tennis</span> <span class="fr" lang="fr">football, volley-ball, tennis</span></li>
+      <li><span class="de">Pizza</span> <span class="fr" lang="fr">pizza</span></li>
+      <li><span class="de">das Trikot</span> <span class="fr" lang="fr">le maillot</span></li>
+    </ul>
+  </div>
+</div>
+
+<h3>5. Exercice par exercice</h3>
+
+<div class="encadre">
+  <p class="titre">A1 · Exercice 1 : cocher la phrase correcte</p>
+  <ul class="coches">
+    <li>Le verbe conjugué est bien en 2<sup>e</sup> position&nbsp;?</li>
+    <li><span lang="de">nicht</span> est bien placé après le complément&nbsp;?</li>
+    <li>Après <span lang="de">dass</span>, y a-t-il une virgule avant et le verbe à la fin&nbsp;? (Au niveau A1, tu peux aussi éviter <span lang="de">dass</span> : <span class="de" lang="de">Ich finde Deutsch super.</span>)</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">A1 · Exercice 2 : compléter avec mag / mag nicht / finde</p>
+  <ul class="coches">
+    <li><span class="de" lang="de">mag</span> / <span class="de" lang="de">mag nicht</span> expriment un goût, suivi d’un nom (<span lang="de">Ich mag Kuchen.</span>).</li>
+    <li><span class="de" lang="de">finde</span> donne un avis, souvent avec <span lang="de">dass</span> (<span lang="de">Ich finde, dass …</span>).</li>
+    <li>Les deux verbes sont conjugués avec <span lang="de">ich</span> (radical + -e, et <span lang="de">ich mag</span> pour <span lang="de">mögen</span>).</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">A1+ · Exercice 1 : relier une opinion à sa justification</p>
+  <ul class="coches">
+    <li>Connaître le vocabulaire (adjectifs, <span lang="de">Spaß machen</span>, <span lang="de">viele Regeln haben</span>).</li>
+    <li>Te demander à chaque fois&nbsp;: «&nbsp;est-ce que la justification est logique avec l’opinion&nbsp;?&nbsp;»</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">A1+ · Exercice 2 : réécrire les phrases avec weil</p>
+  <p><strong>Modèle&nbsp;:</strong> <span class="de" lang="de">Ich mag Sport. Es ist gesund.</span> → <span class="de" lang="de">Ich mag Sport, weil es gesund ist.</span></p>
+  <ul class="coches">
+    <li>Garde la 1<sup>re</sup> phrase, puis une virgule et <span lang="de">weil</span>.</li>
+    <li>Reprends la 2<sup>e</sup> phrase (le sujet d’abord).</li>
+    <li>Envoie le verbe conjugué <strong>à la fin</strong>.</li>
+    <li>Vérifie la conjugaison (<span lang="de">ist</span>, <span lang="de">macht</span>…).</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">A2 · Exercice 1 : écrire un court texte (4–6 phrases)</p>
+  <ul class="coches">
+    <li>Une opinion (<span lang="de">Ich mag… / Ich finde… / Ich denke, dass…</span>).</li>
+    <li>Au moins deux connecteurs parmi <span lang="de">weil</span>, <span lang="de">denn</span>, <span lang="de">dass</span>.</li>
+    <li>Une justification claire.</li>
+    <li>Bonne place du verbe&nbsp;: <span lang="de">weil</span> et <span lang="de">dass</span> → à la fin, <span lang="de">denn</span> → 2<sup>e</sup> position.</li>
+  </ul>
+  <p class="titre" style="margin-top:.8rem">Exemple de texte (sur un autre sujet)</p>
+  <ul class="modele">
+    <li><span class="de" lang="de">Ich mag Sport.</span><span class="fr">J’aime le sport.</span></li>
+    <li><span class="de" lang="de">Ich finde, dass Sport gesund ist.</span><span class="fr">Je trouve que le sport est sain.</span></li>
+    <li><span class="de" lang="de">Ich gehe oft schwimmen, weil es Spaß macht.</span><span class="fr">Je vais souvent nager, parce que c’est amusant.</span></li>
+    <li><span class="de" lang="de">Ich mag Hausaufgaben nicht, denn sie sind langweilig.</span><span class="fr">Je n’aime pas les devoirs, car ils sont ennuyeux.</span></li>
+  </ul>
+</div>
+
+    
+        </article>
+      </section>
+
     </div>
 
   </main>
 
 <script>
-  (function () {
-    var toggle = document.getElementById("menu-toggle");
-    var list = document.getElementById("menu-list");
-    var items = list.querySelectorAll(".menu-item");
-    var sections = document.querySelectorAll("#contenu > section");
+(function () {
+  var toggle = document.getElementById("menu-toggle");
+  var list = document.getElementById("menu-list");
+  var items = list.querySelectorAll(".menu-item");
+  var sections = document.querySelectorAll("#contenu > section");
+  var intro = document.getElementById("intro");
+  var site = document.getElementById("site");
 
-    var liste = document.getElementById("liste-chapitres");
-    var chap1 = document.getElementById("chap1");
-    var histoire = document.getElementById("histoire");
+  function setOpen(open) {
+    list.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
 
-    function setOpen(open) {
-      list.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", String(open));
+  /* Remet une rubrique sur sa liste de chapitres */
+  function reinit(section) {
+    section.querySelectorAll(".cours").forEach(function (c) { c.hidden = true; });
+    var l = section.querySelector(".liste-chapitres");
+    if (l) l.hidden = false;
+  }
+
+  function afficher(id) {
+    items.forEach(function (i) {
+      if (i.getAttribute("data-target") === id) i.setAttribute("aria-current", "true");
+      else i.removeAttribute("aria-current");
+    });
+    sections.forEach(function (s) {
+      var voir = s.id === id;
+      s.hidden = !voir;
+      if (voir) reinit(s);
+    });
+  }
+
+  function entrer() {
+    intro.hidden = true;
+    site.hidden = false;
+  }
+
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    setOpen(!list.classList.contains("open"));
+  });
+
+  items.forEach(function (item) {
+    item.addEventListener("click", function () {
+      var id = item.getAttribute("data-target");
+      afficher(id);
+      setOpen(false);
+      toggle.focus();
+      try { history.replaceState(null, "", "#" + id); } catch (e) {}
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!list.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && list.classList.contains("open")) {
+      setOpen(false);
+      toggle.focus();
     }
+  });
 
-    toggle.addEventListener("click", function (e) {
-      e.stopPropagation();
-      setOpen(!list.classList.contains("open"));
-    });
+  /* Première page */
+  document.getElementById("acces").addEventListener("click", function () {
+    entrer();
+    window.scrollTo(0, 0);
+    toggle.focus({ preventScroll: true });
+  });
 
-    items.forEach(function (item) {
-      item.addEventListener("click", function () {
-        var id = item.getAttribute("data-target");
-        items.forEach(function (i) { i.removeAttribute("aria-current"); });
-        item.setAttribute("aria-current", "true");
-        sections.forEach(function (s) { s.hidden = s.id !== id; });
-        setOpen(false);
-        toggle.focus();
-      });
+  /* Chapitres : ouvrir / revenir à la liste */
+  document.querySelectorAll("[data-ouvrir]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var sec = b.closest("section");
+      var art = document.getElementById(b.getAttribute("data-ouvrir"));
+      sec.querySelector(".liste-chapitres").hidden = true;
+      art.hidden = false;
+      sec.scrollIntoView({ block: "start" });
+      art.querySelector(".retour").focus({ preventScroll: true });
     });
+  });
+  document.querySelectorAll(".retour").forEach(function (r) {
+    r.addEventListener("click", function () {
+      var sec = r.closest("section");
+      reinit(sec);
+      sec.scrollIntoView({ block: "start" });
+      sec.querySelector("[data-ouvrir]").focus({ preventScroll: true });
+    });
+  });
 
-    document.addEventListener("click", function (e) {
-      if (!list.contains(e.target)) setOpen(false);
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && list.classList.contains("open")) {
-        setOpen(false);
-        toggle.focus();
-      }
-    });
-
-    /* Première page */
-    var intro = document.getElementById("intro");
-    var site = document.getElementById("site");
-    var typed = document.getElementById("typed");
-    var texte = typed.textContent;
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      typed.textContent = "";
-      var n = 0;
-      (function frappe() {
-        n += 1;
-        typed.textContent = texte.slice(0, n);
-        if (n < texte.length) setTimeout(frappe, 80 + Math.random() * 70);
-      })();
-    }
-    document.getElementById("acces").addEventListener("click", function () {
-      intro.hidden = true;
-      site.hidden = false;
-      window.scrollTo(0, 0);
-      toggle.focus({ preventScroll: true });
-    });
-
-    /* Chapitres */
-    function montrerChapitre(afficher) {
-      liste.hidden = afficher;
-      chap1.hidden = !afficher;
-      histoire.scrollIntoView({ block: "start" });
-      (afficher ? chap1.querySelector(".retour") : document.getElementById("ouvrir-chap1")).focus({ preventScroll: true });
-    }
-    document.getElementById("ouvrir-chap1").addEventListener("click", function () { montrerChapitre(true); });
-    document.getElementById("retour").addEventListener("click", function () { montrerChapitre(false); });
-  })();
+  /* Lien direct vers une rubrique (ex. …/#allemand) */
+  var cible = location.hash.replace("#", "");
+  var sec = cible ? document.getElementById(cible) : null;
+  if (sec && sec.parentNode && sec.parentNode.id === "contenu") {
+    entrer();
+    afficher(cible);
+  }
+})();
 </script>
 </body>
 </html>
