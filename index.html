@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon site</title>
+<meta name="description" content="Cours d’histoire : Chapitre 1, la période révolutionnaire (1789-1815).">
+<meta name="theme-color" content="#efe9ff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📖%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #efe9ff;
+    --blob-a: #ffd23f;
+    --blob-b: #3ddbb0;
+    --ink: #2b1b4e;
+    --muted: #6a5a8f;
+    --panel: #ffffff;
+    --accent: #ff6b5b;
+    --accent-ink: #ffffff;
+    --hover: #fff1c2;
+    --c1: #ff6b5b;
+    --c2: #3ddbb0;
+    --c3: #ffd23f;
+    --on-c: #2b1b4e;
+    --font: "Fredoka", "Trebuchet MS", "Helvetica Neue", Arial, sans-serif;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1433;
+      --blob-a: #b98a00;
+      --blob-b: #12856a;
+      --ink: #f4efff;
+      --muted: #b3a5d6;
+      --panel: #2b1f4d;
+      --accent: #ff7d6e;
+      --accent-ink: #1c1433;
+      --hover: #3b2c66;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1c1433;
+    --blob-a: #b98a00;
+    --blob-b: #12856a;
+    --ink: #f4efff;
+    --muted: #b3a5d6;
+    --panel: #2b1f4d;
+    --accent: #ff7d6e;
+    --accent-ink: #1c1433;
+    --hover: #3b2c66;
+  }
+
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Deux grosses bulles de couleur, discrètes, derrière le contenu */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  body::before { width: 22rem; height: 22rem; background: var(--blob-a); top: -8rem; right: -7rem; }
+  body::after  { width: 18rem; height: 18rem; background: var(--blob-b); bottom: -7rem; left: -6rem; }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+
+  /* La case du début + son menu déroulant */
+  .menu { position: relative; display: inline-block; }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 14rem;
+    padding: 0.85rem 1.2rem 0.85rem 0.85rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 3px solid var(--ink);
+    border-radius: 1.4rem;
+    font: 600 1.4rem/1.1 var(--font);
+    cursor: pointer;
+    box-shadow: 0 6px 0 var(--ink);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .menu-toggle:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: 0 8px 0 var(--ink); }
+  .menu-toggle:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--ink); }
+  .menu-toggle:focus-visible, .menu-item:focus-visible,
+  .chap-btn:focus-visible, .retour:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .burger {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    flex: none;
+    background: var(--panel);
+    color: var(--ink);
+    border-radius: 0.9rem;
+  }
+  .burger svg { width: 1.4rem; height: 1.4rem; }
+  .menu-label { flex: 1; text-align: left; }
+  .chevron { width: 1.2rem; height: 1.2rem; flex: none; transition: transform 200ms ease; }
+  .menu-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+  .menu-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 1.1rem);
+    z-index: 10;
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    border-radius: 1.4rem;
+    box-shadow: 0 6px 0 var(--ink);
+    transform-origin: top left;
+    opacity: 0;
+    transform: scale(0.9) translateY(-8px);
+    visibility: hidden;
+    transition: opacity 140ms ease, transform 180ms cubic-bezier(.3,1.5,.5,1), visibility 0s linear 180ms;
+  }
+  .menu-list.open {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    transition: opacity 140ms ease, transform 220ms cubic-bezier(.3,1.5,.5,1), visibility 0s;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    background: none;
+    border: 0;
+    border-radius: 0.95rem;
+    color: var(--ink);
+    font: 500 1.2rem/1.2 var(--font);
+    text-align: left;
+    cursor: pointer;
+  }
+  .menu-item .emoji { font-size: 1.5rem; line-height: 1; }
+  .menu-item:hover { background: var(--hover); }
+  .menu-item[aria-current="true"] { background: var(--ink); color: var(--bg); }
+
+  /* Contenu */
+  .contenu { margin-top: 3.25rem; }
+  .contenu section[hidden] { display: none; }
+  .contenu section, .cours { animation: pop 300ms cubic-bezier(.3,1.4,.5,1); }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .contenu h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.4rem, 9vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .contenu p { max-width: 62ch; margin: 0 0 1rem; }
+  .doux { color: var(--muted); }
+
+  .carte {
+    padding: 1.5rem 1.6rem 1.8rem;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    border-radius: 1.6rem;
+    box-shadow: 0 6px 0 var(--ink);
+  }
+  .carte h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
+
+  /* Bouton de chapitre */
+  .chap-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1.2rem;
+    padding: 1rem 1.1rem;
+    background: var(--c3);
+    color: var(--on-c);
+    border: 3px solid var(--ink);
+    border-radius: 1.2rem;
+    box-shadow: 0 5px 0 var(--ink);
+    font-family: var(--font);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .chap-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
+  .chap-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
+  .chap-btn .txt { flex: 1; }
+  .chap-btn .chap-num { display: block; font-weight: 700; font-size: 1.4rem; line-height: 1.15; }
+  .chap-btn .chap-titre { display: block; font-weight: 500; font-size: 1.05rem; line-height: 1.3; }
+  .chap-btn svg { width: 1.4rem; height: 1.4rem; flex: none; }
+
+  /* Le cours */
+  .retour {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 1.4rem;
+    padding: 0.4rem 0.95rem 0.4rem 0.7rem;
+    background: var(--panel);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    box-shadow: 0 3px 0 var(--ink);
+    font: 600 1rem/1.2 var(--font);
+    cursor: pointer;
+  }
+  .retour svg { width: 1rem; height: 1rem; }
+
+  .cours { font-size: 1.05rem; line-height: 1.7; }
+  .cours p, .cours li { max-width: 62ch; }
+  .cours p { margin: 0 0 0.9rem; }
+  .cours .chap-num { margin: 0; color: var(--muted); font-weight: 700; font-size: 1.1rem; }
+  .cours .cours-titre {
+    margin: 0.1rem 0 0.5rem;
+    padding: 0;
+    border: 0;
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+  .cours h2 {
+    margin: 2.6rem 0 0.7rem;
+    padding-left: 0.75rem;
+    border-left: 8px solid var(--c1);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .cours h3 {
+    margin: 2rem 0 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .cours h3::before {
+    content: "";
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.5rem;
+    background: var(--c2);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    vertical-align: 0.05rem;
+  }
+  .cours h4 {
+    display: inline-block;
+    margin: 1.6rem 0 0.6rem;
+    padding: 0.1rem 0.7rem;
+    background: var(--c3);
+    color: var(--on-c);
+    border-radius: 0.7rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .cours ul, .cours ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  .cours li { margin-bottom: 0.45rem; }
+  .cours li::marker { color: var(--accent); font-weight: 700; }
+
+  .ref { color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+  .fleche { color: var(--accent); font-weight: 700; }
+
+  .encadre {
+    margin: 1rem 0 1.2rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--hover);
+    background: color-mix(in srgb, var(--c3) 30%, var(--panel));
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+  }
+  .encadre p:last-child, .encadre ul:last-child { margin-bottom: 0; }
+  .encadre .titre { margin-bottom: 0.3rem; font-weight: 700; }
+
+  /* Frise chronologique */
+  .cours .frise {
+    margin: 1.2rem 0 1.4rem 0.5rem;
+    padding: 0;
+    list-style: none;
+    border-left: 3px solid var(--ink);
+  }
+  .frise li { position: relative; margin: 0; padding: 0 0 1.2rem 1.3rem; }
+  .frise li:last-child { padding-bottom: 0; }
+  .frise li::before {
+    content: "";
+    position: absolute;
+    left: calc(-0.5rem - 1.5px);
+    top: 0.3rem;
+    width: 1rem;
+    height: 1rem;
+    background: var(--c1);
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+  }
+  .frise .date {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    padding: 0 0.6rem;
+    background: var(--c2);
+    color: var(--on-c);
+    border-radius: 0.6rem;
+    font-weight: 700;
+  }
+  .frise p { margin: 0 0 0.4rem; }
+  .frise p:last-child { margin-bottom: 0; }
+
+  /* Petites cartes */
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0 1.2rem;
+  }
+  .mini {
+    padding: 0.8rem 0.95rem;
+    background: var(--hover);
+    background: color-mix(in srgb, var(--tint, var(--c2)) 24%, var(--panel));
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+    line-height: 1.4;
+  }
+  .mini .nom { display: block; font-weight: 700; font-size: 1.15rem; }
+  .mini .latin { display: block; margin-bottom: 0.2rem; font-weight: 600; }
+  .mini .grand { display: block; margin-top: 0.3rem; font-weight: 700; font-size: 1.6rem; line-height: 1.1; }
+  .mini.t1 { --tint: var(--c1); }
+  .mini.t2 { --tint: var(--c2); }
+  .mini.t3 { --tint: var(--c3); }
+
+  .centre-crise {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto 0.75rem;
+    padding: 0.5rem 1.4rem;
+    background: var(--c1);
+    color: var(--on-c);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  .centre-crise + .grille { margin-top: 0; }
+
+  /* Première page : terminal */
+  .page { animation: pop 300ms cubic-bezier(.3,1.4,.5,1); }
+
+  .intro {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    padding: 2rem 1.25rem;
+  }
+  .terminal {
+    width: min(100%, 34rem);
+    overflow: hidden;
+    background: #1a1230;
+    border: 3px solid var(--ink);
+    border-radius: 1.4rem;
+    box-shadow: 0 6px 0 var(--ink);
+  }
+  .term-bar {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #2b1f4d;
+    border-bottom: 3px solid var(--ink);
+  }
+  .term-bar span { width: 0.85rem; height: 0.85rem; border-radius: 50%; }
+  .term-bar span:nth-child(1) { background: var(--c1); }
+  .term-bar span:nth-child(2) { background: var(--c3); }
+  .term-bar span:nth-child(3) { background: var(--c2); }
+
+  .term-titre {
+    margin: 0;
+    padding: 2.4rem 1.4rem 2.6rem;
+    color: var(--c2);
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(1.4rem, 6vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
+  }
+  .term-titre .prompt { margin-right: 0.7rem; color: var(--c3); }
+  .curseur {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 0.15em;
+    background: var(--c2);
+    vertical-align: text-bottom;
+    animation: clignote 1s steps(1) infinite;
+  }
+  @keyframes clignote { 50% { opacity: 0; } }
+
+  .acces {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(100%, 34rem);
+    padding: 1rem 1.3rem;
+    background: var(--c2);
+    color: var(--on-c);
+    border: 3px solid var(--ink);
+    border-radius: 1.4rem;
+    box-shadow: 0 6px 0 var(--ink);
+    font: 600 1.4rem/1.15 var(--font);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .acces:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--ink); }
+  .acces:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--ink); }
+  .acces:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .acces svg { width: 1.5rem; height: 1.5rem; flex: none; }
+
+  @media (max-width: 30rem) {
+    .menu { display: flex; }
+    .menu-toggle { width: 100%; min-width: 0; }
+    .carte { padding: 1.2rem 1.05rem 1.5rem; }
+    .cours { font-size: 1.02rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="intro" id="intro">
+    <div class="terminal">
+      <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h1 class="term-titre" aria-label="PREMIERE STI2D">
+        <span class="prompt" aria-hidden="true">&gt;</span><span id="typed" aria-hidden="true">PREMIERE STI2D</span><span class="curseur" aria-hidden="true"></span>
+      </h1>
+    </div>
+    <button class="acces" id="acces" type="button">
+      Accéder au cours
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+    </button>
+  </div>
+
+  <main class="page" id="site" hidden>
+
+    <div class="menu">
+      <button class="menu-toggle" id="menu-toggle" type="button"
+              aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">
+        <span class="burger" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </span>
+        <span class="menu-label">Menu</span>
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+             stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 7.5l6 6 6-6"/>
+        </svg>
+      </button>
+
+      <ul class="menu-list" id="menu-list">
+        <li><button class="menu-item" type="button" data-target="histoire"><span class="emoji" aria-hidden="true">📜</span>Histoire</button></li>
+      </ul>
+    </div>
+
+    <div class="contenu" id="contenu" aria-live="polite">
+
+      <section id="accueil">
+        <h1>Bienvenue&nbsp;!</h1>
+        <p class="doux">Clique sur le menu pour choisir une rubrique.</p>
+      </section>
+
+      <section id="histoire" class="carte" hidden>
+
+        <!-- Liste des chapitres -->
+        <div id="liste-chapitres">
+          <h1>Histoire</h1>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn" id="ouvrir-chap1" type="button">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">La période révolutionnaire (1789-1815)</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Chapitre 1 -->
+        <article class="cours" id="chap1" hidden>
+          <button class="retour" id="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+
+          <p class="chap-num">Chapitre 1</p>
+          <h2 class="cours-titre">La période révolutionnaire (1789-1815)</h2>
+
+          <h2>Introduction</h2>
+          <p>La Révolution française (1789-1799) est l’une des périodes les plus importantes de l’histoire du monde, qui connaît encore aujourd’hui un retentissement mondial&nbsp;:</p>
+          <ul>
+            <li>c’est le moment où le peuple apparaît comme un acteur majeur de l’histoire&nbsp;;</li>
+            <li>c’est l’apparition du droit des peuples à disposer d’eux-mêmes (nationalisme)&nbsp;;</li>
+            <li>1789 est une année incomparable.</li>
+          </ul>
+
+          <h2>Problématique</h2>
+          <div class="encadre">
+            <p>Entre 1789 et 1815, la France connaît 5 régimes politiques différents. Comment expliquer des changements aussi rapides, une situation aussi mouvementée&nbsp;? Quelles ont été les conséquences pour l’Europe&nbsp;?</p>
+          </div>
+
+          <h2>I. La 1<sup>re</sup> monarchie constitutionnelle et son échec (1789-1792)</h2>
+
+          <h3>Introduction&nbsp;: les causes de la crise de 1789</h3>
+          <ol>
+            <li>
+              <strong>L’hiver 1788-1789.</strong> La principale conséquence de l’hiver 1788-1789 en France est une inflation des prix doublée. En effet, l’hiver a été très froid, ce qui a eu des conséquences catastrophiques pour les récoltes, or le blé est la base de l’alimentation.
+            </li>
+            <li>
+              <strong>Le budget.</strong> <span class="ref">(Doc 2, p. 1)</span>
+              <ul>
+                <li>Le budget français est déséquilibré. Le budget est en déficit chronique. Les guerres récentes pèsent beaucoup.</li>
+                <li>Le roi peut choisir d’augmenter les impôts.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>La société d’ordres.</strong> <span class="ref">(Doc 3, p. 1)</span> La société est organisée en ordres / États (3 classes sociales).
+            </li>
+          </ol>
+
+          <div class="grille">
+            <div class="mini t3">
+              <span class="nom">Clergé</span>
+              <span class="latin">oratores (ceux qui prient)</span>
+              <span class="grand">1&nbsp;%</span>
+            </div>
+            <div class="mini t1">
+              <span class="nom">Noblesse</span>
+              <span class="latin">bellatores (ceux qui se battent)</span>
+              <span class="grand">1,5&nbsp;%</span>
+            </div>
+            <div class="mini t2">
+              <span class="nom">Tiers État</span>
+              <span class="latin">laboratores (ceux qui travaillent)</span>
+              <span class="grand">97,5&nbsp;%</span>
+            </div>
+          </div>
+
+          <p>D’après Sieyès, le Tiers État, c’est tout, car il n’a pas besoin de dirigeant, il se suffit à lui-même. Il se porterait mieux sans les ordres privilégiés.</p>
+
+          <h4>La crise de 1789</h4>
+          <span class="centre-crise">Crise (1789)</span>
+          <div class="grille">
+            <div class="mini t2">
+              <span class="nom">Économique</span>
+              Hiver 1788-1789 catastrophique
+            </div>
+            <div class="mini t3">
+              <span class="nom">Financière</span>
+              Dette colossale
+            </div>
+            <div class="mini t1">
+              <span class="nom">Sociale</span>
+              Le Tiers État représente 98&nbsp;% de la population, mais n’a pas de pouvoir
+            </div>
+            <div class="mini t2">
+              <span class="nom">D’autorité politique</span>
+              Roi indécis
+            </div>
+          </div>
+          <p>En 1788, le roi est contraint de convoquer les États généraux.</p>
+
+          <h3>A) La révolution des députés</h3>
+          <p>Les États généraux (EG) sont convoqués pour le 5 mai 1789. Ils sont réunis pour choisir de nouveaux impôts. Chaque ordre rédige des cahiers de doléances.</p>
+
+          <div class="grille">
+            <div class="mini t3">
+              <span class="nom">Clergé</span>
+              300 députés
+              <span class="grand">1 vote</span>
+            </div>
+            <div class="mini t1">
+              <span class="nom">Noblesse</span>
+              300 députés
+              <span class="grand">1 vote</span>
+            </div>
+            <div class="mini t2">
+              <span class="nom">Tiers État</span>
+              600 députés
+              <span class="grand">1 vote</span>
+            </div>
+          </div>
+
+          <ul>
+            <li>Versailles se trouve à environ 20&nbsp;km de Paris.</li>
+            <li>Les EG s’ouvrent dans la salle des Menus-Plaisirs du roi.</li>
+            <li>Necker est le ministre des Finances (il est suisse).</li>
+          </ul>
+
+          <ol class="frise">
+            <li>
+              <span class="date">5 mai 1789</span>
+              <p>Ouverture des États généraux à Versailles, salle des Menus-Plaisirs du roi.</p>
+            </li>
+            <li>
+              <span class="date">17 juin</span>
+              <p>Les députés du Tiers État se proclament <strong>Assemblée nationale</strong>.</p>
+            </li>
+            <li>
+              <span class="date">20 juin</span>
+              <p><strong>Serment du Jeu de paume</strong>&nbsp;: les députés font le serment «&nbsp;de ne pas se séparer avant d’avoir établi une constitution&nbsp;».</p>
+              <div class="encadre">
+                <p><strong>Constitution&nbsp;:</strong> ensemble des lois fondamentales qui définissent le régime politique d’une nation, c’est-à-dire l’organisation des pouvoirs.</p>
+              </div>
+            </li>
+            <li>
+              <span class="date">27 juin</span>
+              <p>Le roi ordonne aux députés restants de rejoindre ceux qui ont fait le serment.</p>
+            </li>
+            <li>
+              <span class="date">9 juillet</span>
+              <p>Proclamation de l’<strong>Assemblée nationale constituante</strong>. L’Assemblée nationale change complètement la situation.</p>
+            </li>
+            <li>
+              <span class="date">11 juillet</span>
+              <p>Cependant, le roi renvoie Necker. 30&nbsp;000 soldats viennent pour entourer Paris.</p>
+            </li>
+          </ol>
+
+          <h3>B) La révolution populaire et l’abolition des privilèges</h3>
+
+          <h4>1. La révolution des villes</h4>
+          <ol class="frise">
+            <li>
+              <span class="date">14 juillet 1789</span>
+              <p><strong>La prise de la Bastille.</strong></p>
+            </li>
+          </ol>
+          <p>La Révolution est sauvée par le peuple de Paris. Cependant, celui-ci a agi sans les députés <span class="fleche">→</span> il s’agit plus d’une démocratie directe que d’une monarchie parlementaire.</p>
+
+          <h4>2. La révolution des paysans</h4>
+          <p>Dans les campagnes, les nouvelles parviennent aux gens de façon déformée.</p>
+          <ul>
+            <li>Dans le Grand Ouest de la France, beaucoup de paysans croient que des brigands, payés par des nobles, pillent les récoltes. C’est un mirage (<strong>la Grande Peur</strong>). On procède à de nouvelles élections, on élit de nouveaux maires, souvent issus du Tiers État.</li>
+            <li>Dans le Grand Est de la France, des paysans demandent l’abolition des droits des seigneurs, les droits féodaux.</li>
+          </ul>
+          <p><span class="fleche">→</span> L’ordre disparaît en France pendant 3 semaines.</p>
+
+          <ol class="frise">
+            <li>
+              <span class="date">Nuit du 4 août 1789</span>
+              <p>Les députés décident de supprimer les privilèges des nobles.</p>
+            </li>
+          </ol>
+          <div class="encadre">
+            <p>Non seulement la monarchie absolue a disparu, mais aussi l’<strong>Ancien Régime</strong> (l’organisation des pouvoirs entre les États).</p>
+          </div>
+
+          <h4>3. Du sujet au citoyen</h4>
+          <div class="encadre">
+            <p class="titre">Sujet*</p>
+            <ul>
+              <li>personne qui dépend d’un autre (assujettir)</li>
+              <li>personne libre</li>
+            </ul>
+            <p><strong>Citoyen&nbsp;:</strong> membre d’un État qui a des droits et des devoirs envers son pays.</p>
+          </div>
+
+          <ol class="frise">
+            <li>
+              <span class="date">26 août 1789</span>
+              <p>Vote de la <strong>Déclaration des droits de l’Homme et du Citoyen</strong> (DDHC).</p>
+            </li>
+          </ol>
+
+          <div class="grille">
+            <div class="mini t1">
+              <span class="nom">Valeurs</span>
+              Générosité, honneur, courage…
+              <span class="latin" style="margin-top:.3rem">Elles changent beaucoup plus souvent.</span>
+            </div>
+            <div class="mini t2">
+              <span class="nom">Principes</span>
+              Liberté…
+              <span class="latin" style="margin-top:.3rem">Ils sont universels et changent peu.</span>
+            </div>
+          </div>
+          <p class="ref">Un principe n’est pas une valeur.</p>
+
+          <h4>La liberté (art. 1, 2, 4, 7, 10, 11)</h4>
+          <ul>
+            <li><strong>Art. 1&nbsp;:</strong> droit naturel.</li>
+            <li><strong>Art. 2&nbsp;:</strong> on ne peut pas nous l’enlever.</li>
+            <li><strong>Art. 4&nbsp;:</strong> définition négative de la liberté.</li>
+            <li><strong>Art. 7&nbsp;:</strong> habeas corpus, on ne peut pas arrêter quelqu’un sans raison.</li>
+            <li><strong>Art. 10 et 11&nbsp;:</strong> liberté de penser et d’expression.</li>
+          </ul>
+
+          <h4>L’égalité (art. 1 et 12-15)</h4>
+          <ul>
+            <li><strong>Art. 1&nbsp;:</strong> égalité des droits.</li>
+            <li><strong>Art. 12&nbsp;:</strong> nécessité de la police, qui doit respecter la loi.</li>
+            <li><strong>Art. 13&nbsp;:</strong> nécessité de l’impôt, équité de l’impôt.</li>
+          </ul>
+          <p>La DDHC ne cite pas la fraternité. Le roi n’est jamais cité.</p>
+
+          <h4>La propriété (art. 2)</h4>
+          <ul>
+            <li><strong>Art. 2&nbsp;:</strong> la propriété est un droit naturel, on ne peut pas l’enlever.</li>
+          </ul>
+
+          <h4>La résistance à l’oppression contre un pouvoir injuste (art. 2)</h4>
+          <div class="grille">
+            <div class="mini t3">
+              <span class="nom">Loi légale</span>
+              Conforme à la loi.
+            </div>
+            <div class="mini t2">
+              <span class="nom">Loi légitime</span>
+              Morale, juste.
+            </div>
+          </div>
+          <p><strong>Exemple&nbsp;:</strong> 16 juin 1940, Pétain&nbsp;; le général de Gaulle lance un appel à résister.</p>
+
+          <h4>La souveraineté</h4>
+          <div class="grille">
+            <div class="mini t1">
+              <span class="nom">Nationale</span>
+              Exercée par les représentants.
+            </div>
+            <div class="mini t2">
+              <span class="nom">Populaire</span>
+              Plus de 18 ans, référendum.
+            </div>
+          </div>
+
+        </article>
+      </section>
+    </div>
+
+  </main>
+
+<script>
+  (function () {
+    var toggle = document.getElementById("menu-toggle");
+    var list = document.getElementById("menu-list");
+    var items = list.querySelectorAll(".menu-item");
+    var sections = document.querySelectorAll("#contenu > section");
+
+    var liste = document.getElementById("liste-chapitres");
+    var chap1 = document.getElementById("chap1");
+    var histoire = document.getElementById("histoire");
+
+    function setOpen(open) {
+      list.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    }
+
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!list.classList.contains("open"));
+    });
+
+    items.forEach(function (item) {
+      item.addEventListener("click", function () {
+        var id = item.getAttribute("data-target");
+        items.forEach(function (i) { i.removeAttribute("aria-current"); });
+        item.setAttribute("aria-current", "true");
+        sections.forEach(function (s) { s.hidden = s.id !== id; });
+        setOpen(false);
+        toggle.focus();
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!list.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && list.classList.contains("open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    /* Première page */
+    var intro = document.getElementById("intro");
+    var site = document.getElementById("site");
+    var typed = document.getElementById("typed");
+    var texte = typed.textContent;
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      typed.textContent = "";
+      var n = 0;
+      (function frappe() {
+        n += 1;
+        typed.textContent = texte.slice(0, n);
+        if (n < texte.length) setTimeout(frappe, 80 + Math.random() * 70);
+      })();
+    }
+    document.getElementById("acces").addEventListener("click", function () {
+      intro.hidden = true;
+      site.hidden = false;
+      window.scrollTo(0, 0);
+      toggle.focus({ preventScroll: true });
+    });
+
+    /* Chapitres */
+    function montrerChapitre(afficher) {
+      liste.hidden = afficher;
+      chap1.hidden = !afficher;
+      histoire.scrollIntoView({ block: "start" });
+      (afficher ? chap1.querySelector(".retour") : document.getElementById("ouvrir-chap1")).focus({ preventScroll: true });
+    }
+    document.getElementById("ouvrir-chap1").addEventListener("click", function () { montrerChapitre(true); });
+    document.getElementById("retour").addEventListener("click", function () { montrerChapitre(false); });
+  })();
+</script>
+</body>
+</html>
