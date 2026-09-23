@@ -638,6 +638,87 @@
   .modele .de { display: block; }
   .modele .fr { display: block; color: var(--muted); font-size: 0.95rem; }
 
+  /* Exercices types (allemand) : question puis réponse expliquée */
+  .exo {
+    margin: 1.2rem 0 1.4rem;
+    overflow: hidden;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    border-radius: 1.2rem;
+    box-shadow: 0 5px 0 var(--ink);
+  }
+  .exo-niveau {
+    margin: 0;
+    padding: 0.5rem 0.95rem;
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .exo-q, .exo-r { padding: 0.9rem 1.1rem; }
+  .exo-q { background: color-mix(in srgb, var(--c3) 28%, var(--panel)); }
+  .exo-r { background: color-mix(in srgb, var(--c2) 20%, var(--panel)); border-top: 3px solid var(--ink); }
+  .exo .titre { margin: 0 0 0.35rem; font-weight: 700; }
+  .exo p:last-child, .exo ul:last-child { margin-bottom: 0; }
+  .exo-q ul.coches li { padding-left: 0; }
+  .exo-q ul.coches li::before { content: ""; }
+
+  /* Quiz : prononciation de -ed */
+  .quiz-ed {
+    margin: 1.2rem 0 1.4rem;
+    padding: 1.3rem 1.1rem 1.5rem;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    border-radius: 1.2rem;
+    box-shadow: 0 5px 0 var(--ink);
+    text-align: center;
+  }
+  .quiz-ed-score { margin: 0 0 0.7rem; color: var(--muted); font-weight: 600; font-size: 0.95rem; }
+  .quiz-ed-mot {
+    margin: 0 0 1.1rem;
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: clamp(1.7rem, 8vw, 2.3rem);
+    font-weight: 700;
+  }
+  .quiz-ed-boutons { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+  .quiz-ed-bouton {
+    min-width: 4.5rem;
+    padding: 0.7rem 1rem;
+    background: var(--panel);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+    font: 700 1.15rem/1.1 var(--font);
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 120ms ease, box-shadow 120ms ease, background 150ms ease, color 150ms ease;
+  }
+  .quiz-ed-bouton:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+  .quiz-ed-bouton:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .quiz-ed-bouton:disabled { cursor: default; }
+  .quiz-ed-bouton:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .quiz-ed-bouton.bonne { background: var(--c2); color: var(--on-c); }
+  .quiz-ed-bouton.mauvaise { background: var(--c1); color: var(--on-c); }
+  .quiz-ed-retour { min-height: 1.4rem; margin: 0.9rem 0 0; font-weight: 700; }
+  .quiz-ed-retour.ok { color: #12856a; }
+  .quiz-ed-retour.non { color: #c23b2e; }
+  .quiz-ed-suivant {
+    display: inline-block;
+    margin-top: 0.9rem;
+    padding: 0.6rem 1.4rem;
+    background: var(--c3);
+    color: var(--on-c);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    font: 700 1rem/1.2 var(--font);
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--ink);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .quiz-ed-suivant:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+  .quiz-ed-suivant:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .quiz-ed-suivant:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
   /* Tableaux : sur petit écran, chaque ligne devient une petite fiche */
   @media (max-width: 40rem) {
     .tableau.empile thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -695,6 +776,7 @@
         <li><button class="menu-item" type="button" data-target="histoire"><span class="emoji" aria-hidden="true">📜</span>Histoire</button></li>
         <li><button class="menu-item" type="button" data-target="allemand"><span class="emoji" aria-hidden="true">🥨</span>Allemand</button></li>
         <li><button class="menu-item" type="button" data-target="mathematiques"><span class="emoji" aria-hidden="true">📐</span>Mathématiques</button></li>
+        <li><button class="menu-item" type="button" data-target="anglais"><span class="emoji" aria-hidden="true">🇬🇧</span>Anglais</button></li>
         <!-- Pour ajouter une rubrique :
              <li><button class="menu-item" type="button" data-target="ID"><span class="emoji" aria-hidden="true">✨</span>Nom</button></li>
              puis ajouter plus bas une <section id="ID" class="carte" hidden> ... </section> -->
@@ -1315,60 +1397,85 @@
   </div>
 </div>
 
-<h3>5. Exercice par exercice</h3>
+<h3>5. Exercices types : à quoi s’attendre</h3>
+<p>Voici, pour chaque type d’exercice, un exemple avec sa réponse expliquée (les exemples sont différents de ceux de ta feuille, pour t’entraîner sans avoir juste les réponses sous les yeux).</p>
 
-<div class="encadre">
-  <p class="titre">A1 · Exercice 1 : cocher la phrase correcte</p>
-  <ul class="coches">
-    <li>Le verbe conjugué est bien en 2<sup>e</sup> position&nbsp;?</li>
-    <li><span lang="de">nicht</span> est bien placé après le complément&nbsp;?</li>
-    <li>Après <span lang="de">dass</span>, y a-t-il une virgule avant et le verbe à la fin&nbsp;? (Au niveau A1, tu peux aussi éviter <span lang="de">dass</span> : <span class="de" lang="de">Ich finde Deutsch super.</span>)</li>
-  </ul>
+<div class="exo">
+  <p class="exo-niveau">A1 · Cocher la phrase correcte</p>
+  <div class="exo-q">
+    <p class="titre">Exemple de question</p>
+    <p>Coche la phrase qui exprime bien un avis sur la musique.</p>
+    <ul class="coches" style="list-style:none;padding-left:0">
+      <li style="padding-left:0">☐ <span class="de" lang="de">Ich Musik mag.</span></li>
+      <li style="padding-left:0">☐ <span class="de" lang="de">Ich mag Musik.</span></li>
+    </ul>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>La bonne phrase est <span class="de" lang="de">Ich mag Musik.</span></p>
+    <p>Le verbe conjugué <span class="de" lang="de">mag</span> doit être en <strong>2<sup>e</sup> position</strong> (V2). Dans la 1<sup>re</sup> phrase, le complément <span class="de" lang="de">Musik</span> est placé avant le verbe&nbsp;: c’est incorrect.</p>
+  </div>
 </div>
 
-<div class="encadre">
-  <p class="titre">A1 · Exercice 2 : compléter avec mag / mag nicht / finde</p>
-  <ul class="coches">
-    <li><span class="de" lang="de">mag</span> / <span class="de" lang="de">mag nicht</span> expriment un goût, suivi d’un nom (<span lang="de">Ich mag Kuchen.</span>).</li>
-    <li><span class="de" lang="de">finde</span> donne un avis, souvent avec <span lang="de">dass</span> (<span lang="de">Ich finde, dass …</span>).</li>
-    <li>Les deux verbes sont conjugués avec <span lang="de">ich</span> (radical + -e, et <span lang="de">ich mag</span> pour <span lang="de">mögen</span>).</li>
-  </ul>
+<div class="exo">
+  <p class="exo-niveau">A1 · Compléter avec mag / mag nicht / finde</p>
+  <div class="exo-q">
+    <p class="titre">Exemple de question</p>
+    <p>Complète avec <span class="de" lang="de">mag</span> / <span class="de" lang="de">mag nicht</span> / <span class="de" lang="de">finde</span>.</p>
+    <p lang="de">1. Ich _____ Kunst. 2. Ich _____, dass Englisch nützlich ist.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>1. <span class="de" lang="de">Ich mag Kunst.</span> — 2. <span class="de" lang="de">Ich finde, dass Englisch nützlich ist.</span></p>
+    <p><span class="de" lang="de">mag</span> exprime un goût, suivi directement d’un nom. <span class="de" lang="de">finde</span> introduit un avis, ici avec <span class="de" lang="de">dass</span> (verbe <span class="de" lang="de">ist</span> renvoyé à la fin).</p>
+  </div>
 </div>
 
-<div class="encadre">
-  <p class="titre">A1+ · Exercice 1 : relier une opinion à sa justification</p>
-  <ul class="coches">
-    <li>Connaître le vocabulaire (adjectifs, <span lang="de">Spaß machen</span>, <span lang="de">viele Regeln haben</span>).</li>
-    <li>Te demander à chaque fois&nbsp;: «&nbsp;est-ce que la justification est logique avec l’opinion&nbsp;?&nbsp;»</li>
-  </ul>
+<div class="exo">
+  <p class="exo-niveau">A1+ · Relier une opinion à sa justification</p>
+  <div class="exo-q">
+    <p class="titre">Exemple de question</p>
+    <p>Relie chaque opinion à la justification qui convient.</p>
+    <p lang="de"><strong>A.</strong> Ich mag Kunst. <strong>B.</strong> Ich finde Mathe schwierig.</p>
+    <p lang="de"><strong>1.</strong> …weil es kompliziert ist. <strong>2.</strong> …weil es kreativ ist.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>A → 2 (<span class="de" lang="de">Ich mag Kunst, weil es kreativ ist.</span>) et B → 1 (<span class="de" lang="de">Ich finde Mathe schwierig, weil es kompliziert ist.</span>)</p>
+    <p>Il faut que le sens de la justification corresponde à l’opinion&nbsp;: l’art va avec «&nbsp;créatif&nbsp;», les maths difficiles vont avec «&nbsp;compliqué&nbsp;».</p>
+  </div>
 </div>
 
-<div class="encadre">
-  <p class="titre">A1+ · Exercice 2 : réécrire les phrases avec weil</p>
-  <p><strong>Modèle&nbsp;:</strong> <span class="de" lang="de">Ich mag Sport. Es ist gesund.</span> → <span class="de" lang="de">Ich mag Sport, weil es gesund ist.</span></p>
-  <ul class="coches">
-    <li>Garde la 1<sup>re</sup> phrase, puis une virgule et <span lang="de">weil</span>.</li>
-    <li>Reprends la 2<sup>e</sup> phrase (le sujet d’abord).</li>
-    <li>Envoie le verbe conjugué <strong>à la fin</strong>.</li>
-    <li>Vérifie la conjugaison (<span lang="de">ist</span>, <span lang="de">macht</span>…).</li>
-  </ul>
+<div class="exo">
+  <p class="exo-niveau">A1+ · Réécrire deux phrases avec weil</p>
+  <div class="exo-q">
+    <p class="titre">Exemple de question</p>
+    <p>Réécris en une seule phrase avec <span class="de" lang="de">weil</span>.</p>
+    <p lang="de">Ich mag Englisch. Es ist nützlich.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="de">Ich mag Englisch, weil es nützlich ist.</span></p>
+    <p>On garde la 1<sup>re</sup> phrase, on ajoute une virgule puis <span class="de" lang="de">weil</span>, on reprend le sujet de la 2<sup>e</sup> phrase (<span class="de" lang="de">es</span>), et on envoie le verbe conjugué (<span class="de" lang="de">ist</span>) <strong>à la fin</strong>.</p>
+  </div>
 </div>
 
-<div class="encadre">
-  <p class="titre">A2 · Exercice 1 : écrire un court texte (4–6 phrases)</p>
-  <ul class="coches">
-    <li>Une opinion (<span lang="de">Ich mag… / Ich finde… / Ich denke, dass…</span>).</li>
-    <li>Au moins deux connecteurs parmi <span lang="de">weil</span>, <span lang="de">denn</span>, <span lang="de">dass</span>.</li>
-    <li>Une justification claire.</li>
-    <li>Bonne place du verbe&nbsp;: <span lang="de">weil</span> et <span lang="de">dass</span> → à la fin, <span lang="de">denn</span> → 2<sup>e</sup> position.</li>
-  </ul>
-  <p class="titre" style="margin-top:.8rem">Exemple de texte (sur un autre sujet)</p>
-  <ul class="modele">
-    <li><span class="de" lang="de">Ich mag Sport.</span><span class="fr">J’aime le sport.</span></li>
-    <li><span class="de" lang="de">Ich finde, dass Sport gesund ist.</span><span class="fr">Je trouve que le sport est sain.</span></li>
-    <li><span class="de" lang="de">Ich gehe oft schwimmen, weil es Spaß macht.</span><span class="fr">Je vais souvent nager, parce que c’est amusant.</span></li>
-    <li><span class="de" lang="de">Ich mag Hausaufgaben nicht, denn sie sind langweilig.</span><span class="fr">Je n’aime pas les devoirs, car ils sont ennuyeux.</span></li>
-  </ul>
+<div class="exo">
+  <p class="exo-niveau">A2 · Écrire un court texte (4–6 phrases)</p>
+  <div class="exo-q">
+    <p class="titre">Exemple de question</p>
+    <p>Écris un petit texte où tu donnes ton opinion sur l’art, et justifie-la avec au moins deux connecteurs différents.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse possible</p>
+    <ul class="modele">
+      <li><span class="de" lang="de">Ich mag Kunst.</span><span class="fr">J’aime l’art.</span></li>
+      <li><span class="de" lang="de">Ich finde, dass Kunst kreativ ist.</span><span class="fr">Je trouve que l’art est créatif.</span></li>
+      <li><span class="de" lang="de">Ich male oft, weil es entspannend ist.</span><span class="fr">Je peins souvent, parce que c’est relaxant.</span></li>
+      <li><span class="de" lang="de">Ich mag Mathe nicht so sehr, denn es ist manchmal kompliziert.</span><span class="fr">Je n’aime pas trop les maths, car c’est parfois compliqué.</span></li>
+    </ul>
+    <p>Ce texte a une opinion claire, deux connecteurs différents (<span class="de" lang="de">weil</span> et <span class="de" lang="de">denn</span>), et respecte la place du verbe dans chaque cas&nbsp;: à la fin après <span class="de" lang="de">weil</span>, en 2<sup>e</sup> position après <span class="de" lang="de">denn</span>.</p>
+  </div>
 </div>
 
     
@@ -1619,6 +1726,225 @@
         </article>
       </section>
 
+      <!-- ===================== ANGLAIS ===================== -->
+      <section id="anglais" class="carte" hidden>
+
+        <div class="vue-a" id="a-categories">
+          <h2 class="titre-section">Anglais</h2>
+          <p class="doux">Choisis une catégorie.</p>
+          <button class="chap-btn" type="button" data-go-a="a-etlv">
+            <span class="txt">
+              <span class="chap-num">ETLV</span>
+              <span class="chap-titre">Enseignement technologique en langue vivante</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+          <button class="chap-btn menthe" type="button" data-go-a="a-tronc">
+            <span class="txt">
+              <span class="chap-num">Tronc commun</span>
+              <span class="chap-titre">Cours d’anglais du tronc commun</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="vue-a" id="a-etlv" hidden>
+          <button class="retour" type="button" data-go-a="a-categories">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Catégories
+          </button>
+          <h2 class="titre-section">ETLV</h2>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn" type="button" data-go-a="chap-anglais-etlv-1">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">La prononciation du prétérit (-ed)</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="vue-a" id="a-tronc" hidden>
+          <button class="retour" type="button" data-go-a="a-categories">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Catégories
+          </button>
+          <h2 class="titre-section">Tronc commun</h2>
+          <p class="doux">Aucun chapitre pour l’instant.</p>
+        </div>
+
+        <article class="cours vue-a" id="chap-anglais-etlv-1" hidden>
+          <button class="retour" type="button" data-go-a="a-etlv">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+<p class="chap-num">Anglais · ETLV · Chapitre 1</p>
+<h2 class="cours-titre">La prononciation du prétérit (-ed)</h2>
+<p class="ref">Simple past : les 3 sons de la terminaison -ed</p>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#ed-intro">Une terminaison, trois sons</a></li>
+    <li><a href="#ed-t">Le son /t/</a></li>
+    <li><a href="#ed-d">Le son /d/</a></li>
+    <li><a href="#ed-id">Le son /ɪd/</a></li>
+    <li><a href="#ed-tableau">Tableau récapitulatif</a></li>
+    <li><a href="#ed-irreguliers">Et les verbes irréguliers&nbsp;?</a></li>
+    <li><a href="#ed-recap">Récap : ce qu’il faut savoir</a></li>
+    <li><a href="#ed-quiz">Quiz : quel son&nbsp;?</a></li>
+  </ol>
+</nav>
+
+<h2 id="ed-intro">Une terminaison, trois sons</h2>
+<p>Au prétérit (<span lang="en">simple past</span>), les verbes réguliers se terminent tous par <strong>-ed</strong> à l’écrit. Mais à l’oral, cette terminaison se prononce de <strong>3 façons différentes</strong> selon le son qui la précède&nbsp;:</p>
+
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">/t/</span>
+    <span class="fr">un son sec, sans vibration</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">/d/</span>
+    <span class="fr">un son qui vibre dans la gorge</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom">/ɪd/</span>
+    <span class="fr">une syllabe en plus</span>
+  </div>
+</div>
+
+<p>La règle ne dépend pas de la <strong>lettre</strong> écrite avant -ed, mais du <strong>son</strong>&nbsp;: c’est la prononciation du verbe qui compte, pas son orthographe.</p>
+
+<h2 id="ed-t">Le son /t/</h2>
+<p>On prononce -ed <strong>/t/</strong> quand le verbe se termine par un son <strong>non voisé</strong> (une consonne «&nbsp;sourde&nbsp;», prononcée sans faire vibrer les cordes vocales), sauf le son /t/ lui-même.</p>
+<div class="encadre">
+  <p class="titre">Sons concernés</p>
+  <p>/k/, /s/, /ʃ/, /tʃ/, /f/, /p/</p>
+</div>
+<ul>
+  <li><span class="de" lang="en">check</span> → <span class="de" lang="en">checked</span> <span class="ref">/tʃɛkt/ · vérifier</span></li>
+  <li><span class="de" lang="en">fix</span> → <span class="de" lang="en">fixed</span> <span class="ref">/fɪkst/ · réparer</span></li>
+  <li><span class="de" lang="en">switch</span> → <span class="de" lang="en">switched</span> <span class="ref">/swɪtʃt/ · changer / commuter</span></li>
+</ul>
+
+<h2 id="ed-d">Le son /d/</h2>
+<p>On prononce -ed <strong>/d/</strong> quand le verbe se termine par un son <strong>voisé</strong> (une consonne qui fait vibrer les cordes vocales) ou par une <strong>voyelle</strong>, sauf le son /d/ lui-même.</p>
+<div class="encadre">
+  <p class="titre">Sons concernés</p>
+  <p>/b/, /g/, /v/, /z/, /dʒ/, /l/, /m/, /n/, /ŋ/, /r/, et les voyelles</p>
+</div>
+<ul>
+  <li><span class="de" lang="en">install</span> → <span class="de" lang="en">installed</span> <span class="ref">/ɪnˈstɔːld/ · installer</span></li>
+  <li><span class="de" lang="en">clean</span> → <span class="de" lang="en">cleaned</span> <span class="ref">/kliːnd/ · nettoyer</span></li>
+  <li><span class="de" lang="en">charge</span> → <span class="de" lang="en">charged</span> <span class="ref">/tʃɑːrdʒd/ · charger (batterie)</span></li>
+  <li><span class="de" lang="en">plug</span> → <span class="de" lang="en">plugged</span> <span class="ref">/plʌgd/ · brancher</span></li>
+  <li><span class="de" lang="en">program</span> → <span class="de" lang="en">programmed</span> <span class="ref">/ˈproʊɡræmd/ · programmer</span></li>
+  <li><span class="de" lang="en">repair</span> → <span class="de" lang="en">repaired</span> <span class="ref">/rɪˈpɛərd/ · réparer</span></li>
+</ul>
+
+<h2 id="ed-id">Le son /ɪd/</h2>
+<p>On prononce -ed <strong>/ɪd/</strong> (avec une <strong>syllabe en plus</strong>) quand le verbe se termine déjà par un son <strong>/t/ ou /d/</strong>.</p>
+<div class="encadre">
+  <p>Il est impossible d’enchaîner deux sons /t/ ou /d/ sans les distinguer à l’oral&nbsp;: on ajoute donc une petite voyelle entre les deux, ce qui crée une syllabe supplémentaire.</p>
+</div>
+<ul>
+  <li><span class="de" lang="en">test</span> → <span class="de" lang="en">tested</span> <span class="ref">/ˈtɛstɪd/ · tester</span></li>
+  <li><span class="de" lang="en">connect</span> → <span class="de" lang="en">connected</span> <span class="ref">/kəˈnɛktɪd/ · connecter</span></li>
+  <li><span class="de" lang="en">update</span> → <span class="de" lang="en">updated</span> <span class="ref">/ˈʌpdeɪtɪd/ · mettre à jour</span></li>
+  <li><span class="de" lang="en">print</span> → <span class="de" lang="en">printed</span> <span class="ref">/ˈprɪntɪd/ · imprimer</span></li>
+  <li><span class="de" lang="en">paint</span> → <span class="de" lang="en">painted</span> <span class="ref">/ˈpeɪntɪd/ · peindre</span></li>
+  <li><span class="de" lang="en">sound</span> → <span class="de" lang="en">sounded</span> <span class="ref">/ˈsaʊndɪd/ · sonner</span></li>
+  <li><span class="de" lang="en">start</span> → <span class="de" lang="en">started</span> <span class="ref">/ˈstɑːrtɪd/ · démarrer</span></li>
+  <li><span class="de" lang="en">weld</span> → <span class="de" lang="en">welded</span> <span class="ref">/ˈwɛldɪd/ · souder (métal)</span></li>
+  <li><span class="de" lang="en">melt</span> → <span class="de" lang="en">melted</span> <span class="ref">/ˈmɛltɪd/ · fondre</span></li>
+</ul>
+
+<h2 id="ed-tableau">Tableau récapitulatif</h2>
+<p>Reprenons tous les verbes de tes listes, classés par son.</p>
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Verbes au prétérit classés par son de la terminaison -ed</caption>
+    <thead>
+      <tr><th scope="col">Verbe</th><th scope="col">Prétérit</th><th scope="col">Traduction</th><th scope="col">Son de -ed</th></tr>
+    </thead>
+    <tbody lang="en">
+      <tr><th scope="row">to check</th><td data-label="Prétérit">checked</td><td data-label="Traduction" lang="fr">vérifier</td><td data-label="Son de -ed">/t/</td></tr>
+      <tr><th scope="row">to fix</th><td data-label="Prétérit">fixed</td><td data-label="Traduction" lang="fr">réparer</td><td data-label="Son de -ed">/t/</td></tr>
+      <tr><th scope="row">to switch</th><td data-label="Prétérit">switched</td><td data-label="Traduction" lang="fr">changer / commuter</td><td data-label="Son de -ed">/t/</td></tr>
+      <tr><th scope="row">to install</th><td data-label="Prétérit">installed</td><td data-label="Traduction" lang="fr">installer</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to clean</th><td data-label="Prétérit">cleaned</td><td data-label="Traduction" lang="fr">nettoyer</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to charge</th><td data-label="Prétérit">charged</td><td data-label="Traduction" lang="fr">charger (batterie)</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to plug</th><td data-label="Prétérit">plugged</td><td data-label="Traduction" lang="fr">brancher</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to program</th><td data-label="Prétérit">programmed</td><td data-label="Traduction" lang="fr">programmer</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to repair</th><td data-label="Prétérit">repaired</td><td data-label="Traduction" lang="fr">réparer</td><td data-label="Son de -ed">/d/</td></tr>
+      <tr><th scope="row">to test</th><td data-label="Prétérit">tested</td><td data-label="Traduction" lang="fr">tester</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to connect</th><td data-label="Prétérit">connected</td><td data-label="Traduction" lang="fr">connecter</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to update</th><td data-label="Prétérit">updated</td><td data-label="Traduction" lang="fr">mettre à jour</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to print</th><td data-label="Prétérit">printed</td><td data-label="Traduction" lang="fr">imprimer</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to paint</th><td data-label="Prétérit">painted</td><td data-label="Traduction" lang="fr">peindre</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to sound</th><td data-label="Prétérit">sounded</td><td data-label="Traduction" lang="fr">sonner</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to start</th><td data-label="Prétérit">started</td><td data-label="Traduction" lang="fr">démarrer</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to weld</th><td data-label="Prétérit">welded</td><td data-label="Traduction" lang="fr">souder (métal)</td><td data-label="Son de -ed">/ɪd/</td></tr>
+      <tr><th scope="row">to melt</th><td data-label="Prétérit">melted</td><td data-label="Traduction" lang="fr">fondre</td><td data-label="Son de -ed">/ɪd/</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="ref">Sur ta fiche, le son /ɪd/ est parfois affiché «&nbsp;/td/&nbsp;» (un problème d’affichage des symboles phonétiques) : il s’agit bien du même son, celui de la syllabe en plus.</p>
+
+<h2 id="ed-irreguliers">Et les verbes irréguliers&nbsp;?</h2>
+<p>Cette règle de prononciation ne concerne que les verbes <strong>réguliers</strong> (ceux qui prennent -ed). Les verbes <strong>irréguliers</strong> changent complètement de forme au prétérit&nbsp;: il n’y a pas de règle à appliquer, il faut les apprendre par cœur.</p>
+<div class="table-scroll">
+  <table class="tableau">
+    <caption class="visually-hidden">Exemples de verbes irréguliers</caption>
+    <thead><tr><th scope="col">Infinitif</th><th scope="col">Prétérit</th><th scope="col">Traduction</th></tr></thead>
+    <tbody lang="en">
+      <tr><th scope="row">to fly</th><td>flew</td><td lang="fr">voler</td></tr>
+      <tr><th scope="row">to write</th><td>wrote</td><td lang="fr">écrire</td></tr>
+      <tr><th scope="row">to build</th><td>built</td><td lang="fr">construire</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="ed-recap">Récap : ce qu’il faut savoir</h2>
+<div class="encadre">
+  <p class="titre">La méthode, étape par étape</p>
+  <ol>
+    <li>Trouve le <strong>dernier son</strong> du verbe à l’infinitif (pas la dernière lettre&nbsp;!).</li>
+    <li>Si ce son est <strong>/t/ ou /d/</strong> ⇒ le -ed se prononce <strong>/ɪd/</strong> (une syllabe de plus).</li>
+    <li>Sinon, si le son est <strong>non voisé</strong> (sourd, comme /k/, /s/, /f/…) ⇒ le -ed se prononce <strong>/t/</strong>.</li>
+    <li>Sinon (son voisé ou voyelle) ⇒ le -ed se prononce <strong>/d/</strong>.</li>
+  </ol>
+</div>
+<div class="encadre">
+  <p class="titre">Astuce</p>
+  <p>En cas de doute, prononce le verbe à voix haute. Si tu entends <strong>une syllabe de plus</strong> qu’à l’infinitif, c’est /ɪd/. Sinon, c’est /t/ ou /d/ selon que ça «&nbsp;sonne sourd&nbsp;» ou que «&nbsp;ça vibre&nbsp;».</p>
+</div>
+
+<h2 id="ed-quiz">Quiz : quel son&nbsp;?</h2>
+<p>Un verbe s’affiche déjà au prétérit. Devine comment se prononce sa terminaison <span class="de" lang="en">-ed</span>.</p>
+
+<div class="quiz-ed" id="quiz-ed">
+  <p class="quiz-ed-score" id="quiz-ed-score">Score : 0 / 0</p>
+  <p class="quiz-ed-mot" id="quiz-ed-mot" lang="en">checked</p>
+  <div class="quiz-ed-boutons" role="group" aria-label="Choisis le son de la terminaison -ed">
+    <button type="button" class="quiz-ed-bouton" data-son="d">D</button>
+    <button type="button" class="quiz-ed-bouton" data-son="t">T</button>
+    <button type="button" class="quiz-ed-bouton" data-son="id">ID</button>
+  </div>
+  <p class="quiz-ed-retour" id="quiz-ed-retour" aria-live="polite"></p>
+  <button type="button" class="quiz-ed-suivant" id="quiz-ed-suivant" hidden>Verbe suivant →</button>
+</div>
+        </article>
+
+      </section>
+
     </div>
 
   </main>
@@ -1631,6 +1957,7 @@
   var sections = document.querySelectorAll("#contenu > section");
   var intro = document.getElementById("intro");
   var site = document.getElementById("site");
+  var afficherVueAnglais; /* défini plus bas, utilisé dans afficher() */
 
   function setOpen(open) {
     list.classList.toggle("open", open);
@@ -1670,6 +1997,7 @@
     item.addEventListener("click", function () {
       var id = item.getAttribute("data-target");
       afficher(id);
+      if (id === "anglais" && afficherVueAnglais) afficherVueAnglais("a-categories");
       setOpen(false);
       toggle.focus();
       try { history.replaceState(null, "", "#" + id); } catch (e) {}
@@ -1705,6 +2033,7 @@
     });
   });
   document.querySelectorAll(".retour").forEach(function (r) {
+    if (r.hasAttribute("data-go-a")) return; /* géré par la logique Anglais, plus bas */
     r.addEventListener("click", function () {
       var sec = r.closest("section");
       reinit(sec);
@@ -1713,6 +2042,26 @@
     });
   });
 
+  /* Anglais : catégories (ETLV / Tronc commun) puis chapitres */
+  (function () {
+    var section = document.getElementById("anglais");
+    if (!section) return;
+    var vues = section.querySelectorAll(":scope > .vue-a");
+    afficherVueAnglais = function (id) {
+      vues.forEach(function (v) { v.hidden = (v.id !== id); });
+      var cible = document.getElementById(id);
+      if (!cible) return;
+      var f = cible.querySelector(".retour") || cible.querySelector("button");
+      if (f) f.focus({ preventScroll: true });
+    };
+    section.querySelectorAll("[data-go-a]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        afficherVueAnglais(b.getAttribute("data-go-a"));
+        section.scrollIntoView({ block: "start" });
+      });
+    });
+  })();
+
   /* Lien direct vers une rubrique (ex. …/#allemand) */
   var cible = location.hash.replace("#", "");
   var sec = cible ? document.getElementById(cible) : null;
@@ -1720,6 +2069,91 @@
     entrer();
     afficher(cible);
   }
+})();
+
+/* Quiz : prononciation de -ed */
+(function () {
+  var mot = document.getElementById("quiz-ed-mot");
+  if (!mot) return;
+  var score = document.getElementById("quiz-ed-score");
+  var boutons = document.querySelectorAll(".quiz-ed-bouton");
+  var retour = document.getElementById("quiz-ed-retour");
+  var suivantBtn = document.getElementById("quiz-ed-suivant");
+
+  var verbes = [
+    { mot: "checked", son: "t" },
+    { mot: "fixed", son: "t" },
+    { mot: "switched", son: "t" },
+    { mot: "installed", son: "d" },
+    { mot: "cleaned", son: "d" },
+    { mot: "charged", son: "d" },
+    { mot: "plugged", son: "d" },
+    { mot: "programmed", son: "d" },
+    { mot: "repaired", son: "d" },
+    { mot: "tested", son: "id" },
+    { mot: "connected", son: "id" },
+    { mot: "updated", son: "id" },
+    { mot: "printed", son: "id" },
+    { mot: "painted", son: "id" },
+    { mot: "sounded", son: "id" },
+    { mot: "started", son: "id" },
+    { mot: "welded", son: "id" },
+    { mot: "melted", son: "id" }
+  ];
+
+  var actuel = null;
+  var essaiFait = false;
+  var bonnes = 0;
+  var total = 0;
+
+  function majScore() {
+    score.textContent = "Score : " + bonnes + " / " + total;
+  }
+
+  function nouveauVerbe() {
+    var choix;
+    do {
+      choix = verbes[Math.floor(Math.random() * verbes.length)];
+    } while (actuel && choix.mot === actuel.mot);
+    actuel = choix;
+    essaiFait = false;
+    mot.textContent = actuel.mot;
+    retour.textContent = "";
+    retour.className = "quiz-ed-retour";
+    suivantBtn.hidden = true;
+    boutons.forEach(function (b) {
+      b.disabled = false;
+      b.classList.remove("bonne", "mauvaise");
+    });
+  }
+
+  boutons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (essaiFait) return;
+      essaiFait = true;
+      total += 1;
+      var choisi = b.getAttribute("data-son");
+      var correct = choisi === actuel.son;
+      if (correct) bonnes += 1;
+      boutons.forEach(function (autre) {
+        autre.disabled = true;
+        var son = autre.getAttribute("data-son");
+        if (son === actuel.son) autre.classList.add("bonne");
+        else if (autre === b) autre.classList.add("mauvaise");
+      });
+      var sonAffiche = actuel.son === "id" ? "ɪd" : actuel.son;
+      retour.textContent = correct ? "Bien joué !" : "Pas cette fois : la bonne réponse est /" + sonAffiche + "/.";
+      retour.className = "quiz-ed-retour " + (correct ? "ok" : "non");
+      majScore();
+      suivantBtn.hidden = false;
+      suivantBtn.focus({ preventScroll: true });
+    });
+  });
+
+  suivantBtn.addEventListener("click", nouveauVerbe);
+
+  nouveauVerbe();
+  majScore();
 })();
 </script>
 </body>
