@@ -777,6 +777,7 @@
         <li><button class="menu-item" type="button" data-target="allemand"><span class="emoji" aria-hidden="true">🥨</span>Allemand</button></li>
         <li><button class="menu-item" type="button" data-target="mathematiques"><span class="emoji" aria-hidden="true">📐</span>Mathématiques</button></li>
         <li><button class="menu-item" type="button" data-target="anglais"><span class="emoji" aria-hidden="true">🇬🇧</span>Anglais</button></li>
+        <li><button class="menu-item" type="button" data-target="physique-chimie"><span class="emoji" aria-hidden="true">🧪</span>Physique-chimie</button></li>
         <!-- Pour ajouter une rubrique :
              <li><button class="menu-item" type="button" data-target="ID"><span class="emoji" aria-hidden="true">✨</span>Nom</button></li>
              puis ajouter plus bas une <section id="ID" class="carte" hidden> ... </section> -->
@@ -1943,6 +1944,405 @@
 </div>
         </article>
 
+      </section>
+
+      <!-- ===================== PHYSIQUE-CHIMIE ===================== -->
+      <section id="physique-chimie" class="carte" hidden>
+        <div class="liste-chapitres">
+          <h2 class="titre-section">Physique-chimie</h2>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn menthe" type="button" data-ouvrir="chap-pc-1">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">Les combustions</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <article class="cours" id="chap-pc-1" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+<p class="chap-num">Physique-chimie · Chapitre 1</p>
+<h2 class="cours-titre">Les combustions</h2>
+<p class="ref">Transformation chimique, énergie, pouvoir calorifique, dangers et prévention</p>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#pc-combustion">La combustion, une transformation chimique</a></li>
+    <li><a href="#pc-energie">Énergie associée à une transformation chimique</a></li>
+    <li><a href="#pc-pc">Pouvoir calorifique</a></li>
+    <li><a href="#pc-dangers">Dangers liés aux combustions</a></li>
+    <li><a href="#pc-prevention">Mesures de prévention et de détection</a></li>
+    <li><a href="#pc-recap">Récap : ce qu’il faut savoir</a></li>
+    <li><a href="#pc-exos">Exercices types</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 1 ============ -->
+<h2 id="pc-combustion">1. La combustion, une transformation chimique</h2>
+
+<div class="encadre">
+  <p class="titre">Système chimique</p>
+  <p>Ensemble des <strong>espèces chimiques</strong> présentes dans un espace donné. Pour décrire son état, on précise&nbsp;:</p>
+  <ul class="coches">
+    <li>la <strong>nature</strong> et les <strong>quantités</strong> des espèces présentes&nbsp;;</li>
+    <li>leur <strong>état physique</strong> (solide, liquide ou gazeux)&nbsp;;</li>
+    <li>la <strong>température</strong> <span class="de">T</span> ou la <strong>pression</strong> <span class="de">P</span> du système.</li>
+  </ul>
+</div>
+
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">Combustion</span>
+    Transformation chimique qui <strong>produit de la chaleur</strong>.
+  </div>
+  <div class="mini t3">
+    <span class="nom">Combustible</span>
+    Matière capable de <strong>brûler</strong> en présence de dioxygène, en produisant une quantité de chaleur utilisable.
+    <span class="etiq">bois, essence, méthane, fer…</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Comburant</span>
+    Espèce chimique qui <strong>permet la combustion</strong> d’un combustible. Souvent un composé riche en élément oxygène.
+    <span class="etiq">en général : le dioxygène O₂</span>
+  </div>
+</div>
+
+<h3>Le triangle du feu</h3>
+<p>Une combustion n’a lieu que si <strong>les trois</strong> éléments sont réunis. Si on en retire un seul, le feu s’éteint.</p>
+<div class="grille">
+  <div class="mini t3">
+    <span class="nom">Combustible</span>
+    <span class="fr">bois, essence, gaz…</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Comburant</span>
+    <span class="fr">généralement le dioxygène (O₂)</span>
+  </div>
+  <div class="mini t1">
+    <span class="nom">Énergie d’activation</span>
+    <span class="fr">chaleur, flamme, étincelle…</span>
+  </div>
+</div>
+
+<h3>Démarrer et entretenir une combustion</h3>
+<ul>
+  <li>Pour <strong>initier</strong> une combustion, il faut apporter une énergie <strong>suffisante</strong> pour démarrer la réaction (l’énergie d’activation).</li>
+  <li>La combustion <strong>s’auto-entretient</strong>&nbsp;: une fois initiée, l’énergie libérée apporte l’énergie nécessaire pour prolonger la réaction.</li>
+</ul>
+
+<!-- ============ 2 ============ -->
+<h2 id="pc-energie">2. Énergie associée à une transformation chimique</h2>
+<p>Les transformations chimiques d’un système entraînent généralement un <strong>transfert d’énergie</strong>.</p>
+
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">Exothermique</span>
+    Le système <strong>fournit</strong> de l’énergie au milieu extérieur, sous forme de chaleur.
+    <span class="grand">Énergie du système ↓</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Endothermique</span>
+    Le système <strong>absorbe</strong> de l’énergie, sous forme de chaleur, du milieu extérieur.
+    <span class="grand">Énergie du système ↑</span>
+  </div>
+</div>
+
+<div class="encadre">
+  <p class="titre">Lien avec les combustions</p>
+  <p>La combustion du gaz est une réaction <strong>exothermique</strong>&nbsp;: l’énergie du gaz diminue et il fournit de l’énergie au milieu extérieur. Toute combustion produit de la chaleur, donc toute combustion est exothermique.</p>
+</div>
+
+<h4>Astuce pour ne pas confondre</h4>
+<p><strong>Exo</strong> = vers l’<strong>ex</strong>térieur (le système donne de la chaleur). <strong>Endo</strong> = vers l’<strong>in</strong>térieur (le système en reçoit).</p>
+
+<!-- ============ 3 ============ -->
+<h2 id="pc-pc">3. Pouvoir calorifique</h2>
+<p>Le <strong>pouvoir calorifique</strong> (PC) d’un combustible est égal à la <strong>quantité d’énergie dégagée sous forme de chaleur</strong> par la <strong>combustion complète</strong>, sous pression atmosphérique normale, d’<strong>une mole</strong> ou d’<strong>un kilogramme</strong> de ce combustible.</p>
+
+<div class="encadre">
+  <p class="titre">Unités</p>
+  <ul class="coches">
+    <li><span class="de">J·mol<sup>−1</sup></span> (joule par mole)</li>
+    <li><span class="de">J·kg<sup>−1</sup></span> (joule par kilogramme)</li>
+    <li><span class="de">Wh·kg<sup>−1</sup></span> dans la vie courante</li>
+  </ul>
+</div>
+
+<div class="table-scroll">
+  <table class="tableau centre">
+    <caption class="visually-hidden">Pouvoir calorifique par type de combustible, en MJ par kg</caption>
+    <thead>
+      <tr><th scope="col">Combustible</th><th scope="col">PC (MJ·kg<sup>−1</sup>)</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Méthane</th><td>50,1</td></tr>
+      <tr><th scope="row">Propane</th><td>45,8</td></tr>
+      <tr><th scope="row">Diesel</th><td>43,0</td></tr>
+      <tr><th scope="row">Essence</th><td>42,5</td></tr>
+      <tr><th scope="row">Charbon</th><td>33,3</td></tr>
+      <tr><th scope="row">Éthanol</th><td>28,8</td></tr>
+      <tr><th scope="row">Bois sec</th><td>14,0</td></tr>
+      <tr><th scope="row">Bois humide</th><td>8,0</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="ref">Tableau du cours, rangé ici du plus grand au plus petit PC.</p>
+
+<h3>Ce que le tableau nous apprend</h3>
+<ul class="coches">
+  <li>Le <strong>méthane</strong> a le plus grand PC (50,1 MJ·kg<sup>−1</sup>)&nbsp;: 1&nbsp;kg de méthane dégage le plus d’énergie.</li>
+  <li>Le <strong>bois humide</strong> a le plus petit PC (8,0 MJ·kg<sup>−1</sup>)&nbsp;: il est beaucoup moins efficace que le bois sec (14,0). L’eau qu’il contient fait perdre de l’énergie.</li>
+  <li>Les combustibles issus du pétrole (<strong>essence, diesel</strong>) et les gaz (<strong>méthane, propane</strong>) dépassent tous 40 MJ·kg<sup>−1</sup>.</li>
+</ul>
+
+<div class="encadre">
+  <p class="titre">Méthode : calculer l’énergie dégagée</p>
+  <p>Le PC est une énergie <strong>par kilogramme</strong>. Pour une masse <span class="de">m</span> de combustible brûlé complètement&nbsp;:</p>
+  <p><span class="de">E = PC × m</span></p>
+  <p><strong>Exemple&nbsp;:</strong> 2&nbsp;kg de propane ⇒ <span class="de">E = 45,8 × 2 = 91,6 MJ</span>.</p>
+</div>
+<p class="ref">Cette formule est déduite de la définition du PC (énergie par kg), elle n’est pas écrite telle quelle dans ton cours.</p>
+
+<!-- ============ 4 ============ -->
+<h2 id="pc-dangers">4. Dangers liés aux combustions</h2>
+<p>Les combustions sont une source d’énergie indispensable, mais elles présentent des <strong>dangers</strong> aux conséquences parfois dramatiques.</p>
+
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">Incendies domestiques</span>
+    Un toutes les 2 minutes
+    <span class="grand">250&nbsp;000 / an</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom">En 2015</span>
+    Blessures et décès
+    <span class="grand">10&nbsp;000 · 800</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Cause du décès</span>
+    Inhalation de fumées
+    <span class="grand">80&nbsp;%</span>
+  </div>
+</div>
+
+<h3>L’intoxication au monoxyde de carbone (CO)</h3>
+<ul>
+  <li>Environ <strong>100 personnes</strong> en meurent chaque année en France.</li>
+  <li>Le CO est un gaz <strong>toxique, inodore, incolore et sans saveur</strong>&nbsp;: on ne peut pas le détecter sans appareil.</li>
+  <li>Il apparaît quand la combustion est <strong>incomplète</strong>, c’est-à-dire quand la quantité de comburant est <strong>insuffisante</strong>.</li>
+</ul>
+
+<h4>Lire la couleur de la flamme</h4>
+<div class="grille">
+  <div class="mini t3">
+    <span class="nom">Flamme jaune</span>
+    Signe d’une combustion <strong>incomplète</strong> (danger&nbsp;: CO).
+  </div>
+  <div class="mini t2">
+    <span class="nom">Flamme entièrement bleue</span>
+    Signe d’une combustion <strong>complète</strong>.
+  </div>
+</div>
+
+<h3>L’explosion</h3>
+<p>Dans certaines <strong>proportions particulières</strong> entre combustible et comburant, il y a <strong>explosion</strong>&nbsp;: une réaction de combustion très rapide, très brutale et très destructrice.</p>
+
+<!-- ============ 5 ============ -->
+<h2 id="pc-prevention">5. Mesures de prévention et de détection</h2>
+<p>Pour éviter les drames, il existe des mesures simples de <strong>prévention</strong>, de <strong>détection</strong> et de <strong>protection</strong>.</p>
+
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Mesures de prévention, de détection et de protection selon le danger</caption>
+    <thead>
+      <tr><th scope="col">Danger</th><th scope="col">Prévention</th><th scope="col">Détection et protection</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Incendie</th>
+        <td data-label="Prévention">
+          <ul>
+            <li>Entretien des installations de chauffage et des cheminées par des professionnels</li>
+            <li>Bien éteindre les cigarettes ou les bougies après usage</li>
+            <li>Ne pas laisser une poêle sur le feu sans surveillance</li>
+            <li>Ne pas jouer avec le feu</li>
+          </ul>
+        </td>
+        <td data-label="Détection et protection">Détecteur de fumée, avoir un extincteur</td>
+      </tr>
+      <tr>
+        <th scope="row">Asphyxie</th>
+        <td data-label="Prévention">
+          <ul>
+            <li>Appareil de chauffage conforme aux normes</li>
+            <li>Bonne ventilation des pièces</li>
+          </ul>
+        </td>
+        <td data-label="Détection et protection">Détecteur de fumée, détecteur de monoxyde de carbone</td>
+      </tr>
+      <tr>
+        <th scope="row">Intoxication</th>
+        <td data-label="Prévention">
+          <ul>
+            <li>Entretien des appareils à combustion</li>
+            <li>Nettoyer les entrées d’air</li>
+            <li>Entretenir les conduits d’évacuation des fumées</li>
+          </ul>
+        </td>
+        <td data-label="Détection et protection">Détecteur de monoxyde de carbone</td>
+      </tr>
+      <tr>
+        <th scope="row">Explosion</th>
+        <td data-label="Prévention">
+          <ul>
+            <li>Révisions des installations utilisant le gaz</li>
+            <li>Dégager les conduits d’aération et de ventilation</li>
+          </ul>
+        </td>
+        <td data-label="Détection et protection">Détecteur avertisseur de gaz</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="encadre">
+  <p class="titre">À savoir</p>
+  <ul class="coches">
+    <li>Le <strong>détecteur de fumée</strong> est obligatoire dans l’habitat depuis le <strong>8 mars 2015</strong>.</li>
+    <li>Le <strong>ramonage</strong> des conduits de cheminée est une mesure <strong>obligatoire</strong> pour prévenir les incendies.</li>
+  </ul>
+</div>
+
+<!-- ============ RÉCAP ============ -->
+<h2 id="pc-recap">Récap : ce qu’il faut savoir</h2>
+
+<div class="encadre">
+  <p class="titre">Les définitions à connaître par cœur</p>
+  <ul class="coches">
+    <li><strong>Système chimique</strong>&nbsp;: ensemble des espèces chimiques dans un espace donné.</li>
+    <li><strong>Combustion</strong>&nbsp;: transformation chimique qui produit de la chaleur.</li>
+    <li><strong>Combustible</strong>&nbsp;: matière qui brûle en présence de dioxygène.</li>
+    <li><strong>Comburant</strong>&nbsp;: espèce qui permet la combustion (souvent O₂).</li>
+    <li><strong>Pouvoir calorifique</strong>&nbsp;: énergie dégagée par la combustion complète d’1&nbsp;mol ou d’1&nbsp;kg de combustible.</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">Les réflexes</p>
+  <ul class="coches">
+    <li><strong>3 conditions</strong> pour brûler&nbsp;: combustible + comburant + énergie d’activation.</li>
+    <li>Combustion = <strong>exothermique</strong> (chaleur cédée à l’extérieur).</li>
+    <li>Flamme <strong>jaune</strong> ⇒ combustion <strong>incomplète</strong> ⇒ risque de <strong>CO</strong>. Flamme <strong>bleue</strong> ⇒ combustion <strong>complète</strong>.</li>
+    <li>CO&nbsp;: toxique, <strong>inodore, incolore, sans saveur</strong> ⇒ il faut un <strong>détecteur</strong>.</li>
+    <li>PC en <span class="de">MJ·kg<sup>−1</sup></span>&nbsp;: le méthane est le plus élevé (50,1), le bois humide le plus faible (8,0).</li>
+  </ul>
+</div>
+
+<div class="encadre">
+  <p class="titre">Chiffres clés</p>
+  <ul class="coches">
+    <li>1 incendie domestique toutes les <strong>2 minutes</strong>, soit <strong>250&nbsp;000</strong> par an.</li>
+    <li>2015&nbsp;: environ <strong>10&nbsp;000</strong> blessures et <strong>800</strong> décès (<strong>80&nbsp;%</strong> par inhalation de fumées).</li>
+    <li><strong>100</strong> morts par an à cause du monoxyde de carbone.</li>
+    <li>Détecteur de fumée obligatoire depuis le <strong>8 mars 2015</strong>.</li>
+  </ul>
+</div>
+
+<h4>Quel danger, quel appareil&nbsp;?</h4>
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">Incendie</span>
+    <span class="fr">détecteur de fumée + extincteur</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom">Asphyxie</span>
+    <span class="fr">détecteur de fumée + détecteur de CO</span>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Intoxication</span>
+    <span class="fr">détecteur de CO</span>
+  </div>
+  <div class="mini t1">
+    <span class="nom">Explosion</span>
+    <span class="fr">détecteur avertisseur de gaz</span>
+  </div>
+</div>
+
+<!-- ============ EXERCICES ============ -->
+<h2 id="pc-exos">Exercices types : à quoi s’attendre</h2>
+<p>Pour chaque type de question, un exemple avec sa réponse expliquée.</p>
+
+<div class="exo">
+  <p class="exo-niveau">Définition · Triangle du feu</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Un feu de bois est recouvert d’une couverture anti-feu et s’éteint. Quel élément du triangle du feu a-t-on supprimé&nbsp;?</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>On a supprimé le <strong>comburant</strong> (le dioxygène), car la couverture empêche l’air d’arriver au bois.</p>
+    <p>Sans l’un des trois éléments (combustible, comburant, énergie d’activation), la combustion s’arrête.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Énergie · Exothermique ou endothermique</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>La combustion du gaz de cuisinière est-elle exothermique ou endothermique&nbsp;? Justifie.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>Elle est <strong>exothermique</strong>&nbsp;: le système chimique fournit de l’énergie au milieu extérieur sous forme de chaleur, et son énergie <strong>diminue</strong>.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Pouvoir calorifique · Lecture et calcul</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Quel combustible du tableau dégage le plus d’énergie par kilogramme&nbsp;? Quelle énergie dégage la combustion complète de 3&nbsp;kg d’essence&nbsp;?</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>Le <strong>méthane</strong> (PC = 50,1 MJ·kg<sup>−1</sup>).</p>
+    <p>Pour l’essence, <span class="de">PC = 42,5 MJ·kg<sup>−1</sup></span>, donc <span class="de">E = 42,5 × 3 = 127,5 MJ</span>.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Dangers · Couleur de la flamme</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Tu observes une flamme jaune sur une gazinière. Que peux-tu en conclure, et quel gaz dangereux risque d’être produit&nbsp;?</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p>La combustion est <strong>incomplète</strong> (quantité de comburant insuffisante). Elle peut produire du <strong>monoxyde de carbone (CO)</strong>, un gaz toxique, inodore, incolore et sans saveur.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Prévention · Associer danger et mesure</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Cite deux mesures de prévention et un appareil de détection pour limiter le risque d’intoxication au monoxyde de carbone.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><strong>Prévention</strong>&nbsp;: entretenir les appareils à combustion, nettoyer les entrées d’air, entretenir les conduits d’évacuation des fumées (deux au choix).</p>
+    <p><strong>Détection</strong>&nbsp;: le détecteur de monoxyde de carbone.</p>
+  </div>
+</div>
+
+        </article>
       </section>
 
     </div>
