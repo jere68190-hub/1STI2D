@@ -737,6 +737,11 @@
     .mot small { font-size: 0.72rem; }
     .phrase { gap: 0.3rem; }
   }
+
+  /* Quiz vocabulaire (Welcome to Canada) */
+  .quiz-v .quiz-ed-mot { font-family: var(--font); font-size: clamp(1.3rem, 6vw, 1.8rem); line-height: 1.25; }
+  .quiz-v .quiz-ed-boutons { flex-direction: column; align-items: stretch; }
+  .quiz-v .quiz-ed-bouton { width: 100%; text-align: left; font-size: 1.05rem; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1776,7 +1781,15 @@
             Catégories
           </button>
           <h2 class="titre-section">Tronc commun</h2>
-          <p class="doux">Aucun chapitre pour l’instant.</p>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn menthe" type="button" data-go-a="chap-anglais-tronc-1">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">Welcome to Canada : le vocabulaire</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
         </div>
 
         <article class="cours vue-a" id="chap-anglais-etlv-1" hidden>
@@ -1941,6 +1954,542 @@
   </div>
   <p class="quiz-ed-retour" id="quiz-ed-retour" aria-live="polite"></p>
   <button type="button" class="quiz-ed-suivant" id="quiz-ed-suivant" hidden>Verbe suivant →</button>
+</div>
+        </article>
+
+        <article class="cours vue-a" id="chap-anglais-tronc-1" hidden>
+          <button class="retour" type="button" data-go-a="a-tronc">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+<p class="chap-num">Anglais · Tronc commun · Chapitre 1</p>
+<h2 class="cours-titre">Welcome to Canada : le vocabulaire</h2>
+<p class="ref">Vocabulaire, adverbes, past simple et past continuous, time markers, help + somebody + V, by + V-ing</p>
+
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#cv-verbes">Le vocabulaire à apprendre (14 expressions)</a></li>
+    <li><a href="#cv-adverbes">Les adverbes du contrôle (13 adverbes)</a></li>
+    <li><a href="#cv-simple">Le past simple</a></li>
+    <li><a href="#cv-continu">Le past continuous</a></li>
+    <li><a href="#cv-markers">Les time markers</a></li>
+    <li><a href="#cv-help">help + somebody + V</a></li>
+    <li><a href="#cv-by">by + V-ing</a></li>
+    <li><a href="#cv-texte">Texte modèle</a></li>
+    <li><a href="#cv-plan">Plan de révision</a></li>
+    <li><a href="#cv-exos">Exercices types</a></li>
+    <li><a href="#cv-quiz">Quiz : vocabulaire</a></li>
+  </ol>
+</nav>
+
+<div class="encadre">
+  <p class="titre">Ce que dit la consigne du contrôle</p>
+  <p>«&nbsp;Learn only the vocabulary below for the test.&nbsp;» Tu dois donc connaître <strong>les 14 expressions</strong> et <strong>les 13 adverbes</strong> de ce chapitre, en anglais <strong>et</strong> en français. À réviser aussi&nbsp;: <span class="de" lang="en">past simple</span> et <span class="de" lang="en">past continuous</span>, <span class="de" lang="en">time markers</span>, <span class="de" lang="en">help + somebody + V</span>, <span class="de" lang="en">by + V-ing</span>.</p>
+</div>
+
+<!-- ============ VOCABULAIRE ============ -->
+<h2 id="cv-verbes">Le vocabulaire à apprendre</h2>
+<p>Ces 14 expressions racontent le parcours de quelqu’un qui arrive dans un nouveau pays, de l’arrivée jusqu’au moment où il se sent chez lui.</p>
+
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Les 14 expressions de vocabulaire avec leur traduction et un exemple</caption>
+    <thead>
+      <tr><th scope="col">English</th><th scope="col">Français</th><th scope="col">Exemple</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row" lang="en">1. to arrive</th><td data-label="Français">arriver</td><td lang="en" data-label="Exemple">We arrived in Montreal in July.</td></tr>
+      <tr><th scope="row" lang="en">2. to leave one’s home country</th><td data-label="Français">quitter son pays d’origine</td><td lang="en" data-label="Exemple">She left her home country to study in Canada.</td></tr>
+      <tr><th scope="row" lang="en">3. to settle in</th><td data-label="Français">s’installer, prendre ses marques</td><td lang="en" data-label="Exemple">It took him a few weeks to settle in.</td></tr>
+      <tr><th scope="row" lang="en">4. to face a new environment</th><td data-label="Français">faire face à un nouvel environnement</td><td lang="en" data-label="Exemple">Newcomers face a new environment: a new language and a new climate.</td></tr>
+      <tr><th scope="row" lang="en">5. to get used to sth / V-ing</th><td data-label="Français">s’habituer à qqch / à faire qqch</td><td lang="en" data-label="Exemple">I got used to the cold. / I got used to speaking English.</td></tr>
+      <tr><th scope="row" lang="en">6. to miss sb / sth</th><td data-label="Français">qqn / qqch manquer ; regretter</td><td lang="en" data-label="Exemple">He missed his family.</td></tr>
+      <tr><th scope="row" lang="en">7. to feel lost</th><td data-label="Français">se sentir perdu</td><td lang="en" data-label="Exemple">At first, I felt lost in the big city.</td></tr>
+      <tr><th scope="row" lang="en">8. to overcome a difficulty</th><td data-label="Français">surmonter une difficulté</td><td lang="en" data-label="Exemple">She overcame the difficulty by practising every day.</td></tr>
+      <tr><th scope="row" lang="en">9. to fit in</th><td data-label="Français">trouver sa place, s’intégrer</td><td lang="en" data-label="Exemple">He wanted to fit in at his new school.</td></tr>
+      <tr><th scope="row" lang="en">10. to gain confidence</th><td data-label="Français">prendre confiance</td><td lang="en" data-label="Exemple">She gained confidence by speaking in class.</td></tr>
+      <tr><th scope="row" lang="en">11. to step out of one’s comfort zone</th><td data-label="Français">sortir de sa zone de confort</td><td lang="en" data-label="Exemple">I stepped out of my comfort zone and joined a club.</td></tr>
+      <tr><th scope="row" lang="en">12. to build relationships</th><td data-label="Français">nouer des relations</td><td lang="en" data-label="Exemple">They built relationships with their neighbours.</td></tr>
+      <tr><th scope="row" lang="en">13. to feel at home</th><td data-label="Français">se sentir chez soi</td><td lang="en" data-label="Exemple">After a year, we finally felt at home.</td></tr>
+      <tr><th scope="row" lang="en">14. to keep one’s culture alive</th><td data-label="Français">faire vivre sa culture</td><td lang="en" data-label="Exemple">They kept their culture alive by cooking traditional meals.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>Les pièges à connaître</h3>
+<div class="encadre">
+  <p class="titre"><span class="de" lang="en">one’s</span> et <span class="de" lang="en">sb / sth</span></p>
+  <ul class="coches">
+    <li><span class="de" lang="en">one’s</span> se remplace par <span class="de" lang="en">my, your, his, her, our, their</span> selon le sujet&nbsp;: <span class="de" lang="en">She left <u>her</u> home country.</span></li>
+    <li><span class="de" lang="en">sb</span> = somebody (quelqu’un), <span class="de" lang="en">sth</span> = something (quelque chose).</li>
+  </ul>
+</div>
+<div class="encadre">
+  <p class="titre"><span class="de" lang="en">to miss</span> : le sens est inversé en français</p>
+  <p><span class="de" lang="en">I miss my family.</span> ⇒ «&nbsp;Ma famille me manque.&nbsp;» (et non «&nbsp;je manque ma famille&nbsp;»). Celui qui regrette l’autre est le <strong>sujet</strong> en anglais.</p>
+</div>
+<div class="encadre">
+  <p class="titre"><span class="de" lang="en">to get used to</span> + nom ou V-ing</p>
+  <p>Ici, <span class="de" lang="en">to</span> est une <strong>préposition</strong>, donc le verbe qui suit prend <strong>-ing</strong>&nbsp;: <span class="de" lang="en">I got used to <u>living</u> in Canada.</span> (jamais <span lang="en">get used to live</span>).</p>
+</div>
+<div class="encadre">
+  <p class="titre">Les verbes sont à l’infinitif dans la liste</p>
+  <p>Dans une phrase au passé, il faut les mettre au past simple&nbsp;: <span class="de" lang="en">to leave → left</span>, <span class="de" lang="en">to feel → felt</span>, <span class="de" lang="en">to get → got</span>, <span class="de" lang="en">to build → built</span>, <span class="de" lang="en">to keep → kept</span>, <span class="de" lang="en">to overcome → overcame</span>.</p>
+</div>
+
+<h4>Pour les retenir&nbsp;: l’histoire en 3 étapes</h4>
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">1. Le départ</span>
+    <ul lang="en">
+      <li>to leave one’s home country</li>
+      <li>to arrive</li>
+      <li>to face a new environment</li>
+    </ul>
+  </div>
+  <div class="mini t3">
+    <span class="nom">2. Les difficultés</span>
+    <ul lang="en">
+      <li>to miss sb / sth</li>
+      <li>to feel lost</li>
+      <li>to overcome a difficulty</li>
+      <li>to step out of one’s comfort zone</li>
+    </ul>
+  </div>
+  <div class="mini t2">
+    <span class="nom">3. L’intégration</span>
+    <ul lang="en">
+      <li>to settle in</li>
+      <li>to get used to</li>
+      <li>to fit in</li>
+      <li>to gain confidence</li>
+      <li>to build relationships</li>
+      <li>to feel at home</li>
+      <li>to keep one’s culture alive</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ ADVERBES ============ -->
+<h2 id="cv-adverbes">Les adverbes du contrôle</h2>
+<p>Ces adverbes servent à rendre ton texte plus précis et plus vivant. Presque tous finissent par <strong>-ly</strong>, comme les adverbes en <strong>-ment</strong> en français.</p>
+
+<div class="table-scroll">
+  <table class="tableau empile">
+    <caption class="visually-hidden">Les 13 adverbes avec leur traduction et un exemple</caption>
+    <thead>
+      <tr><th scope="col">English</th><th scope="col">Français</th><th scope="col">Exemple</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row" lang="en">really</th><td data-label="Français">vraiment</td><td lang="en" data-label="Exemple">I really missed my friends.</td></tr>
+      <tr><th scope="row" lang="en">extremely</th><td data-label="Français">extrêmement</td><td lang="en" data-label="Exemple">It was extremely cold in January.</td></tr>
+      <tr><th scope="row" lang="en">incredibly</th><td data-label="Français">incroyablement</td><td lang="en" data-label="Exemple">The people were incredibly kind.</td></tr>
+      <tr><th scope="row" lang="en">deeply</th><td data-label="Français">profondément</td><td lang="en" data-label="Exemple">She deeply missed her country.</td></tr>
+      <tr><th scope="row" lang="en">absolutely</th><td data-label="Français">absolument</td><td lang="en" data-label="Exemple">The view was absolutely amazing.</td></tr>
+      <tr><th scope="row" lang="en">completely</th><td data-label="Français">complètement</td><td lang="en" data-label="Exemple">He felt completely lost.</td></tr>
+      <tr><th scope="row" lang="en">fortunately</th><td data-label="Français">heureusement</td><td lang="en" data-label="Exemple">Fortunately, a neighbour helped us.</td></tr>
+      <tr><th scope="row" lang="en">unfortunately</th><td data-label="Français">malheureusement</td><td lang="en" data-label="Exemple">Unfortunately, I didn’t understand the teacher.</td></tr>
+      <tr><th scope="row" lang="en">surprisingly</th><td data-label="Français">étonnamment / à la surprise générale</td><td lang="en" data-label="Exemple">Surprisingly, she settled in quickly.</td></tr>
+      <tr><th scope="row" lang="en">suddenly</th><td data-label="Français">soudain</td><td lang="en" data-label="Exemple">Suddenly, it started to snow.</td></tr>
+      <tr><th scope="row" lang="en">quickly</th><td data-label="Français">rapidement</td><td lang="en" data-label="Exemple">He quickly made friends.</td></tr>
+      <tr><th scope="row" lang="en">immediately</th><td data-label="Français">immédiatement</td><td lang="en" data-label="Exemple">She immediately felt at home.</td></tr>
+      <tr><th scope="row" lang="en">gradually</th><td data-label="Français">progressivement</td><td lang="en" data-label="Exemple">Gradually, they got used to the winter.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Les ranger par famille pour mieux les retenir</h4>
+<div class="grille">
+  <div class="mini t1">
+    <span class="nom">L’intensité</span>
+    <span class="fr">se placent devant un adjectif ou un verbe</span>
+    <ul lang="en">
+      <li>really · vraiment</li>
+      <li>extremely · extrêmement</li>
+      <li>incredibly · incroyablement</li>
+      <li>deeply · profondément</li>
+      <li>absolutely · absolument</li>
+      <li>completely · complètement</li>
+    </ul>
+  </div>
+  <div class="mini t3">
+    <span class="nom">L’opinion et la surprise</span>
+    <span class="fr">souvent en début de phrase, suivis d’une virgule</span>
+    <ul lang="en">
+      <li>fortunately · heureusement</li>
+      <li>unfortunately · malheureusement</li>
+      <li>surprisingly · étonnamment</li>
+    </ul>
+  </div>
+  <div class="mini t2">
+    <span class="nom">Le temps et le rythme</span>
+    <span class="fr">disent quand et à quelle vitesse</span>
+    <ul lang="en">
+      <li>suddenly · soudain</li>
+      <li>immediately · immédiatement</li>
+      <li>quickly · rapidement</li>
+      <li>gradually · progressivement</li>
+    </ul>
+  </div>
+</div>
+
+<div class="encadre">
+  <p class="titre">Attention à l’orthographe</p>
+  <ul class="coches">
+    <li><span class="de" lang="en">incredibly</span>, <span class="de" lang="en">immediately</span>, <span class="de" lang="en">completely</span>&nbsp;: on garde le <strong>e</strong> de l’adjectif (incredible, immediate, complete).</li>
+    <li><span class="de" lang="en">fortunately</span> / <span class="de" lang="en">unfortunately</span>&nbsp;: ne pas oublier le <strong>-ly</strong> final, et attention au <strong>un-</strong> du contraire.</li>
+    <li><span class="de" lang="en">absolutely</span>, <span class="de" lang="en">extremely</span>, <span class="de" lang="en">surprisingly</span>&nbsp;: un seul <strong>l</strong> pour absolutely, un <strong>r</strong> pour extremely, deux <strong>r</strong>… à relire en écrivant.</li>
+  </ul>
+</div>
+
+<!-- ============ PAST SIMPLE ============ -->
+<h2 id="cv-simple">Le past simple</h2>
+<p>On l’utilise pour parler d’une <strong>action terminée</strong> dans le passé, une action courte ou un fait précis. C’est le temps de base pour raconter une histoire.</p>
+
+<div class="grille">
+  <div class="mini t2">
+    <span class="nom">Affirmatif</span>
+    <span class="de" lang="en">She arrived in Toronto.</span>
+    <span class="fr">sujet + verbe au prétérit</span>
+  </div>
+  <div class="mini t1">
+    <span class="nom">Négatif</span>
+    <span class="de" lang="en">She didn’t feel at home.</span>
+    <span class="fr">sujet + didn’t + verbe de base</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom">Question</span>
+    <span class="de" lang="en">Did she miss her family?</span>
+    <span class="fr">Did + sujet + verbe de base</span>
+  </div>
+</div>
+
+<div class="encadre">
+  <p class="titre">Après didn’t et did, le verbe reste à la base</p>
+  <p>✓ <span class="de" lang="en">He didn’t feel lost.</span> &nbsp; ✗ <span lang="en">He didn’t felt lost.</span></p>
+  <p>Le passé est déjà marqué par <span class="de" lang="en">didn’t</span> ou <span class="de" lang="en">did</span>, donc le verbe ne change plus.</p>
+</div>
+
+<h3>Verbes réguliers</h3>
+<p>On ajoute <strong>-ed</strong> (ou <strong>-d</strong> si le verbe finit déjà par un e)&nbsp;:</p>
+<ul class="coches">
+  <li><span class="de" lang="en">arrive → arrived</span>, <span class="de" lang="en">miss → missed</span>, <span class="de" lang="en">settle → settled</span>, <span class="de" lang="en">face → faced</span>, <span class="de" lang="en">gain → gained</span></li>
+  <li>Consonne doublée après une voyelle courte&nbsp;: <span class="de" lang="en">step → stepped</span></li>
+</ul>
+
+<h3>Verbes irréguliers du chapitre</h3>
+<div class="table-scroll">
+  <table class="tableau centre">
+    <caption class="visually-hidden">Verbes irréguliers du chapitre au past simple</caption>
+    <thead>
+      <tr><th scope="col">Infinitif</th><th scope="col">Past simple</th><th scope="col">Traduction</th></tr>
+    </thead>
+    <tbody lang="en">
+      <tr><th scope="row">to leave</th><td>left</td><td lang="fr">quitter</td></tr>
+      <tr><th scope="row">to feel</th><td>felt</td><td lang="fr">se sentir</td></tr>
+      <tr><th scope="row">to get</th><td>got</td><td lang="fr">devenir / obtenir</td></tr>
+      <tr><th scope="row">to build</th><td>built</td><td lang="fr">construire, nouer</td></tr>
+      <tr><th scope="row">to keep</th><td>kept</td><td lang="fr">garder</td></tr>
+      <tr><th scope="row">to overcome</th><td>overcame</td><td lang="fr">surmonter</td></tr>
+      <tr><th scope="row">to be</th><td>was / were</td><td lang="fr">être</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ PAST CONTINUOUS ============ -->
+<h2 id="cv-continu">Le past continuous</h2>
+<p>Il se forme avec <strong>was / were + verbe en -ing</strong>. On l’utilise pour une action <strong>en cours</strong> à un moment du passé, souvent le décor d’une histoire.</p>
+
+<div class="table-scroll">
+  <table class="tableau centre">
+    <caption class="visually-hidden">Formation du past continuous</caption>
+    <thead>
+      <tr><th scope="col">Sujet</th><th scope="col">Affirmatif</th><th scope="col">Négatif</th></tr>
+    </thead>
+    <tbody lang="en">
+      <tr><th scope="row">I / he / she / it</th><td>was walking</td><td>wasn’t walking</td></tr>
+      <tr><th scope="row">you / we / they</th><td>were walking</td><td>weren’t walking</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Question&nbsp;: <span class="de" lang="en">Was she walking? / Were they walking?</span></p>
+
+<h3>Past simple ou past continuous&nbsp;?</h3>
+<div class="grille">
+  <div class="mini t2">
+    <span class="nom">Past simple</span>
+    <span class="fr">Action courte, terminée, qui «&nbsp;interrompt&nbsp;».</span>
+    <span class="de" lang="en">…when I met a friend.</span>
+  </div>
+  <div class="mini t3">
+    <span class="nom">Past continuous</span>
+    <span class="fr">Action longue, en cours, le décor.</span>
+    <span class="de" lang="en">I was walking to school…</span>
+  </div>
+</div>
+
+<div class="encadre">
+  <p class="titre">Les deux ensemble</p>
+  <p><span class="de" lang="en">I <u>was walking</u> to school when I <u>met</u> a friend.</span></p>
+  <p><span class="de" lang="en">While I <u>was unpacking</u>, my neighbour <u>knocked</u> on the door.</span></p>
+  <p>Retiens&nbsp;: <span class="de" lang="en">while</span> + past continuous (l’action qui dure), <span class="de" lang="en">when</span> + past simple (l’action qui interrompt).</p>
+</div>
+
+<div class="encadre">
+  <p class="titre">Deux actions longues en même temps</p>
+  <p><span class="de" lang="en">While she was studying, her brother was playing video games.</span></p>
+</div>
+
+<!-- ============ TIME MARKERS ============ -->
+<h2 id="cv-markers">Les time markers</h2>
+<p>Les <strong>time markers</strong> (indicateurs de temps) t’aident à choisir le bon temps et à organiser ton récit.</p>
+
+<div class="grille">
+  <div class="mini t2">
+    <span class="nom">Souvent avec le past simple</span>
+    <ul lang="en">
+      <li>yesterday</li>
+      <li>last week / month / year</li>
+      <li>two years ago</li>
+      <li>in 2019</li>
+      <li>one day</li>
+      <li>the next day</li>
+    </ul>
+  </div>
+  <div class="mini t3">
+    <span class="nom">Souvent avec le past continuous</span>
+    <ul lang="en">
+      <li>while</li>
+      <li>at that moment</li>
+      <li>at 8 o’clock</li>
+      <li>all day / all morning</li>
+      <li>at the time</li>
+    </ul>
+  </div>
+  <div class="mini t1">
+    <span class="nom">Pour enchaîner le récit</span>
+    <ul lang="en">
+      <li>first / at first</li>
+      <li>then</li>
+      <li>after that</li>
+      <li>later</li>
+      <li>finally</li>
+      <li>in the end</li>
+    </ul>
+  </div>
+</div>
+
+<div class="encadre">
+  <p class="titre">À retenir</p>
+  <ul class="coches">
+    <li><span class="de" lang="en">ago</span> se place <strong>après</strong> la durée&nbsp;: <span class="de" lang="en">three years ago</span>.</li>
+    <li><span class="de" lang="en">last</span> se place <strong>avant</strong>&nbsp;: <span class="de" lang="en">last year</span> (pas «&nbsp;the last year&nbsp;»).</li>
+    <li><span class="de" lang="en">when</span> peut introduire le past simple («&nbsp;quand, au moment où&nbsp;»), <span class="de" lang="en">while</span> introduit plutôt le past continuous («&nbsp;pendant que&nbsp;»).</li>
+    <li>Après un time marker en début de phrase, on met une <strong>virgule</strong>&nbsp;: <span class="de" lang="en">At first, I felt lost.</span></li>
+  </ul>
+</div>
+
+<!-- ============ HELP ============ -->
+<h2 id="cv-help"><span lang="en">help + somebody + V</span></h2>
+<p>Pour dire que quelqu’un <strong>aide</strong> une autre personne <strong>à faire</strong> quelque chose, on utilise&nbsp;:</p>
+
+<div class="phrase" lang="en">
+  <span class="mot sujet">My teacher<small lang="fr">sujet</small></span>
+  <span class="mot verbe">helped<small lang="fr">help</small></span>
+  <span class="mot compl">me<small lang="fr">somebody</small></span>
+  <span class="mot">understand<small lang="fr">verbe de base</small></span>
+</div>
+
+<ul class="coches">
+  <li><span class="de" lang="en">Our teacher helped us understand Canadian culture.</span></li>
+  <li><span class="de" lang="en">Friends help newcomers feel at home.</span></li>
+  <li><span class="de" lang="en">Fortunately, a neighbour helped her settle in.</span></li>
+</ul>
+
+<div class="encadre">
+  <p class="titre">Règle</p>
+  <p>Après <span class="de" lang="en">help + somebody</span>, le verbe est à la <strong>base verbale</strong> (sans <span lang="en">to</span> et sans -ing)&nbsp;: <span class="de" lang="en">helped me <u>learn</u></span>, pas <span lang="en">helped me learning</span>.</p>
+  <p>Le temps (présent, passé…) se voit seulement sur <span class="de" lang="en">help</span>&nbsp;: <span class="de" lang="en">help / helps / helped</span>.</p>
+</div>
+
+<!-- ============ BY ============ -->
+<h2 id="cv-by"><span lang="en">by + V-ing</span></h2>
+<p>On l’utilise pour expliquer <strong>comment</strong> on fait quelque chose, c’est-à-dire le moyen. En français, ça correspond à «&nbsp;<strong>en</strong> + participe présent&nbsp;» (en faisant…).</p>
+
+<ul class="coches">
+  <li><span class="de" lang="en">She overcame her difficulties <u>by asking</u> for help.</span> <span class="ref">Elle a surmonté ses difficultés en demandant de l’aide.</span></li>
+  <li><span class="de" lang="en">He gained confidence <u>by speaking</u> English every day.</span> <span class="ref">Il a pris confiance en parlant anglais tous les jours.</span></li>
+  <li><span class="de" lang="en">They kept their culture alive <u>by cooking</u> traditional meals.</span> <span class="ref">Ils ont fait vivre leur culture en cuisinant des plats traditionnels.</span></li>
+</ul>
+
+<div class="encadre">
+  <p class="titre">Règle</p>
+  <p>Après la préposition <span class="de" lang="en">by</span>, le verbe prend toujours <strong>-ing</strong>&nbsp;: <span class="de" lang="en">by speaking</span>, jamais <span lang="en">by speak</span> ni <span lang="en">by to speak</span>.</p>
+</div>
+
+<h4>Les deux structures dans la même phrase</h4>
+<div class="encadre">
+  <p><span class="de" lang="en">Her classmates helped her fit in by inviting her to join their club.</span></p>
+  <p class="ref">Ses camarades l’ont aidée à s’intégrer en l’invitant à rejoindre leur club.</p>
+</div>
+
+<!-- ============ TEXTE MODÈLE ============ -->
+<h2 id="cv-texte">Texte modèle</h2>
+<p>Voici un petit récit qui utilise <strong>tout</strong> le chapitre. Tu peux t’en inspirer pour la production écrite.</p>
+
+<div class="exo">
+  <p class="exo-niveau">Modèle · Amira arrive au Canada</p>
+  <div class="exo-q">
+    <p class="titre">English</p>
+    <p lang="en">Last year, Amira <strong>left her home country</strong> and <strong>arrived</strong> in Canada. <strong>At first</strong>, she <strong>felt completely lost</strong> and she <strong>really missed</strong> her family. <strong>Fortunately</strong>, her classmates <strong>helped her settle in</strong>. One day, <strong>while</strong> she <strong>was walking</strong> to school, she <strong>suddenly</strong> met a girl from her country. Amira <strong>gained confidence by speaking</strong> English every day. <strong>Gradually</strong>, she <strong>got used to</strong> the cold winter and <strong>built relationships</strong> with her neighbours. <strong>Now</strong>, she <strong>feels at home</strong> and <strong>keeps her culture alive by cooking</strong> traditional meals.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Traduction</p>
+    <p>L’année dernière, Amira a quitté son pays d’origine et est arrivée au Canada. Au début, elle s’est sentie complètement perdue et sa famille lui manquait vraiment. Heureusement, ses camarades l’ont aidée à s’installer. Un jour, alors qu’elle marchait vers l’école, elle a soudain rencontré une fille de son pays. Amira a pris confiance en parlant anglais tous les jours. Progressivement, elle s’est habituée à l’hiver froid et a noué des relations avec ses voisins. Maintenant, elle se sent chez elle et fait vivre sa culture en cuisinant des plats traditionnels.</p>
+  </div>
+</div>
+
+<!-- ============ PLAN DE RÉVISION ============ -->
+<h2 id="cv-plan">Plan de révision pour le contrôle</h2>
+<div class="encadre">
+  <p class="titre">Avant le contrôle, coche chaque ligne</p>
+  <ul class="coches">
+    <li>Je sais écrire les <strong>14 expressions</strong> en anglais en partant du français.</li>
+    <li>Je sais traduire les <strong>14 expressions</strong> en français en partant de l’anglais.</li>
+    <li>Je sais écrire les <strong>13 adverbes</strong> sans faute d’orthographe.</li>
+    <li>Je sais conjuguer au <strong>past simple</strong> (réguliers et irréguliers du chapitre).</li>
+    <li>Je sais former le <strong>past continuous</strong> (<span class="de" lang="en">was / were + V-ing</span>).</li>
+    <li>Je connais les principaux <strong>time markers</strong> et je sais choisir <span class="de" lang="en">when</span> ou <span class="de" lang="en">while</span>.</li>
+    <li>Je sais construire <span class="de" lang="en">help + somebody + V</span> (verbe à la base).</li>
+    <li>Je sais construire <span class="de" lang="en">by + V-ing</span>.</li>
+    <li>Je peux écrire un petit texte de 5 à 6 phrases en utilisant au moins <strong>4 expressions</strong> et <strong>3 adverbes</strong>.</li>
+  </ul>
+</div>
+
+<h4>Une méthode efficace</h4>
+<ol>
+  <li><strong>Jour 1</strong>&nbsp;: lis le tableau des expressions, puis cache la colonne anglaise et retrouve-la.</li>
+  <li><strong>Jour 2</strong>&nbsp;: même chose avec les adverbes, puis fais le quiz plusieurs fois.</li>
+  <li><strong>Jour 3</strong>&nbsp;: relis la grammaire, refais les exercices types sans regarder les réponses.</li>
+  <li><strong>La veille</strong>&nbsp;: écris le texte modèle de mémoire, puis vérifie.</li>
+</ol>
+
+<!-- ============ EXERCICES ============ -->
+<h2 id="cv-exos">Exercices types : à quoi s’attendre</h2>
+<p>Pour chaque type d’exercice, un exemple avec sa réponse expliquée. Essaie de répondre avant de lire la correction.</p>
+
+<div class="exo">
+  <p class="exo-niveau">Traduction · du français vers l’anglais</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Traduis&nbsp;: «&nbsp;Au début, elle s’est sentie perdue.&nbsp;»</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">At first, she felt lost.</span></p>
+    <p>Action terminée dans le passé ⇒ past simple. <span lang="en">to feel</span> est irrégulier&nbsp;: <span class="de" lang="en">felt</span>.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Grammaire · Past simple ou past continuous</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Complète avec le bon temps&nbsp;:</p>
+    <p lang="en">While I _____ (to unpack) my bags, my neighbour _____ (to knock) on the door.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">While I was unpacking my bags, my neighbour knocked on the door.</span></p>
+    <p><span lang="en">while</span> annonce l’action qui dure ⇒ <strong>past continuous</strong> (<span lang="en">was unpacking</span>). L’action courte qui interrompt ⇒ <strong>past simple</strong> (<span lang="en">knocked</span>).</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Adverbes · Choisir le bon</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Choisis <span class="de" lang="en">fortunately</span> ou <span class="de" lang="en">unfortunately</span>&nbsp;:</p>
+    <p lang="en">I didn’t speak English well, but _____ my classmates were very kind.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">…but fortunately my classmates were very kind.</span></p>
+    <p>La 1<sup>re</sup> partie est négative, la 2<sup>e</sup> est positive (gentils) et le «&nbsp;but&nbsp;» marque le contraste&nbsp;: «&nbsp;heureusement&nbsp;».</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Grammaire · by + V-ing</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Réunis les deux phrases avec <span class="de" lang="en">by</span>&nbsp;:</p>
+    <p lang="en">She overcame her difficulties. She asked for help.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">She overcame her difficulties by asking for help.</span></p>
+    <p>La 2<sup>e</sup> phrase donne le moyen ⇒ <span lang="en">by</span> + verbe en <strong>-ing</strong>.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Grammaire · help + somebody + V</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Fais une phrase au passé avec ces mots&nbsp;:</p>
+    <p lang="en">my teacher / help / me / understand Canadian culture</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">My teacher helped me understand Canadian culture.</span></p>
+    <p><span lang="en">help</span> prend le passé (<span lang="en">helped</span>), et le verbe qui suit <span lang="en">me</span> reste à la base (<span lang="en">understand</span>).</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Vocabulaire · Trouver l’expression</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Quelle expression du chapitre correspond à «&nbsp;sortir de sa zone de confort&nbsp;» et à «&nbsp;se sentir chez soi&nbsp;»&nbsp;?</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse</p>
+    <p><span class="de" lang="en">to step out of one’s comfort zone</span> et <span class="de" lang="en">to feel at home</span>.</p>
+  </div>
+</div>
+
+<div class="exo">
+  <p class="exo-niveau">Production écrite · 5 à 6 phrases</p>
+  <div class="exo-q">
+    <p class="titre">Question</p>
+    <p>Raconte l’arrivée d’une personne dans un nouveau pays. Utilise au moins 4 expressions, 3 adverbes, un <span lang="en">by + V-ing</span> et un <span lang="en">time marker</span>.</p>
+  </div>
+  <div class="exo-r">
+    <p class="titre">Réponse possible</p>
+    <ul class="modele">
+      <li><span class="de" lang="en">Two years ago, Tom left his home country and arrived in Canada.</span><span class="fr">Il y a deux ans, Tom a quitté son pays d’origine et est arrivé au Canada.</span></li>
+      <li><span class="de" lang="en">At first, he felt completely lost because he faced a new environment.</span><span class="fr">Au début, il s’est senti complètement perdu parce qu’il faisait face à un nouvel environnement.</span></li>
+      <li><span class="de" lang="en">Fortunately, his teacher helped him fit in.</span><span class="fr">Heureusement, son professeur l’a aidé à s’intégrer.</span></li>
+      <li><span class="de" lang="en">He gained confidence by speaking English every day.</span><span class="fr">Il a pris confiance en parlant anglais tous les jours.</span></li>
+      <li><span class="de" lang="en">Gradually, he built relationships and now he feels at home.</span><span class="fr">Progressivement, il a noué des relations et maintenant il se sent chez lui.</span></li>
+    </ul>
+    <p>Ce texte contient 6 expressions, 3 adverbes (<span lang="en">completely, fortunately, gradually</span>), un <span lang="en">by + V-ing</span>, un <span lang="en">help + somebody + V</span> et des time markers (<span lang="en">two years ago, at first, now</span>).</p>
+  </div>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<h2 id="cv-quiz">Quiz : vocabulaire</h2>
+<p>Une expression ou un adverbe s’affiche, dans un sens ou dans l’autre. Choisis la bonne traduction.</p>
+
+<div class="quiz-ed quiz-v" id="quiz-v">
+  <p class="quiz-ed-score" id="quiz-v-score">Score : 0 / 0</p>
+  <p class="quiz-ed-mot" id="quiz-v-mot">to arrive</p>
+  <div class="quiz-ed-boutons" id="quiz-v-boutons" role="group" aria-label="Choisis la bonne traduction"></div>
+  <p class="quiz-ed-retour" id="quiz-v-retour" aria-live="polite"></p>
+  <button type="button" class="quiz-ed-suivant" id="quiz-v-suivant" hidden>Question suivante →</button>
 </div>
         </article>
 
@@ -2553,6 +3102,104 @@
   suivantBtn.addEventListener("click", nouveauVerbe);
 
   nouveauVerbe();
+  majScore();
+})();
+
+/* Quiz : vocabulaire Welcome to Canada */
+(function () {
+  var mot = document.getElementById("quiz-v-mot");
+  if (!mot) return;
+  var score = document.getElementById("quiz-v-score");
+  var zone = document.getElementById("quiz-v-boutons");
+  var retour = document.getElementById("quiz-v-retour");
+  var suivantBtn = document.getElementById("quiz-v-suivant");
+
+  var verbes = [
+    ["to arrive", "arriver"],
+    ["to leave one’s home country", "quitter son pays d’origine"],
+    ["to settle in", "s’installer, prendre ses marques"],
+    ["to face a new environment", "faire face à un nouvel environnement"],
+    ["to get used to sth / V-ing", "s’habituer à qqch / à faire qqch"],
+    ["to miss sb / sth", "qqn / qqch manquer ; regretter"],
+    ["to feel lost", "se sentir perdu"],
+    ["to overcome a difficulty", "surmonter une difficulté"],
+    ["to fit in", "trouver sa place, s’intégrer"],
+    ["to gain confidence", "prendre confiance"],
+    ["to step out of one’s comfort zone", "sortir de sa zone de confort"],
+    ["to build relationships", "nouer des relations"],
+    ["to feel at home", "se sentir chez soi"],
+    ["to keep one’s culture alive", "faire vivre sa culture"]
+  ];
+  var adverbes = [
+    ["really", "vraiment"], ["extremely", "extrêmement"], ["incredibly", "incroyablement"],
+    ["deeply", "profondément"], ["absolutely", "absolument"], ["completely", "complètement"],
+    ["fortunately", "heureusement"], ["unfortunately", "malheureusement"],
+    ["surprisingly", "étonnamment / à la surprise générale"], ["suddenly", "soudain"],
+    ["quickly", "rapidement"], ["immediately", "immédiatement"], ["gradually", "progressivement"]
+  ];
+  var groupes = [verbes, adverbes];
+
+  var actuel = null, fait = false, bonnes = 0, total = 0;
+
+  function melange(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function majScore() { score.textContent = "Score : " + bonnes + " / " + total; }
+
+  function nouvelleQuestion() {
+    var groupe, paire;
+    do {
+      groupe = groupes[Math.floor(Math.random() * groupes.length)];
+      paire = groupe[Math.floor(Math.random() * groupe.length)];
+    } while (actuel && paire === actuel.paire);
+    var versFr = Math.random() < 0.5;
+    var q = versFr ? 0 : 1, r = versFr ? 1 : 0;
+    var autres = melange(groupe.filter(function (p) { return p !== paire; })).slice(0, 3);
+    var options = melange([paire].concat(autres));
+    actuel = { paire: paire, bonne: paire[r], q: q, r: r };
+    fait = false;
+    mot.textContent = paire[q];
+    mot.setAttribute("lang", versFr ? "en" : "fr");
+    retour.textContent = "";
+    retour.className = "quiz-ed-retour";
+    suivantBtn.hidden = true;
+    zone.innerHTML = "";
+    options.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "quiz-ed-bouton";
+      b.setAttribute("lang", versFr ? "fr" : "en");
+      b.textContent = o[r];
+      b.addEventListener("click", function () { repondre(b, o[r]); });
+      zone.appendChild(b);
+    });
+  }
+
+  function repondre(b, choix) {
+    if (fait) return;
+    fait = true;
+    total += 1;
+    var ok = choix === actuel.bonne;
+    if (ok) bonnes += 1;
+    Array.prototype.forEach.call(zone.children, function (autre) {
+      autre.disabled = true;
+      if (autre.textContent === actuel.bonne) autre.classList.add("bonne");
+      else if (autre === b) autre.classList.add("mauvaise");
+    });
+    retour.textContent = ok ? "Bien joué !" : "Pas cette fois : « " + actuel.paire[actuel.q] + " » = « " + actuel.bonne + " ».";
+    retour.className = "quiz-ed-retour " + (ok ? "ok" : "non");
+    majScore();
+    suivantBtn.hidden = false;
+    suivantBtn.focus({ preventScroll: true });
+  }
+
+  suivantBtn.addEventListener("click", nouvelleQuestion);
+  nouvelleQuestion();
   majScore();
 })();
 </script>
