@@ -578,6 +578,54 @@
   .cours .sommaire ol { margin: 0; padding-left: 1.3rem; }
   .sommaire li { margin-bottom: 0.25rem; }
   .sommaire a { color: var(--ink); font-weight: 500; }
+  .sommaire a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 2px; }
+  .sommaire a[aria-current="true"] {
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* Corps du cours (contenu hors sommaire sticky) */
+  .cours-corps { min-width: 0; }
+
+  /* Sommaire collé à gauche sur grand écran */
+  @media (min-width: 56rem) {
+    .page {
+      max-width: 58rem;
+    }
+    .cours {
+      display: grid;
+      grid-template-columns: 13.5rem minmax(0, 1fr);
+      column-gap: 1.5rem;
+      align-items: start;
+    }
+    .cours > .retour {
+      grid-column: 1 / -1;
+    }
+    .cours > .sommaire {
+      grid-column: 1;
+      grid-row: 2;
+      position: sticky;
+      top: 1rem;
+      align-self: start;
+      margin: 0;
+      max-height: calc(100vh - 2rem);
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      z-index: 2;
+    }
+    .cours > .sommaire ol {
+      padding-left: 1.1rem;
+    }
+    .cours > .cours-corps {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    /* Fallback si pas encore de .cours-corps : tout sauf retour/sommaire à droite */
+    .cours > :not(.retour):not(.sommaire):not(.cours-corps) {
+      grid-column: 2;
+    }
+  }
 
   /* Allemand */
   .de { font-weight: 600; }
@@ -783,6 +831,7 @@
         <li><button class="menu-item" type="button" data-target="mathematiques"><span class="emoji" aria-hidden="true">📐</span>Mathématiques</button></li>
         <li><button class="menu-item" type="button" data-target="anglais"><span class="emoji" aria-hidden="true">🇬🇧</span>Anglais</button></li>
         <li><button class="menu-item" type="button" data-target="physique-chimie"><span class="emoji" aria-hidden="true">🧪</span>Physique-chimie</button></li>
+        <li><button class="menu-item" type="button" data-target="francais"><span class="emoji" aria-hidden="true">📚</span>Français</button></li>
         <!-- Pour ajouter une rubrique :
              <li><button class="menu-item" type="button" data-target="ID"><span class="emoji" aria-hidden="true">✨</span>Nom</button></li>
              puis ajouter plus bas une <section id="ID" class="carte" hidden> ... </section> -->
@@ -817,9 +866,21 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-          <p class="chap-num">Histoire · Chapitre 1</p>
+<nav class="sommaire" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#hist-intro">Introduction</a></li>
+    <li><a href="#hist-problematique">Problématique</a></li>
+    <li><a href="#hist-monarchie">I. La 1<sup>re</sup> monarchie constitutionnelle (1789-1792)</a></li>
+  </ol>
+</nav>
+          <div class="cours-corps">
+<p class="chap-num">Histoire · Chapitre 1</p>
           <h2 class="cours-titre">La période révolutionnaire <span class="nowrap">(1789-1815)</span></h2>
-<h2>Introduction</h2>
+
+
+
+<h2 id="hist-intro">Introduction</h2>
           <p>La Révolution française (1789-1799) est l’une des périodes les plus importantes de l’histoire du monde, qui connaît encore aujourd’hui un retentissement mondial&nbsp;:</p>
           <ul>
             <li>c’est le moment où le peuple apparaît comme un acteur majeur de l’histoire&nbsp;;</li>
@@ -827,12 +888,12 @@
             <li>1789 est une année incomparable.</li>
           </ul>
 
-          <h2>Problématique</h2>
+          <h2 id="hist-problematique">Problématique</h2>
           <div class="encadre">
             <p>Entre 1789 et 1815, la France connaît 5 régimes politiques différents. Comment expliquer des changements aussi rapides, une situation aussi mouvementée&nbsp;? Quelles ont été les conséquences pour l’Europe&nbsp;?</p>
           </div>
 
-          <h2>I. La 1<sup>re</sup> monarchie constitutionnelle et son échec (1789-1792)</h2>
+          <h2 id="hist-monarchie">I. La 1<sup>re</sup> monarchie constitutionnelle et son échec (1789-1792)</h2>
 
           <h3>Introduction&nbsp;: les causes de la crise de 1789</h3>
           <ol>
@@ -1234,9 +1295,7 @@
               <p>Le lendemain, la 1<sup>re</sup> République est proclamée.</p>
             </li>
           </ol>
-
-        
-    
+          </div>
         </article>
       </section>
 
@@ -1261,10 +1320,6 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-<p class="chap-num">Allemand · Chapitre 1</p>
-<h2 class="cours-titre">Grammaire : exprimer son opinion</h2>
-<p class="ref" lang="de">Meinungsäußerung</p>
-
 <nav class="sommaire" aria-label="Sommaire">
   <p>Sommaire</p>
   <ol>
@@ -1275,6 +1330,12 @@
     <li><a href="#recap">Récap : ce qu’il faut savoir pour les exercices</a></li>
   </ol>
 </nav>
+          <div class="cours-corps">
+<p class="chap-num">Allemand · Chapitre 1</p>
+<h2 class="cours-titre">Grammaire : exprimer son opinion</h2>
+<p class="ref" lang="de">Meinungsäußerung</p>
+
+
 
 <h2 id="fonctions">Les fonctions à connaître</h2>
 <div class="table-scroll">
@@ -1661,8 +1722,7 @@
     <p>Ce texte a une opinion claire, deux connecteurs différents (<span class="de" lang="de">weil</span> et <span class="de" lang="de">denn</span>), et respecte la place du verbe dans chaque cas&nbsp;: à la fin après <span class="de" lang="de">weil</span>, en 2<sup>e</sup> position après <span class="de" lang="de">denn</span>.</p>
   </div>
 </div>
-
-    
+          </div>
         </article>
       </section>
 
@@ -1687,10 +1747,6 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-<p class="chap-num">Mathématiques · Chapitre 1</p>
-<h2 class="cours-titre">Les suites numériques</h2>
-<p class="ref">Suites arithmétiques, suites géométriques, définition explicite ou par récurrence</p>
-
 <nav class="sommaire" aria-label="Sommaire">
   <p>Sommaire</p>
   <ol>
@@ -1703,6 +1759,12 @@
     <li><a href="#recap-math">Récap : ce qu’il faut savoir pour les exercices</a></li>
   </ol>
 </nav>
+          <div class="cours-corps">
+<p class="chap-num">Mathématiques · Chapitre 1</p>
+<h2 class="cours-titre">Les suites numériques</h2>
+<p class="ref">Suites arithmétiques, suites géométriques, définition explicite ou par récurrence</p>
+
+
 
 <h2 id="suite-def">Qu’est-ce qu’une suite&nbsp;?</h2>
 <p>Une <strong>suite numérique</strong> est une liste ordonnée de nombres, indexée par des entiers naturels. On la note <span class="de">(u<sub>n</sub>)</span>, et on lit «&nbsp;u indice n&nbsp;».</p>
@@ -1907,6 +1969,7 @@
     <li>N’oublie pas de donner <strong>les deux</strong> formes demandées&nbsp;: la définition par récurrence <strong>et</strong> la forme explicite.</li>
   </ul>
 </div>
+          </div>
         </article>
       </section>
 
@@ -1976,10 +2039,6 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-<p class="chap-num">Anglais · ETLV · Chapitre 1</p>
-<h2 class="cours-titre">La prononciation du prétérit (-ed)</h2>
-<p class="ref">Simple past : les 3 sons de la terminaison -ed</p>
-
 <nav class="sommaire" aria-label="Sommaire">
   <p>Sommaire</p>
   <ol>
@@ -1993,6 +2052,12 @@
     <li><a href="#ed-quiz">Quiz : quel son&nbsp;?</a></li>
   </ol>
 </nav>
+          <div class="cours-corps">
+<p class="chap-num">Anglais · ETLV · Chapitre 1</p>
+<h2 class="cours-titre">La prononciation du prétérit (-ed)</h2>
+<p class="ref">Simple past : les 3 sons de la terminaison -ed</p>
+
+
 
 <h2 id="ed-intro">Une terminaison, trois sons</h2>
 <p>Au prétérit (<span lang="en">simple past</span>), les verbes réguliers se terminent tous par <strong>-ed</strong> à l’écrit. Mais à l’oral, cette terminaison se prononce de <strong>3 façons différentes</strong> selon le son qui la précède&nbsp;:</p>
@@ -2133,6 +2198,7 @@
   <p class="quiz-ed-retour" id="quiz-ed-retour" aria-live="polite"></p>
   <button type="button" class="quiz-ed-suivant" id="quiz-ed-suivant" hidden>Verbe suivant →</button>
 </div>
+          </div>
         </article>
 
         <article class="cours vue-a" id="chap-anglais-tronc-1" hidden>
@@ -2141,10 +2207,6 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-<p class="chap-num">Anglais · Tronc commun · Chapitre 1</p>
-<h2 class="cours-titre">Welcome to Canada : le vocabulaire</h2>
-<p class="ref">Vocabulaire, adverbes, past simple et past continuous, time markers, help + somebody + V, by + V-ing</p>
-
 <nav class="sommaire" aria-label="Sommaire">
   <p>Sommaire</p>
   <ol>
@@ -2161,6 +2223,12 @@
     <li><a href="#cv-quiz">Quiz : vocabulaire</a></li>
   </ol>
 </nav>
+          <div class="cours-corps">
+<p class="chap-num">Anglais · Tronc commun · Chapitre 1</p>
+<h2 class="cours-titre">Welcome to Canada : le vocabulaire</h2>
+<p class="ref">Vocabulaire, adverbes, past simple et past continuous, time markers, help + somebody + V, by + V-ing</p>
+
+
 
 <div class="encadre">
   <p class="titre">Ce que dit la consigne du contrôle</p>
@@ -2669,6 +2737,7 @@
   <p class="quiz-ed-retour" id="quiz-v-retour" aria-live="polite"></p>
   <button type="button" class="quiz-ed-suivant" id="quiz-v-suivant" hidden>Question suivante →</button>
 </div>
+          </div>
         </article>
 
       </section>
@@ -2694,10 +2763,6 @@
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
             Chapitres
           </button>
-<p class="chap-num">Physique-chimie · Chapitre 1</p>
-<h2 class="cours-titre">Les combustions</h2>
-<p class="ref">Transformation chimique, énergie, pouvoir calorifique, dangers et prévention</p>
-
 <nav class="sommaire" aria-label="Sommaire">
   <p>Sommaire</p>
   <ol>
@@ -2710,6 +2775,12 @@
     <li><a href="#pc-exos">Exercices types</a></li>
   </ol>
 </nav>
+          <div class="cours-corps">
+<p class="chap-num">Physique-chimie · Chapitre 1</p>
+<h2 class="cours-titre">Les combustions</h2>
+<p class="ref">Transformation chimique, énergie, pouvoir calorifique, dangers et prévention</p>
+
+
 
 <!-- ============ 1 ============ -->
 <h2 id="pc-combustion">1. La combustion, une transformation chimique</h2>
@@ -3068,7 +3139,306 @@
     <p><strong>Détection</strong>&nbsp;: le détecteur de monoxyde de carbone.</p>
   </div>
 </div>
+          </div>
+        </article>
+      </section>
 
+      <!-- ===================== FRANÇAIS ===================== -->
+      <section id="francais" class="carte" hidden>
+        <div class="liste-chapitres">
+          <h2 class="titre-section">Français</h2>
+          <p class="doux">Choisis un chapitre.</p>
+          <button class="chap-btn" type="button" data-ouvrir="chap-fr-1">
+            <span class="txt">
+              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">On ne badine pas avec l’amour — Alfred de Musset</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+          <button class="chap-btn menthe" type="button" data-ouvrir="chap-fr-2">
+            <span class="txt">
+              <span class="chap-num">Chapitre 2</span>
+              <span class="chap-titre">Cyrano de Bergerac — Edmond Rostand</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <!-- ===== Chapitre 1 : Musset ===== -->
+        <article class="cours" id="chap-fr-1" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#musset-bio">Biographie de l’auteur</a></li>
+              <li><a href="#musset-oeuvre">L’œuvre</a></li>
+              <li><a href="#musset-resume">Résumé de la pièce</a></li>
+              <li><a href="#musset-personnages">Les personnages</a></li>
+              <li><a href="#musset-themes">Thèmes et enjeux</a></li>
+              <li><a href="#musset-conclusion">Conclusion : l’essentiel à retenir</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Français · Chapitre 1</p>
+            <h2 class="cours-titre">On ne badine pas avec l’amour</h2>
+            <p class="ref">Alfred de Musset · comédie en prose · 1834</p>
+
+            <h2 id="musset-bio">Biographie de l’auteur</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Alfred de Musset</span>
+                <span class="grand">1810 – 1857</span>
+                <span class="fr">Poète et dramaturge français</span>
+              </div>
+              <div class="mini t3">
+                <span class="nom">Mouvement</span>
+                <span class="grand">Romantisme</span>
+                <span class="fr">Amour, passion, souffrance</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Genre</span>
+                <span class="grand">Théâtre / poésie</span>
+                <span class="fr">Comédies et proverbes</span>
+              </div>
+            </div>
+            <p>Alfred de Musset naît à Paris en <strong>1810</strong>. Il appartient à la génération des <strong>romantiques</strong> français, comme Victor Hugo ou George Sand. Très jeune, il se fait remarquer par son talent littéraire et son style élégant.</p>
+            <p>Sa vie personnelle marque profondément son œuvre. Sa liaison passionnée et douloureuse avec <strong>George Sand</strong> (1833-1835) inspire plusieurs de ses textes&nbsp;: rupture, jalousie, ideal de l’amour impossible. <em>On ne badine pas avec l’amour</em> est écrite dans cette période de crise sentimentale.</p>
+            <p>Musset écrit des poèmes (<em>Les Nuits</em>), des contes, et surtout un théâtre souvent destiné à la lecture&nbsp;: des <strong>«&nbsp;proverbes&nbsp;»</strong> (courtes pièces dont le titre est un dicton). Il meurt à Paris en <strong>1857</strong>, à 46 ans.</p>
+            <div class="encadre">
+              <p class="titre">À retenir sur l’auteur</p>
+              <ul class="coches">
+                <li>Romantique&nbsp;: place centrale de la <strong>passion</strong> et de la <strong>souffrance amoureuse</strong>.</li>
+                <li>Style clair, dialogues vifs, ironie et émotion mélangées.</li>
+                <li>Théâtre de la jeunesse, du jeu dangereux avec les sentiments.</li>
+              </ul>
+            </div>
+
+            <h2 id="musset-oeuvre">L’œuvre</h2>
+            <p><em>On ne badine pas avec l’amour</em> est une <strong>comédie en trois actes</strong>, en prose, publiée en <strong>1834</strong>. Le titre est un <strong>proverbe</strong>&nbsp;: on ne joue pas avec l’amour, car les conséquences peuvent être graves.</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Genre</span>
+                Comédie dramatique (rire puis drame)
+              </div>
+              <div class="mini t1">
+                <span class="nom">Forme</span>
+                Prose · 3 actes
+              </div>
+              <div class="mini t3">
+                <span class="nom">Cadre</span>
+                Campagne, château du baron
+              </div>
+            </div>
+            <p>Au début, la pièce ressemble à une comédie légère (malentendus, coquetterie). Elle bascule ensuite vers le <strong>tragique</strong>&nbsp;: la mort de Rosette et le malheur de Perdican et Camille. C’est typique de Musset&nbsp;: le jeu amoureux tourne mal.</p>
+
+            <h2 id="musset-resume">Résumé de la pièce</h2>
+
+            <h3>Acte I — Les retrouvailles</h3>
+            <p>Le <strong>baron</strong> accueille son neveu <strong>Perdican</strong>, qui revient de ses études, et sa nièce <strong>Camille</strong>, élevée au couvent. Il souhaite les marier. Perdican aime Camille depuis l’enfance. Camille, influencée par le couvent et la trahison d’une amie, se montre froide et refuse le mariage&nbsp;: elle ne croit plus à l’amour des hommes.</p>
+
+            <h3>Acte II — Le jeu dangereux</h3>
+            <p>Blessé dans son orgueil, Perdican décide de se venger. Il courtise <strong>Rosette</strong>, une jeune paysanne naïve, sœur de lait de Camille, pour rendre Camille jalouse. Camille, de son côté, feint l’indifférence tout en souffrant. Les deux cousins <strong>badinent</strong> avec les sentiments&nbsp;: ils jouent à se blesser au lieu de s’avouer leur amour.</p>
+
+            <h3>Acte III — La catastrophe</h3>
+            <p>Perdican et Camille finissent par s’avouer leur amour. Mais Rosette, qui a tout entendu et a cru être aimée, meurt de chagrin (ou se laisse mourir). Le bonheur des deux cousins est brisé. La pièce se termine dans le deuil&nbsp;: on a badiné avec l’amour, et quelqu’un en est mort.</p>
+
+            <div class="encadre">
+              <p class="titre">En une phrase</p>
+              <p>Deux cousins qui s’aiment se blessent par orgueil en utilisant une innocente&nbsp;; le jeu amoureux se termine en tragédie.</p>
+            </div>
+
+            <h2 id="musset-personnages">Les personnages</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Perdican</span>
+                Neveu du baron, jeune, cultivé, orgueilleux. Aime Camille mais refuse d’être humilié.
+              </div>
+              <div class="mini t3">
+                <span class="nom">Camille</span>
+                Nièce du baron, élevée au couvent. Méfie des hommes, orgueilleuse, capable d’amour sincère trop tard.
+              </div>
+              <div class="mini t2">
+                <span class="nom">Rosette</span>
+                Paysanne naïve, sœur de lait de Camille. Victime du jeu de Perdican. Symbole de l’innocence sacrifiée.
+              </div>
+              <div class="mini t1">
+                <span class="nom">Le baron</span>
+                Oncle bienveillant, un peu naïf, qui veut marier les jeunes gens.
+              </div>
+            </div>
+
+            <h2 id="musset-themes">Thèmes et enjeux</h2>
+            <ul>
+              <li><strong>L’amour et le jeu</strong>&nbsp;: badiner, c’est traiter l’amour comme un divertissement. Musset montre que les sentiments ne se manipulent pas sans risque.</li>
+              <li><strong>L’orgueil</strong>&nbsp;: Perdican et Camille préfèrent blesser l’autre plutôt que d’admettre leur vulnérabilité.</li>
+              <li><strong>L’innocence sacrifiée</strong>&nbsp;: Rosette paie le prix du conflit des «&nbsp;grands&nbsp;».</li>
+              <li><strong>Le passage à l’âge adulte</strong>&nbsp;: les jeunes découvrent que les paroles et les gestes ont des conséquences irréversibles.</li>
+              <li><strong>Comédie qui devient tragédie</strong>&nbsp;: le ton passe du léger au grave (mélange des genres romantique).</li>
+            </ul>
+
+            <h2 id="musset-conclusion">Conclusion : l’essentiel à retenir</h2>
+            <div class="encadre">
+              <p class="titre">Ce qu’il faut savoir pour le contrôle / l’oral</p>
+              <ul class="coches">
+                <li><strong>Auteur</strong>&nbsp;: Alfred de Musset (1810-1857), romantique, marqué par sa liaison avec George Sand.</li>
+                <li><strong>Œuvre</strong>&nbsp;: comédie en prose (1834), titre = proverbe sur le danger de jouer avec l’amour.</li>
+                <li><strong>Intrigue</strong>&nbsp;: Perdican et Camille s’aiment mais se blessent par orgueil&nbsp;; Rosette meurt, victime de leur jeu.</li>
+                <li><strong>Message</strong>&nbsp;: on ne badine pas avec l’amour — les sentiments sont sérieux, le mensonge et la vengeance détruisent.</li>
+                <li><strong>Style</strong>&nbsp;: dialogues brillants, ironie, bascule du comique vers le tragique.</li>
+                <li><strong>Citation type</strong>&nbsp;: le titre lui-même résume la moralité de la pièce.</li>
+              </ul>
+            </div>
+            <div class="encadre">
+              <p class="titre">Pour une réponse rédigée</p>
+              <p>Tu peux structurer ainsi&nbsp;: présenter l’auteur et le contexte romantique → résumer l’intrigue en reliant le jeu d’orgueil à la mort de Rosette → conclure sur la leçon morale et le mélange des tons (comédie / drame).</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== Chapitre 2 : Rostand ===== -->
+        <article class="cours" id="chap-fr-2" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#rostand-bio">Biographie de l’auteur</a></li>
+              <li><a href="#rostand-oeuvre">L’œuvre</a></li>
+              <li><a href="#rostand-resume">Résumé de la pièce</a></li>
+              <li><a href="#rostand-personnages">Les personnages</a></li>
+              <li><a href="#rostand-themes">Thèmes et enjeux</a></li>
+              <li><a href="#rostand-conclusion">Conclusion : l’essentiel à retenir</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Français · Chapitre 2</p>
+            <h2 class="cours-titre">Cyrano de Bergerac</h2>
+            <p class="ref">Edmond Rostand · drame héroïque en vers · 1897</p>
+
+            <h2 id="rostand-bio">Biographie de l’auteur</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Edmond Rostand</span>
+                <span class="grand">1868 – 1918</span>
+                <span class="fr">Dramaturge et poète français</span>
+              </div>
+              <div class="mini t3">
+                <span class="nom">Mouvement</span>
+                <span class="grand">Néo-romantisme</span>
+                <span class="fr">Retour au lyrisme et à l’héroïsme</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Chef-d’œuvre</span>
+                <span class="grand">Cyrano (1897)</span>
+                <span class="fr">Triomphe dès la création</span>
+              </div>
+            </div>
+            <p>Edmond Rostand naît à <strong>Marseille</strong> en 1868. Il s’installe à Paris et se consacre au théâtre et à la poésie. À une époque dominée par le <strong>naturalisme</strong> et le théâtre réaliste, il choisit au contraire le <strong>lyrisme</strong>, l’héroïsme et les beaux vers.</p>
+            <p>La création de <em>Cyrano de Bergerac</em> le <strong>28 décembre 1897</strong> à Paris (théâtre de la Porte-Saint-Martin) est un succès immense. Rostand entre à l’<strong>Académie française</strong> en 1901. Il meurt en 1918.</p>
+            <div class="encadre">
+              <p class="titre">À retenir sur l’auteur</p>
+              <ul class="coches">
+                <li>Dramaturge néo-romantique&nbsp;: panache, idéal, eloquence.</li>
+                <li><em>Cyrano</em> relance le théâtre en vers à la fin du XIX<sup>e</sup> siècle.</li>
+                <li>Personnage de Cyrano = figure de l’honneur et du sacrifice amoureux.</li>
+              </ul>
+            </div>
+
+            <h2 id="rostand-oeuvre">L’œuvre</h2>
+            <p><em>Cyrano de Bergerac</em> est un <strong>drame héroïque en cinq actes</strong>, écrit en <strong>alexandrins</strong> (vers de 12 syllabes). Rostand s’inspire librement d’un écrivain et duelliste du XVII<sup>e</sup> siècle, Savinien Cyrano de Bergerac, mais transforme l’histoire en légende théâtrale.</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Genre</span>
+                Drame héroïque / comédie héroïque
+              </div>
+              <div class="mini t1">
+                <span class="nom">Forme</span>
+                Vers (alexandrins) · 5 actes
+              </div>
+              <div class="mini t3">
+                <span class="nom">Époque de l’action</span>
+                XVII<sup>e</sup> siècle (1640)
+              </div>
+            </div>
+            <p>La pièce mêle <strong>comédie</strong> (répliques brillantes, duels, situations burlesques), <strong>drame</strong> (amour impossible, sacrifice) et <strong>épopée</strong> (bataille, panache). Le mot-clé de l’œuvre est le <strong>panache</strong>&nbsp;: l’élégance morale, le courage avec style.</p>
+
+            <h2 id="rostand-resume">Résumé de la pièce</h2>
+
+            <h3>Acte I — L’hôtel de Bourgogne</h3>
+            <p><strong>Cyrano</strong>, cadet de Gascogne, interrompt une représentation pour chasser un acteur médiocre. Il est célèbre pour son esprit… et pour son <strong>nez énorme</strong>, qu’il assume avec fierté. Il aime en secret sa cousine <strong>Roxane</strong>. <strong>Christian</strong>, beau mais maladroit en paroles, arrive au régiment. Cyrano se bat en duel tout en improvisant une ballade.</p>
+
+            <h3>Acte II — La boulangerie de Ragueneau</h3>
+            <p>Roxane confie à Cyrano qu’elle aime Christian. Cyrano, dévasté, accepte de <strong>protéger</strong> Christian et de l’aider. Christian est incapable d’écrire des lettres d’amour&nbsp;: Cyrano proposera ses mots.</p>
+
+            <h3>Acte III — Le balcon de Roxane</h3>
+            <p>Sous le balcon, Christian ne sait quoi dire. Cyrano, dans l’ombre, <strong>souffle</strong> les répliques, puis prend la place et parle à Roxane avec son propre cœur. Roxane croit entendre Christian. Le mariage est célébré en secret, juste avant le départ à la guerre.</p>
+
+            <h3>Acte IV — Le siège d’Arras</h3>
+            <p>Au camp, les cadets meurent de faim. Cyrano envoie chaque jour une lettre à Roxane au nom de Christian. Roxane rejoint le front. Christian comprend que c’est Cyrano que Roxane aime à travers les mots. Il veut tout révéler, mais il est <strong>tué</strong> au combat. Cyrano lui promet de garder le secret.</p>
+
+            <h3>Acte V — Le couvent (14 ans plus tard)</h3>
+            <p>Roxane s’est retirée au couvent. Cyrano, pauvre et blessé par un attentat, lui rend visite une dernière fois. Il lit «&nbsp;la&nbsp;» lettre de Christian&nbsp;; Roxane reconnaît enfin la vérité&nbsp;: c’était <strong>Cyrano</strong> qui l’aimait. Cyrano meurt en défendant encore son honneur et son <strong>panache</strong>.</p>
+
+            <div class="encadre">
+              <p class="titre">En une phrase</p>
+              <p>Un héros au grand cœur et au grand nez aime en silence, prête sa voix à un rival, et meurt sans avoir été aimé pour ce qu’il est — sauf à la dernière minute.</p>
+            </div>
+
+            <h2 id="rostand-personnages">Les personnages</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Cyrano</span>
+                Poète, duelliste, fidèle. Nez démesuré, orgueil, générosité. Symbole du panache et du sacrifice.
+              </div>
+              <div class="mini t3">
+                <span class="nom">Roxane</span>
+                Cousine de Cyrano, belle, cultivée. Aime d’abord l’esprit (les lettres), puis découvre trop tard qui les écrivait.
+              </div>
+              <div class="mini t2">
+                <span class="nom">Christian</span>
+                Beau, brave, mais maladroit avec les mots. Aime Roxane sincèrement. Meurt au siège d’Arras.
+              </div>
+              <div class="mini t1">
+                <span class="nom">De Guiche</span>
+                Noble puissant, rival malveillant. Représente l’ambition et l’hypocrisie mondaine.
+              </div>
+            </div>
+
+            <h2 id="rostand-themes">Thèmes et enjeux</h2>
+            <ul>
+              <li><strong>Le panache</strong>&nbsp;: courage + élégance morale. Cyrano refuse de se vendre, de mentir pour réussir, de trahir son honneur.</li>
+              <li><strong>L’apparence et le fond</strong>&nbsp;: le nez ridicule cache une âme sublime&nbsp;; la beauté de Christian cache un manque de mots.</li>
+              <li><strong>L’amour et le sacrifice</strong>&nbsp;: Cyrano aime assez pour effacer son nom et faire le bonheur de Roxane avec un autre.</li>
+              <li><strong>La parole</strong>&nbsp;: les lettres, le duel en vers, la tirade du nez — le langage est une arme et une preuve d’âme.</li>
+              <li><strong>L’idéal contre le monde</strong>&nbsp;: Cyrano refuse les protections et les compromis&nbsp;; il meurt libre.</li>
+            </ul>
+
+            <h2 id="rostand-conclusion">Conclusion : l’essentiel à retenir</h2>
+            <div class="encadre">
+              <p class="titre">Ce qu’il faut savoir pour le contrôle / l’oral</p>
+              <ul class="coches">
+                <li><strong>Auteur</strong>&nbsp;: Edmond Rostand (1868-1918), néo-romantique, succès en 1897, Académie française 1901.</li>
+                <li><strong>Œuvre</strong>&nbsp;: drame héroïque en 5 actes, en alexandrins&nbsp;; mélange comédie, drame et épopée.</li>
+                <li><strong>Intrigue</strong>&nbsp;: Cyrano aime Roxane, écrit les lettres de Christian, se tait jusqu’à sa mort&nbsp;; Roxane comprend trop tard.</li>
+                <li><strong>Mot-clé</strong>&nbsp;: le <strong>panache</strong> (honneur, style, refus de la bassesse).</li>
+                <li><strong>Thèmes</strong>&nbsp;: apparence / réalité, amour sacrificiel, pouvoir de la parole, idéalisme.</li>
+                <li><strong>Scènes célèbres</strong>&nbsp;: tirade du nez, scène du balcon, lettre lue au couvent, mort de Cyrano.</li>
+              </ul>
+            </div>
+            <div class="encadre">
+              <p class="titre">Pour une réponse rédigée</p>
+              <p>Présente Rostand et le contexte (retour au vers, succès de 1897) → résume l’intrigue en insistant sur le double (corps de Christian / âme de Cyrano) → conclus sur le panache et la leçon&nbsp;: la vraie beauté est intérieure, mais le monde la reconnaît trop tard.</p>
+            </div>
+          </div>
         </article>
       </section>
 
@@ -3379,6 +3749,53 @@
   suivantBtn.addEventListener("click", nouvelleQuestion);
   nouvelleQuestion();
   majScore();
+})();
+
+/* Sommaire : surlignage de la section visible pendant le défilement */
+(function () {
+  var linksById = {};
+  var observer = null;
+
+  function collectLinks(root) {
+    linksById = {};
+    if (!root) return;
+    root.querySelectorAll('.sommaire a[href^="#"]').forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      if (id) linksById[id] = a;
+    });
+  }
+
+  function setCurrent(id) {
+    Object.keys(linksById).forEach(function (k) {
+      if (k === id) linksById[k].setAttribute('aria-current', 'true');
+      else linksById[k].removeAttribute('aria-current');
+    });
+  }
+
+  function observeHeadings(article) {
+    if (observer) observer.disconnect();
+    var corps = article.querySelector('.cours-corps') || article;
+    var headings = corps.querySelectorAll('h2[id], h3[id]');
+    if (!headings.length) return;
+    collectLinks(article);
+    observer = new IntersectionObserver(function (entries) {
+      var visible = entries
+        .filter(function (e) { return e.isIntersecting; })
+        .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+      if (visible.length) setCurrent(visible[0].target.id);
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: [0, 0.25, 1] });
+    headings.forEach(function (h) { observer.observe(h); });
+  }
+
+  document.querySelectorAll('[data-ouvrir], [data-go-a]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      setTimeout(function () {
+        var id = b.getAttribute('data-ouvrir') || b.getAttribute('data-go-a');
+        var art = document.getElementById(id);
+        if (art && art.classList.contains('cours')) observeHeadings(art);
+      }, 50);
+    });
+  });
 })();
 </script>
 </body>
