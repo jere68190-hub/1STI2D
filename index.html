@@ -7,9 +7,26 @@
 <meta name="description" content="Cours et récaps de la Première à la Terminale STI2D, matière par matière.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://chopetonbacsti2d.netlify.app/">
-<meta name="theme-color" content="#efe9ff">
+<meta name="theme-color" content="#efe9ff" id="theme-color-meta">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
+<script>
+  /* Thème : suit l’écran par défaut ; localStorage seulement si l’utilisateur a choisi */
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      var dark;
+      if (t === "dark") dark = true;
+      else if (t === "light") dark = false;
+      else dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+      else document.documentElement.removeAttribute("data-theme");
+      document.documentElement.classList.toggle("is-dark", dark);
+      var m = document.getElementById("theme-color-meta");
+      if (m) m.setAttribute("content", dark ? "#1c1433" : "#efe9ff");
+    } catch (e) {}
+  })();
+</script>
 
 <meta name="google-site-verification" content="n1XzwJgkoKL9ar0NSuKciDHRoHQVjHGpCZJSnkh-Dv8">
 
@@ -85,6 +102,45 @@
     --accent-ink: #1c1433;
     --hover: #3b2c66;
   }
+  :root[data-theme="light"] {
+    --bg: #efe9ff;
+    --blob-a: #ffd23f;
+    --blob-b: #3ddbb0;
+    --ink: #2b1b4e;
+    --muted: #6a5a8f;
+    --panel: #ffffff;
+    --accent: #ff6b5b;
+    --accent-ink: #ffffff;
+    --hover: #fff1c2;
+  }
+
+  /* Bouton clair / sombre */
+  .theme-btn {
+    position: fixed;
+    top: max(0.9rem, env(safe-area-inset-top, 0px));
+    right: max(0.9rem, env(safe-area-inset-right, 0px));
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    background: var(--panel);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 1rem;
+    box-shadow: 0 4px 0 var(--ink);
+    cursor: pointer;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+  }
+  .theme-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ink); }
+  .theme-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+  .theme-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .theme-btn svg { width: 1.35rem; height: 1.35rem; }
+  .theme-btn .icone-soleil { display: none; }
+  .theme-btn .icone-lune { display: block; }
+  html.is-dark .theme-btn .icone-soleil { display: block; }
+  html.is-dark .theme-btn .icone-lune { display: none; }
 
   html { scroll-padding-top: env(safe-area-inset-top, 0px); }
   *, *::before, *::after { box-sizing: border-box; }
@@ -793,6 +849,15 @@
 </style>
 </head>
 <body>
+  <button class="theme-btn" id="theme-btn" type="button" aria-label="Passer en mode sombre" title="Clair / sombre">
+    <svg class="icone-lune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"/>
+    </svg>
+    <svg class="icone-soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </svg>
+  </button>
   <div class="intro" id="intro">
     <div class="terminal">
       <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -1739,6 +1804,14 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
           </button>
+          <button class="chap-btn menthe" type="button" data-ouvrir="chap-math-2">
+            <span class="txt">
+              <span class="chap-num">Chapitre 2</span>
+              <span class="chap-titre">Polynômes de degré 2</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
         </div>
 
         <article class="cours" id="chap-math-1" hidden>
@@ -1969,6 +2042,338 @@
     <li>N’oublie pas de donner <strong>les deux</strong> formes demandées&nbsp;: la définition par récurrence <strong>et</strong> la forme explicite.</li>
   </ul>
 </div>
+          </div>
+        </article>
+
+        <!-- ===== Chapitre 2 : Polynômes de degré 2 ===== -->
+        <article class="cours" id="chap-math-2" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#poly-def">Qu’est-ce qu’un polynôme de degré 2&nbsp;?</a></li>
+              <li><a href="#poly-formes">Les trois formes</a></li>
+              <li><a href="#poly-racines">Les racines</a></li>
+              <li><a href="#poly-a">Le coefficient a et la parabole</a></li>
+              <li><a href="#poly-signe">Étudier le signe</a></li>
+              <li><a href="#poly-axe">Axe de symétrie et sommet</a></li>
+              <li><a href="#poly-variations">Tableau de variations</a></li>
+              <li><a href="#poly-graphique">Lire un graphique</a></li>
+              <li><a href="#poly-methodes">Méthodes pour les exercices</a></li>
+              <li><a href="#poly-recap">Récap : l’essentiel</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Mathématiques · Chapitre 2</p>
+            <h2 class="cours-titre">Polynômes de degré 2</h2>
+            <p class="ref">Racines, signe, parabole, sommet, forme factorisée</p>
+
+            <h2 id="poly-def">Qu’est-ce qu’un polynôme de degré 2&nbsp;?</h2>
+            <p>Un <strong>polynôme de degré 2</strong> (ou trinôme du second degré) est une fonction de la forme&nbsp;:</p>
+            <div class="encadre">
+              <p class="titre">Forme développée</p>
+              <p><span class="de">f(x) = ax² + bx + c</span> avec <span class="de">a ≠ 0</span></p>
+            </div>
+            <ul class="coches">
+              <li><span class="de">a</span>, <span class="de">b</span>, <span class="de">c</span> sont des nombres réels (constantes).</li>
+              <li>Le degré est 2 car la plus haute puissance de <span class="de">x</span> est <span class="de">x²</span>.</li>
+              <li>La courbe représentative est une <strong>parabole</strong>.</li>
+            </ul>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Exemple</span>
+                <span class="de">f(x) = −2x² − 4x + 6</span>
+                <span class="fr">a = −2, b = −4, c = 6</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Exemple</span>
+                <span class="de">g(t) = 0,25t² − 0,5t − 2</span>
+                <span class="fr">variable t, même principe</span>
+              </div>
+            </div>
+
+            <h2 id="poly-formes">Les trois formes</h2>
+            <p>On peut écrire un même polynôme de trois façons utiles.</p>
+            <div class="grille">
+              <div class="mini t3">
+                <span class="nom">Développée</span>
+                <span class="de">ax² + bx + c</span>
+                <span class="fr">Pour calculer f(0), le sommet…</span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">Factorisée</span>
+                <span class="de">a(x − x₁)(x − x₂)</span>
+                <span class="fr">Pour les racines et le signe</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Canonique</span>
+                <span class="de">a(x − α)² + β</span>
+                <span class="fr">Pour le sommet S(α ; β)</span>
+              </div>
+            </div>
+            <div class="encadre">
+              <p class="titre">Forme factorisée — cas importants</p>
+              <ul>
+                <li><strong>Deux racines distinctes</strong>&nbsp;: <span class="de">f(x) = a(x − x₁)(x − x₂)</span></li>
+                <li><strong>Racine double</strong>&nbsp;: <span class="de">f(x) = a(x − x₀)²</span> (la parabole touche l’axe des abscisses en un seul point)</li>
+                <li><strong>Aucune racine réelle</strong>&nbsp;: on ne peut pas factoriser dans ℝ (la parabole ne coupe pas l’axe des x)</li>
+              </ul>
+            </div>
+
+            <h2 id="poly-racines">Les racines</h2>
+            <p>Les <strong>racines</strong> de f sont les solutions de l’équation <span class="de">f(x) = 0</span>. Graphiquement, ce sont les abscisses des points d’intersection de la courbe avec l’axe des abscisses.</p>
+
+            <h3>Si la forme factorisée est donnée</h3>
+            <p>C’est le cas le plus simple des exercices 36, 37, 45, 46…</p>
+            <div class="encadre">
+              <p class="titre">Méthode</p>
+              <p><span class="de">f(x) = a(x − x₁)(x − x₂) = 0</span></p>
+              <p>Un produit est nul si l’un des facteurs est nul&nbsp;:</p>
+              <ul class="coches">
+                <li><span class="de">x − x₁ = 0</span> ⇒ <span class="de">x = x₁</span></li>
+                <li><span class="de">x − x₂ = 0</span> ⇒ <span class="de">x = x₂</span></li>
+              </ul>
+              <p><strong>Attention au signe</strong>&nbsp;: dans <span class="de">(x − 5)</span>, la racine est <span class="de">5</span>. Dans <span class="de">(x + 4)</span>, c’est <span class="de">−4</span> car <span class="de">x + 4 = x − (−4)</span>.</p>
+            </div>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Exemple</span>
+                <span class="de">f(x) = −2(x − 5)(x − 7)</span>
+                <span class="fr">Racines : 5 et 7</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Exemple</span>
+                <span class="de">g(t) = 2,5(t + 4)(t − ½)</span>
+                <span class="fr">Racines : −4 et ½</span>
+              </div>
+              <div class="mini t3">
+                <span class="nom">Racine double</span>
+                <span class="de">B(q) = −3(q − ⅓)²</span>
+                <span class="fr">Racine double : ⅓</span>
+              </div>
+            </div>
+
+            <h3>Passer de la forme développée à la factorisée</h3>
+            <p>Si on connaît les racines <span class="de">x₁</span> et <span class="de">x₂</span> (par le graphique ou le calcul) et le coefficient <span class="de">a</span>&nbsp;:</p>
+            <div class="encadre">
+              <p><span class="de">f(x) = a(x − x₁)(x − x₂)</span></p>
+              <p>Pour trouver <span class="de">a</span>&nbsp;: utilise une valeur connue, souvent <span class="de">f(0)</span> (ordonnée à l’origine) ou un point donné.</p>
+              <p><strong>Exemple</strong>&nbsp;: racines −3 et 1, et <span class="de">f(x) = −2x² − 4x + 6</span>. On a déjà <span class="de">a = −2</span>, donc <span class="de">f(x) = −2(x + 3)(x − 1)</span>.</p>
+            </div>
+
+            <h2 id="poly-a">Le coefficient a et la parabole</h2>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">a &gt; 0</span>
+                Parabole <strong>tournée vers le haut</strong> (sourire ⋃)
+                <span class="fr">Minimum au sommet</span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">a &lt; 0</span>
+                Parabole <strong>tournée vers le bas</strong> (chapeau ⋂)
+                <span class="fr">Maximum au sommet</span>
+              </div>
+            </div>
+            <p>Le signe de <span class="de">a</span> se lit aussi dans la forme factorisée&nbsp;: c’est le nombre devant les parenthèses.</p>
+
+            <h2 id="poly-signe">Étudier le signe</h2>
+            <p>«&nbsp;Étudier le signe de f&nbsp;» = dire pour quels <span class="de">x</span> on a <span class="de">f(x) &gt; 0</span>, <span class="de">f(x) &lt; 0</span> ou <span class="de">f(x) = 0</span>.</p>
+
+            <h3>Règle du produit (forme factorisée)</h3>
+            <p>On étudie le signe de chaque facteur, puis le signe du produit.</p>
+            <div class="encadre">
+              <p class="titre">Rappel</p>
+              <ul class="coches">
+                <li><span class="de">x − r</span> est <strong>négatif</strong> si <span class="de">x &lt; r</span>, <strong>nul</strong> si <span class="de">x = r</span>, <strong>positif</strong> si <span class="de">x &gt; r</span>.</li>
+                <li>Le coefficient <span class="de">a</span> a un signe constant (toujours le même).</li>
+                <li>«&nbsp;+ × + = +&nbsp;», «&nbsp;+ × − = −&nbsp;», «&nbsp;− × − = +&nbsp;».</li>
+              </ul>
+            </div>
+
+            <h3>Tableau de signes — modèle</h3>
+            <p>Pour <span class="de">f(x) = a(x − x₁)(x − x₂)</span> avec <span class="de">x₁ &lt; x₂</span>&nbsp;:</p>
+            <div class="table-scroll">
+              <table class="tableau centre">
+                <caption class="visually-hidden">Tableau de signes type pour un trinôme factorisé</caption>
+                <thead>
+                  <tr><th scope="col">x</th><th scope="col">−∞</th><th></th><th scope="col">x₁</th><th></th><th scope="col">x₂</th><th></th><th scope="col">+∞</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">signe de (x − x₁)</th><td colspan="2">−</td><td>0</td><td colspan="2">+</td><td colspan="2">+</td></tr>
+                  <tr><th scope="row">signe de (x − x₂)</th><td colspan="2">−</td><td colspan="2">−</td><td>0</td><td colspan="2">+</td></tr>
+                  <tr><th scope="row">signe de a</th><td colspan="7">signe de a (constant)</td></tr>
+                  <tr><th scope="row">signe de f(x)</th><td colspan="2">…</td><td>0</td><td colspan="2">…</td><td>0</td><td colspan="2">…</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="encadre">
+              <p class="titre">Astuce visuelle (sans tableau)</p>
+              <p>La parabole est du côté de <span class="de">a</span> «&nbsp;à l’extérieur&nbsp;» des racines, et de l’autre côté «&nbsp;entre&nbsp;» les racines.</p>
+              <ul>
+                <li>Si <span class="de">a &gt; 0</span>&nbsp;: f positive à l’extérieur, négative entre les racines.</li>
+                <li>Si <span class="de">a &lt; 0</span>&nbsp;: f négative à l’extérieur, positive entre les racines.</li>
+              </ul>
+            </div>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Exemple</span>
+                <span class="de">f(x) = −2(x − 5)(x − 7)</span>
+                <span class="fr">a &lt; 0 → f ≤ 0 hors de ]5 ; 7[, f ≥ 0 sur [5 ; 7]</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Racine double</span>
+                <span class="de">B(q) = −3(q − ⅓)²</span>
+                <span class="fr">(q − ⅓)² toujours ≥ 0, a &lt; 0 → B(q) ≤ 0 pour tout q, nul en ⅓</span>
+              </div>
+            </div>
+
+            <h2 id="poly-axe">Axe de symétrie et sommet</h2>
+            <p>La parabole est symétrique par rapport à une droite verticale&nbsp;: l’<strong>axe de symétrie</strong>.</p>
+            <div class="encadre">
+              <p class="titre">Formules</p>
+              <ul>
+                <li><strong>Axe de symétrie</strong>&nbsp;: <span class="de">x = −b / (2a)</span> (forme développée)</li>
+                <li>Avec les racines&nbsp;: l’axe est au <strong>milieu</strong> des racines&nbsp;: <span class="de">x = (x₁ + x₂) / 2</span></li>
+                <li><strong>Sommet S</strong>&nbsp;: point de la parabole sur cet axe. Abscisse α = milieu (ou −b/(2a)), ordonnée β = f(α).</li>
+              </ul>
+            </div>
+            <div class="grille">
+              <div class="mini t3">
+                <span class="nom">Exemple graphique</span>
+                Racines en −2 et 4 → axe <span class="de">x = 1</span>, sommet vers le bas si a &lt; 0
+              </div>
+              <div class="mini t1">
+                <span class="nom">Exemple calcul</span>
+                <span class="de">f(x) = 0,25x² − 0,5x − 2</span>
+                <span class="fr">α = 0,5/(2×0,25) = 1 · β = f(1) = −2,25 · S(1 ; −2,25)</span>
+              </div>
+            </div>
+            <p>Si <span class="de">a &gt; 0</span>, le sommet est un <strong>minimum</strong>. Si <span class="de">a &lt; 0</span>, c’est un <strong>maximum</strong>.</p>
+
+            <h2 id="poly-variations">Tableau de variations</h2>
+            <p>Il décrit comment f augmente ou diminue.</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">a &gt; 0</span>
+                f décroît jusqu’au sommet, puis croît
+                <span class="fr">↘ puis ↗</span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">a &lt; 0</span>
+                f croît jusqu’au sommet, puis décroît
+                <span class="fr">↗ puis ↘</span>
+              </div>
+            </div>
+            <div class="encadre">
+              <p class="titre">Modèle (a &gt; 0, sommet en α)</p>
+              <p>Sur ]−∞ ; α]&nbsp;: f décroissante · Sur [α ; +∞[&nbsp;: f croissante · Minimum = f(α)</p>
+            </div>
+
+            <h2 id="poly-graphique">Lire un graphique</h2>
+            <p>Sur une courbe donnée (exercices 38, 46)&nbsp;:</p>
+            <ul class="coches">
+              <li><strong>Racines</strong>&nbsp;: abscisses où la courbe coupe l’axe des x (lire avec la précision du quadrillage).</li>
+              <li><strong>Racine double</strong>&nbsp;: la courbe <em>touche</em> l’axe des x sans le traverser (sommet sur l’axe).</li>
+              <li><strong>Axe de symétrie</strong>&nbsp;: droite verticale au milieu des racines, ou passant par le sommet.</li>
+              <li><strong>f(0)</strong>&nbsp;: ordonnée à l’origine (où la courbe coupe l’axe des y) → sert à trouver a.</li>
+              <li><strong>Sens</strong>&nbsp;: ouvert vers le haut ⇒ a &gt; 0&nbsp;; vers le bas ⇒ a &lt; 0.</li>
+            </ul>
+            <div class="encadre">
+              <p class="titre">Trouver a avec f(0)</p>
+              <p><span class="de">f(x) = a(x − x₁)(x − x₂)</span> ⇒ <span class="de">f(0) = a(−x₁)(−x₂) = a · x₁ · x₂</span></p>
+              <p>Donc <span class="de">a = f(0) / (x₁ · x₂)</span> (si x₁ et x₂ non nuls).</p>
+            </div>
+
+            <h2 id="poly-methodes">Méthodes pour les exercices</h2>
+
+            <div class="exo">
+              <p class="exo-niveau">Type 36–37 · Forme factorisée donnée</p>
+              <div class="exo-q">
+                <p class="titre">Que faire&nbsp;?</p>
+                <p>Donner les racines et étudier le signe.</p>
+              </div>
+              <div class="exo-r">
+                <p class="titre">Méthode</p>
+                <ol>
+                  <li>Repérer a et les racines (attention aux signes dans les parenthèses).</li>
+                  <li>Si racine double&nbsp;: f a le signe de a partout, sauf 0 en la racine.</li>
+                  <li>Sinon&nbsp;: tableau de signes, ou règle «&nbsp;extérieur / intérieur&nbsp;» selon le signe de a.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="exo">
+              <p class="exo-niveau">Type 38 · Courbe + expression</p>
+              <div class="exo-q">
+                <p class="titre">Que faire&nbsp;?</p>
+                <p>Lire racines, axe, tableau de signes&nbsp;; calculer le sommet&nbsp;; factoriser.</p>
+              </div>
+              <div class="exo-r">
+                <p class="titre">Méthode</p>
+                <ol>
+                  <li>Racines = intersections avec l’axe des x.</li>
+                  <li>Axe = verticale au milieu des racines (équation x = …).</li>
+                  <li>Signe&nbsp;: lire si la courbe est au-dessus ou en-dessous de l’axe des x.</li>
+                  <li>Sommet&nbsp;: α = −b/(2a), β = f(α).</li>
+                  <li>Forme factorisée&nbsp;: <span class="de">a(x − x₁)(x − x₂)</span> avec a lu dans l’expression.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="exo">
+              <p class="exo-niveau">Type 45–46 · Forme factorisée à trouver</p>
+              <div class="exo-q">
+                <p class="titre">Que faire&nbsp;?</p>
+                <p>On connaît les racines (ou une racine double) et un point ou a.</p>
+              </div>
+              <div class="exo-r">
+                <p class="titre">Méthode</p>
+                <ol>
+                  <li>Écrire <span class="de">f(x) = a(x − x₁)(x − x₂)</span> (ou <span class="de">a(x − x₀)²</span>).</li>
+                  <li>Si a est connu (coefficient de x²)&nbsp;: c’est fini.</li>
+                  <li>Sinon, injecter un point (x₀ ; y₀) ou f(0) pour calculer a.</li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="exo">
+              <p class="exo-niveau">Type 47 · Une seule racine + une valeur</p>
+              <div class="exo-q">
+                <p class="titre">Que faire&nbsp;?</p>
+                <p>Racine double en x₀ et f(x₁) = k donné.</p>
+              </div>
+              <div class="exo-r">
+                <p class="titre">Méthode</p>
+                <p><span class="de">f(x) = a(x − x₀)²</span>. Remplacer x par la valeur connue pour trouver a. <strong>Exemple</strong>&nbsp;: racine −2 et f(2) = 8 ⇒ <span class="de">8 = a(2 − (−2))² = 16a</span> ⇒ <span class="de">a = ½</span> ⇒ <span class="de">f(x) = ½(x + 2)²</span>.</p>
+              </div>
+            </div>
+
+            <h2 id="poly-recap">Récap : l’essentiel</h2>
+            <div class="encadre">
+              <p class="titre">À savoir par cœur</p>
+              <ul class="coches">
+                <li><span class="de">f(x) = ax² + bx + c</span> (a ≠ 0) · courbe = parabole.</li>
+                <li>Forme factorisée&nbsp;: <span class="de">a(x − x₁)(x − x₂)</span> ou <span class="de">a(x − x₀)²</span>.</li>
+                <li>Racines = solutions de f(x) = 0 = intersections avec l’axe des x.</li>
+                <li>a &gt; 0 → ⋃ · a &lt; 0 → ⋂.</li>
+                <li>Axe de symétrie&nbsp;: <span class="de">x = (x₁ + x₂)/2</span> ou <span class="de">x = −b/(2a)</span>.</li>
+                <li>Sommet S(α ; f(α)) sur l’axe · min si a &gt; 0, max si a &lt; 0.</li>
+                <li>Signe&nbsp;: tableau, ou «&nbsp;signe de a à l’extérieur des racines, signe opposé entre les racines&nbsp;».</li>
+              </ul>
+            </div>
+            <div class="encadre">
+              <p class="titre">Erreurs fréquentes</p>
+              <ul class="coches">
+                <li>Racine de <span class="de">(x + 3)</span> → c’est <span class="de">−3</span>, pas 3.</li>
+                <li>Oublier le coefficient a dans la forme factorisée.</li>
+                <li>Confondre «&nbsp;coupe l’axe&nbsp;» (2 racines) et «&nbsp;touche l’axe&nbsp;» (racine double).</li>
+                <li>Inverser le sens des variations selon le signe de a.</li>
+              </ul>
+            </div>
           </div>
         </article>
       </section>
@@ -2747,17 +3152,177 @@
         <div class="liste-chapitres">
           <h2 class="titre-section">Physique-chimie</h2>
           <p class="doux">Choisis un chapitre.</p>
-          <button class="chap-btn menthe" type="button" data-ouvrir="chap-pc-1">
+          <button class="chap-btn" type="button" data-ouvrir="chap-pc-1">
             <span class="txt">
               <span class="chap-num">Chapitre 1</span>
+              <span class="chap-titre">Énergie : formes, chaînes et rendement</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+          <button class="chap-btn menthe" type="button" data-ouvrir="chap-pc-2">
+            <span class="txt">
+              <span class="chap-num">Chapitre 2</span>
               <span class="chap-titre">Les combustions</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+          <button class="chap-btn" type="button" data-ouvrir="chap-pc-3">
+            <span class="txt">
+              <span class="chap-num">Chapitre 3</span>
+              <span class="chap-titre">Conventions électriques et signaux périodiques</span>
             </span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
           </button>
         </div>
 
+        <!-- ===== Chapitre 1 : Énergie ===== -->
         <article class="cours" id="chap-pc-1" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#nrj-formes">Différentes formes d’énergies</a></li>
+              <li><a href="#nrj-chaine">Chaîne énergétique</a></li>
+              <li><a href="#nrj-puissance">Puissance et variation d’énergie</a></li>
+              <li><a href="#nrj-rendement">Rendement énergétique</a></li>
+              <li><a href="#nrj-recap">Récap : l’essentiel</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Physique-chimie · Chapitre 1</p>
+            <h2 class="cours-titre">Énergie : formes, chaînes et rendement</h2>
+            <p class="ref">Conservation, sources, convertisseurs, puissance, rendement</p>
+
+            <h2 id="nrj-formes">1. Différentes formes d’énergies</h2>
+            <div class="encadre">
+              <p class="titre">Définition</p>
+              <p>L’<strong>énergie</strong> est une grandeur caractérisant la capacité d’un système à modifier un autre système.</p>
+            </div>
+            <p>Elle peut revêtir différentes formes&nbsp;: rayonnante, mécanique, chimique, électrique, thermique, nucléaire, etc.</p>
+
+            <h3>Principe de conservation de l’énergie</h3>
+            <div class="encadre">
+              <p>L’énergie ne peut être ni <strong>créée</strong> ni <strong>détruite</strong>&nbsp;: elle ne peut qu’être <strong>transférée</strong> d’un système à un autre ou <strong>convertie</strong> d’une forme en une autre.</p>
+              <p>Dans un système isolé, il y a <strong>conservation de l’énergie</strong>.</p>
+            </div>
+
+            <h3>Sources d’énergie</h3>
+            <p>Dans la vie courante, on parle de <strong>sources d’énergie</strong>.</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Renouvelable</span>
+                Renouvellement naturel assez rapide à l’échelle d’une vie humaine.
+                <span class="fr">soleil, vent, eau, biomasse…</span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">Non renouvelable</span>
+                Renouvellement trop lent (ou inexistant à notre échelle).
+                <span class="fr">pétrole, charbon, gaz, uranium…</span>
+              </div>
+            </div>
+
+            <h2 id="nrj-chaine">2. Chaîne énergétique</h2>
+            <p>Les différentes énergies peuvent être stockées dans des <strong>réservoirs d’énergie</strong> et converties d’une forme à une autre via des <strong>convertisseurs d’énergie</strong>.</p>
+            <div class="encadre">
+              <p class="titre">Chaîne énergétique</p>
+              <p>Ensemble des éléments de conversion et des transferts d’énergie lorsqu’une énergie change de forme.</p>
+            </div>
+
+            <h3>Symboles de représentation</h3>
+            <div class="table-scroll">
+              <table class="tableau">
+                <caption class="visually-hidden">Symboles d’une chaîne énergétique</caption>
+                <thead>
+                  <tr><th scope="col">Élément</th><th scope="col">Symbole</th><th scope="col">Exemples</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Réservoir d’énergie</th><td>Rectangle</td><td>énergie chimique, énergie cinétique, batterie…</td></tr>
+                  <tr><th scope="row">Convertisseur d’énergie</th><td>Cercle</td><td>moteur, ampoule, alternateur, électrolyseur…</td></tr>
+                  <tr><th scope="row">Transfert d’énergie</th><td>Flèche</td><td>chaleur, énergie utile, lumière, énergie électrique…</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="grille">
+              <div class="mini t3">
+                <span class="nom">Exemple</span>
+                Batterie → Moteur → Volant d’inertie
+                <span class="fr">chimique → électrique → mécanique (avec pertes en chaleur)</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Exemple</span>
+                Batterie → Électrolyseur → O₂ et H₂
+                <span class="fr">électrique → chimique (avec pertes)</span>
+              </div>
+            </div>
+            <p>Sur une chaîne, on indique souvent l’<strong>énergie perdue</strong> (souvent sous forme de chaleur) qui quitte le convertisseur.</p>
+
+            <h2 id="nrj-puissance">3. Relation entre puissance moyenne et variation d’énergie</h2>
+            <p>Lorsqu’un système transfère la quantité d’énergie <span class="de">E</span>, on quantifie la vitesse de ce transfert par la <strong>puissance</strong> <span class="de">P</span>&nbsp;:</p>
+            <div class="encadre">
+              <p class="titre">Formule · Unités</p>
+              <p><span class="de">P = E / t</span></p>
+              <ul class="coches">
+                <li><span class="de">E</span> en joule (J)</li>
+                <li><span class="de">P</span> en watt (W)</li>
+                <li><span class="de">t</span> en seconde (s)</li>
+              </ul>
+            </div>
+            <p>Plus la puissance est élevée, plus la variation d’énergie du système est <strong>rapide</strong>.</p>
+            <div class="encadre">
+              <p class="titre">Remarque</p>
+              <p>Si <span class="de">t</span> est en heures (h) et <span class="de">P</span> en watts (W), alors l’énergie s’exprime en <strong>wattheures (Wh)</strong>&nbsp;: <span class="de">E = P × t</span>.</p>
+              <p>1 kWh = 1000 Wh = 3,6 × 10<sup>6</sup> J.</p>
+            </div>
+
+            <h2 id="nrj-rendement">4. Rendement énergétique d’une chaîne</h2>
+            <p>Le <strong>rendement</strong> d’une chaîne énergétique est le rapport entre l’énergie <strong>utile</strong> <span class="de">E<sub>u</sub></span> (directement utilisable) et l’énergie <strong>apportée</strong> (ou fournie) <span class="de">E<sub>a</sub></span>&nbsp;:</p>
+            <div class="encadre">
+              <p class="titre">Formule</p>
+              <p><span class="de">η = E<sub>u</sub> / E<sub>a</sub> = P<sub>u</sub> / P<sub>a</sub></span></p>
+              <p>Le rendement est une <strong>grandeur sans unité</strong>, comprise entre <strong>0 et 1</strong> (souvent exprimée en % en multipliant par 100).</p>
+            </div>
+            <ul class="coches">
+              <li>Un convertisseur n’est jamais parfait&nbsp;: une partie de l’énergie reçue est perdue, surtout sous forme de <strong>chaleur</strong>.</li>
+              <li>Par conservation de l’énergie&nbsp;: <span class="de">E<sub>pertes</sub> = E<sub>a</sub> − E<sub>u</sub></span>.</li>
+              <li>Le rendement d’une chaîne est donc <strong>inférieur à 1</strong>.</li>
+            </ul>
+            <div class="encadre">
+              <p class="titre">Chaîne à plusieurs convertisseurs</p>
+              <p>Le rendement total est le <strong>produit</strong> des rendements de chaque convertisseur&nbsp;:</p>
+              <p><span class="de">η<sub>total</sub> = η<sub>1</sub> × η<sub>2</sub> × …</span></p>
+            </div>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Exemple de chaîne</span>
+                Carburant → Moteur → énergie utile
+                <span class="fr">énergie fournie E<sub>a</sub> · énergie utile E<sub>u</sub> · pertes en chaleur</span>
+              </div>
+            </div>
+
+            <h2 id="nrj-recap">Récap : l’essentiel</h2>
+            <div class="encadre">
+              <p class="titre">À savoir par cœur</p>
+              <ul class="coches">
+                <li>Énergie = capacité à modifier un système · formes multiples.</li>
+                <li>Conservation&nbsp;: ni créée ni détruite, seulement transférée ou convertie.</li>
+                <li>Source renouvelable vs non renouvelable.</li>
+                <li>Chaîne&nbsp;: réservoir (rectangle), convertisseur (cercle), transfert (flèche).</li>
+                <li><span class="de">P = E / t</span> · J, W, s · aussi Wh si t en heures.</li>
+                <li><span class="de">η = E<sub>u</sub> / E<sub>a</sub></span> entre 0 et 1 · <span class="de">E<sub>pertes</sub> = E<sub>a</sub> − E<sub>u</sub></span>.</li>
+                <li>Rendement d’une chaîne = produit des rendements des convertisseurs.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cours" id="chap-pc-2" hidden>
           <button class="retour" type="button">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
@@ -2776,7 +3341,7 @@
   </ol>
 </nav>
           <div class="cours-corps">
-<p class="chap-num">Physique-chimie · Chapitre 1</p>
+<p class="chap-num">Physique-chimie · Chapitre 2</p>
 <h2 class="cours-titre">Les combustions</h2>
 <p class="ref">Transformation chimique, énergie, pouvoir calorifique, dangers et prévention</p>
 
@@ -3141,16 +3706,208 @@
 </div>
           </div>
         </article>
+
+        <!-- ===== Chapitre 2 : Conventions électriques et signaux ===== -->
+        <article class="cours" id="chap-pc-3" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Chapitres
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#pc2-conventions">Conventions électriques</a></li>
+              <li><a href="#pc2-periodiques">Grandeurs périodiques</a></li>
+              <li><a href="#pc2-composantes">Composantes continue et alternative</a></li>
+              <li><a href="#pc2-sinus">Signal alternatif sinusoïdal</a></li>
+              <li><a href="#pc2-recap">Récap : l’essentiel</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Physique-chimie · Chapitre 3</p>
+            <h2 class="cours-titre">Conventions électriques et signaux périodiques</h2>
+            <p class="ref">Générateur, récepteur, appareils de mesure, période, fréquence, valeur moyenne et efficace</p>
+
+            <!-- ========== 1 ========== -->
+            <h2 id="pc2-conventions">1. Conventions électriques</h2>
+            <p>Les intensités de courant et les tensions sont des <strong>grandeurs algébriques</strong>&nbsp;: elles peuvent être positives ou négatives. On adopte donc des <strong>conventions</strong> de notation et de branchement.</p>
+
+            <h3>Pour les générateurs</h3>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Courant I</span>
+                Flèche «&nbsp;sortant&nbsp;» de la borne <strong>positive</strong> (+) du générateur.
+              </div>
+              <div class="mini t3">
+                <span class="nom">Tension U</span>
+                Flèche au-dessus du symbole, dans le <strong>même sens</strong> que le courant.
+              </div>
+            </div>
+            <div class="encadre">
+              <p class="titre">Schéma type générateur</p>
+              <p>Symbole G (ou pile) avec bornes + et −. La flèche de <span class="de">I</span> part du +&nbsp;; la flèche de <span class="de">U</span> est parallèle et dans le même sens.</p>
+            </div>
+
+            <h3>Pour les récepteurs</h3>
+            <p>Les flèches <strong>tension</strong> et <strong>courant</strong> sont orientées dans des <strong>sens opposés</strong>.</p>
+            <div class="encadre">
+              <p>Sur un récepteur (lampe, moteur, résistance…), si le courant entre par une borne, la flèche de tension pointe en sens inverse de celle du courant.</p>
+            </div>
+
+            <h3>Branchement d’un ampèremètre</h3>
+            <ul class="coches">
+              <li>L’ampèremètre se branche <strong>en série</strong> dans le circuit (le courant le traverse).</li>
+              <li>La borne commune est notée <strong>COM</strong> et se place à la <strong>sortie</strong> du courant électrique.</li>
+              <li>La flèche de <span class="de">I</span> indique le sens du courant qui entre dans l’appareil (autre borne) et ressort par COM.</li>
+            </ul>
+
+            <h3>Branchement d’un voltmètre, d’un système d’acquisition ou d’un oscilloscope</h3>
+            <ul class="coches">
+              <li>Ces appareils se branchent <strong>en parallèle</strong> (aux bornes du dipôle à mesurer).</li>
+              <li>Pour mesurer la tension <span class="de">U<sub>AB</sub></span> (flèche conventionnelle orientée de B vers A)&nbsp;:
+                <ul>
+                  <li>borne <strong>V</strong> (ou entrée) du voltmètre en <strong>A</strong>&nbsp;;</li>
+                  <li>borne <strong>COM</strong> en <strong>B</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="encadre">
+              <p class="titre">À retenir</p>
+              <ul class="coches">
+                <li>Ampèremètre → <strong>série</strong> · Voltmètre / oscilloscope → <strong>parallèle</strong>.</li>
+                <li>COM = borne de sortie du courant (ampèremètre) ou borne «&nbsp;référence&nbsp;» (voltmètre).</li>
+                <li>Générateur&nbsp;: U et I dans le même sens · Récepteur&nbsp;: U et I en sens opposés.</li>
+              </ul>
+            </div>
+
+            <!-- ========== 2 ========== -->
+            <h2 id="pc2-periodiques">2. Grandeurs périodiques</h2>
+            <p>Un <strong>signal périodique</strong> <span class="de">s(t)</span> (intensité <span class="de">i(t)</span> ou tension <span class="de">u(t)</span>) se répète identique à lui-même au bout d’un certain temps.</p>
+
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Période T</span>
+                Durée d’un motif qui se répète.
+                <span class="grand">seconde (s)</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Fréquence f</span>
+                Nombre d’oscillations par seconde.
+                <span class="grand">hertz (Hz)</span>
+              </div>
+              <div class="mini t3">
+                <span class="nom">Relation</span>
+                <span class="de">f = 1 / T</span>
+                <span class="fr">et T = 1 / f</span>
+              </div>
+            </div>
+
+            <h3>Valeur moyenne</h3>
+            <p>La <strong>valeur moyenne</strong> <span class="de">⟨s⟩</span> (aussi notée <span class="de">s̄</span> ou <span class="de">s<sub>moy</sub></span>) s’exprime en ampères (intensité) ou en volts (tension).</p>
+            <div class="encadre">
+              <p class="titre">Formule</p>
+              <p><span class="de">⟨s⟩ = (aire sous la courbe sur une période) / T</span></p>
+              <p>Les aires sont comptées <strong>algébriquement</strong>&nbsp;: au-dessus de l’axe → positives (<span class="de">A<sub>+</sub> &gt; 0</span>), en dessous → négatives (<span class="de">A<sub>−</sub> &lt; 0</span>).</p>
+              <p><span class="de">⟨s⟩ = (A<sub>+</sub> + A<sub>−</sub>) / T</span></p>
+            </div>
+            <div class="encadre">
+              <p class="titre">Remarque</p>
+              <p>Un signal périodique dont la valeur moyenne est nulle (<span class="de">⟨s⟩ = 0</span>) est dit <strong>alternatif</strong> (au sens strict&nbsp;: autant «&nbsp;au-dessus&nbsp;» que «&nbsp;en dessous&nbsp;» de zéro sur une période).</p>
+            </div>
+
+            <!-- ========== 3 ========== -->
+            <h2 id="pc2-composantes">3. Composantes continue et alternative</h2>
+            <p>Tout signal périodique <span class="de">s(t)</span> se décompose en&nbsp;:</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Composante continue</span>
+                <span class="de">⟨s⟩</span>
+                <span class="fr">valeur moyenne, «&nbsp;offset&nbsp;»</span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">Composante alternative</span>
+                <span class="de">s<sub>alt</sub>(t)</span>
+                <span class="fr">partie qui oscille autour de 0</span>
+              </div>
+            </div>
+            <div class="encadre">
+              <p class="titre">Relation</p>
+              <p><span class="de">s(t) = ⟨s⟩ + s<sub>alt</sub>(t)</span></p>
+            </div>
+
+            <h3>Mesures au multimètre</h3>
+            <ul class="coches">
+              <li><strong>Position DC</strong>&nbsp;: mesure la valeur moyenne <span class="de">⟨s⟩</span>.</li>
+              <li><strong>Position AC</strong>&nbsp;: mesure la valeur efficace <span class="de">S<sub>alt,eff</sub></span> de la composante alternative.</li>
+            </ul>
+
+            <h3>Valeur efficace du signal périodique</h3>
+            <div class="encadre">
+              <p class="titre">Formule</p>
+              <p><span class="de">S<sub>eff</sub> = √( ⟨s⟩² + S<sub>alt,eff</sub>² )</span></p>
+              <p>Elle n’est mesurable directement qu’avec un multimètre <strong>TRMS</strong> (True Root Mean Square) en position <strong>AC + DC</strong>.</p>
+            </div>
+
+            <!-- ========== 4 ========== -->
+            <h2 id="pc2-sinus">4. Cas particulier : signal alternatif sinusoïdal</h2>
+            <p>Pour un <strong>signal alternatif sinusoïdal</strong> (valeur moyenne nulle, forme en sinus)&nbsp;:</p>
+            <div class="encadre">
+              <p class="titre">Relation fondamentale</p>
+              <p><span class="de">S<sub>eff</sub> = S<sub>max</sub> / √2</span></p>
+              <p><span class="de">S<sub>eff</sub></span> et <span class="de">S<sub>max</sub></span> s’expriment en ampère (A) ou en volt (V).</p>
+            </div>
+            <div class="grille">
+              <div class="mini t3">
+                <span class="nom">S<sub>max</sub></span>
+                Valeur maximale (crête)
+              </div>
+              <div class="mini t2">
+                <span class="nom">S<sub>min</sub></span>
+                Pour un sinusoïde alternatif&nbsp;: <span class="de">S<sub>max</sub> = −S<sub>min</sub></span>
+              </div>
+              <div class="mini t1">
+                <span class="nom">S<sub>eff</sub></span>
+                Valeur efficace ≈ 0,707 × S<sub>max</sub>
+              </div>
+            </div>
+            <div class="encadre">
+              <p class="titre">Exemple</p>
+              <p>Tension du secteur en France&nbsp;: <span class="de">U<sub>eff</sub> ≈ 230 V</span> ⇒ <span class="de">U<sub>max</sub> = 230 × √2 ≈ 325 V</span>.</p>
+            </div>
+
+            <!-- ========== RÉCAP ========== -->
+            <h2 id="pc2-recap">Récap : l’essentiel</h2>
+            <div class="encadre">
+              <p class="titre">Conventions</p>
+              <ul class="coches">
+                <li>Générateur&nbsp;: I sort du +, U dans le même sens que I.</li>
+                <li>Récepteur&nbsp;: flèches U et I opposées.</li>
+                <li>Ampèremètre en série (COM = sortie) · Voltmètre en parallèle (V en A, COM en B pour U<sub>AB</sub>).</li>
+              </ul>
+            </div>
+            <div class="encadre">
+              <p class="titre">Signaux périodiques</p>
+              <ul class="coches">
+                <li><span class="de">f = 1/T</span> · T en s, f en Hz.</li>
+                <li>Valeur moyenne <span class="de">⟨s⟩ = (A<sub>+</sub> + A<sub>−</sub>) / T</span>.</li>
+                <li><span class="de">s(t) = ⟨s⟩ + s<sub>alt</sub>(t)</span>.</li>
+                <li>Multimètre DC → moyenne · AC → efficace de l’alternatif · TRMS AC+DC → efficace totale.</li>
+                <li>Sinusoïde alternatif&nbsp;: <span class="de">S<sub>eff</sub> = S<sub>max</sub> / √2</span>.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
       </section>
 
       <!-- ===================== FRANÇAIS ===================== -->
       <section id="francais" class="carte" hidden>
         <div class="liste-chapitres">
           <h2 class="titre-section">Français</h2>
-          <p class="doux">Choisis un chapitre.</p>
+          <p class="doux">Choisis un texte.</p>
           <button class="chap-btn" type="button" data-ouvrir="chap-fr-1">
             <span class="txt">
-              <span class="chap-num">Chapitre 1</span>
+              <span class="chap-num">Texte 1</span>
               <span class="chap-titre">On ne badine pas avec l’amour — Alfred de Musset</span>
             </span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
@@ -3158,20 +3915,28 @@
           </button>
           <button class="chap-btn menthe" type="button" data-ouvrir="chap-fr-2">
             <span class="txt">
-              <span class="chap-num">Chapitre 2</span>
+              <span class="chap-num">Texte 2</span>
               <span class="chap-titre">Cyrano de Bergerac — Edmond Rostand</span>
+            </span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+          </button>
+          <button class="chap-btn" type="button" data-ouvrir="chap-fr-3">
+            <span class="txt">
+              <span class="chap-num">Texte 3</span>
+              <span class="chap-titre">Thérèse Raquin — Émile Zola</span>
             </span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
           </button>
         </div>
 
-        <!-- ===== Chapitre 1 : Musset ===== -->
+        <!-- ===== Texte 1 : Musset ===== -->
         <article class="cours" id="chap-fr-1" hidden>
           <button class="retour" type="button">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
-            Chapitres
+            Textes
           </button>
           <nav class="sommaire" aria-label="Sommaire">
             <p>Sommaire</p>
@@ -3185,7 +3950,7 @@
             </ol>
           </nav>
           <div class="cours-corps">
-            <p class="chap-num">Français · Chapitre 1</p>
+            <p class="chap-num">Français · Texte 1</p>
             <h2 class="cours-titre">On ne badine pas avec l’amour</h2>
             <p class="ref">Alfred de Musset · comédie en prose · 1834</p>
 
@@ -3301,12 +4066,12 @@
           </div>
         </article>
 
-        <!-- ===== Chapitre 2 : Rostand ===== -->
+        <!-- ===== Texte 2 : Rostand ===== -->
         <article class="cours" id="chap-fr-2" hidden>
           <button class="retour" type="button">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
-            Chapitres
+            Textes
           </button>
           <nav class="sommaire" aria-label="Sommaire">
             <p>Sommaire</p>
@@ -3320,7 +4085,7 @@
             </ol>
           </nav>
           <div class="cours-corps">
-            <p class="chap-num">Français · Chapitre 2</p>
+            <p class="chap-num">Français · Texte 2</p>
             <h2 class="cours-titre">Cyrano de Bergerac</h2>
             <p class="ref">Edmond Rostand · drame héroïque en vers · 1897</p>
 
@@ -3437,6 +4202,143 @@
             <div class="encadre">
               <p class="titre">Pour une réponse rédigée</p>
               <p>Présente Rostand et le contexte (retour au vers, succès de 1897) → résume l’intrigue en insistant sur le double (corps de Christian / âme de Cyrano) → conclus sur le panache et la leçon&nbsp;: la vraie beauté est intérieure, mais le monde la reconnaît trop tard.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===== Texte 3 : Zola ===== -->
+        <article class="cours" id="chap-fr-3" hidden>
+          <button class="retour" type="button">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="3"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg>
+            Textes
+          </button>
+          <nav class="sommaire" aria-label="Sommaire">
+            <p>Sommaire</p>
+            <ol>
+              <li><a href="#zola-bio">Biographie de l’auteur</a></li>
+              <li><a href="#zola-oeuvre">L’œuvre</a></li>
+              <li><a href="#zola-resume">Résumé du roman</a></li>
+              <li><a href="#zola-personnages">Les personnages</a></li>
+              <li><a href="#zola-themes">Thèmes et enjeux</a></li>
+              <li><a href="#zola-conclusion">Conclusion : l’essentiel à retenir</a></li>
+            </ol>
+          </nav>
+          <div class="cours-corps">
+            <p class="chap-num">Français · Texte 3</p>
+            <h2 class="cours-titre">Thérèse Raquin</h2>
+            <p class="ref">Émile Zola · roman · 1867</p>
+
+            <h2 id="zola-bio">Biographie de l’auteur</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Émile Zola</span>
+                <span class="grand">1840 – 1902</span>
+                <span class="fr">Romancier et journaliste français</span>
+              </div>
+              <div class="mini t3">
+                <span class="nom">Mouvement</span>
+                <span class="grand">Naturalisme</span>
+                <span class="fr">Science, déterminisme, milieu</span>
+              </div>
+              <div class="mini t2">
+                <span class="nom">Cycle majeur</span>
+                <span class="grand">Les Rougon-Macquart</span>
+                <span class="fr">20 romans (1871-1893)</span>
+              </div>
+            </div>
+            <p>Émile Zola naît à <strong>Paris</strong> en 1840. Il devient le chef de file du <strong>naturalisme</strong>&nbsp;: un roman qui veut étudier l’être humain comme un savant étudie un phénomène, en tenant compte de l’<strong>hérédité</strong>, du <strong>milieu</strong> et des <strong>instincts</strong>.</p>
+            <p><em>Thérèse Raquin</em> (1867) est un roman de jeunesse, publié avant le cycle des Rougon-Macquart. Zola y applique déjà sa méthode&nbsp;: montrer comment la passion et le crime naissent d’un tempérament et d’un environnement étouffant. Plus tard, il s’engage dans l’affaire Dreyfus («&nbsp;J’accuse…&nbsp;!&nbsp;», 1898). Il meurt en 1902.</p>
+            <div class="encadre">
+              <p class="titre">À retenir sur l’auteur</p>
+              <ul class="coches">
+                <li>Naturaliste&nbsp;: le roman comme «&nbsp;expérience&nbsp;» sur les nerfs et les instincts.</li>
+                <li>Refuse le sentimentalisme romantique&nbsp;: pas de héros idéalisés, mais des êtres dominés par leurs pulsions.</li>
+                <li><em>Thérèse Raquin</em> = laboratoire du crime et du remords.</li>
+              </ul>
+            </div>
+
+            <h2 id="zola-oeuvre">L’œuvre</h2>
+            <p><em>Thérèse Raquin</em> est un <strong>roman</strong> publié en <strong>1867</strong> (d’abord en feuilleton, puis en volume). Zola le présente comme une étude de <strong>tempéraments</strong>&nbsp;: une femme nerveuse (Thérèse) et un homme sanguin (Laurent) dont la passion mène au meurtre, puis à la destruction mutuelle.</p>
+            <div class="grille">
+              <div class="mini t2">
+                <span class="nom">Genre</span>
+                Roman naturaliste
+              </div>
+              <div class="mini t1">
+                <span class="nom">Cadre</span>
+                Paris, passage du Pont-Neuf (boutique sombre)
+              </div>
+              <div class="mini t3">
+                <span class="nom">Ton</span>
+                Sombre, clinique, sans morale moralisatrice
+              </div>
+            </div>
+            <p>Le roman a choqué à sa sortie par sa violence et son absence de «&nbsp;leçon de vertu&nbsp;». Zola défend son projet dans une préface célèbre&nbsp;: il observe des «&nbsp;brutes humaines&nbsp;», pas des personnages édifiants.</p>
+
+            <h2 id="zola-resume">Résumé du roman</h2>
+
+            <h3>1. Un mariage forcé</h3>
+            <p><strong>Thérèse</strong>, orpheline, est élevée par sa tante, <strong>Madame Raquin</strong>, avec son cousin <strong>Camille</strong>, malade et faible. On la marie à Camille. Le couple vit à Paris dans une petite mercerie du passage du Pont-Neuf, un lieu étroit, humide, sans lumière — symbole d’une vie étouffée.</p>
+
+            <h3>2. La passion et le crime</h3>
+            <p>Laurent, ami de Camille, peintre médiocre, devient l’amant de Thérèse. Leur passion est purement <strong>physique</strong>, animale. Pour être libres, ils noient Camille lors d’une promenade en barque. La mort est présentée comme un «&nbsp;accident&nbsp;». Madame Raquin, aveuglée par le chagrin, accueille Laurent et finit par souhaiter le mariage de Thérèse et Laurent.</p>
+
+            <h3>3. Le remords</h3>
+            <p>Une fois mariés, Thérèse et Laurent ne connaissent plus le désir, mais l’<strong>horreur</strong>. Le souvenir de Camille (visions, cauchemars, le portrait du mort) les hante. Ils se haïssent, s’accusent, se surveillent. Madame Raquin, devenue paralysée et muette, comprend la vérité et assiste, impuissante, à leur chute.</p>
+
+            <h3>4. La fin</h3>
+            <p>Incapables de vivre ensemble ni de se séparer, Thérèse et Laurent se suicident — ou s’entretuent — sous le regard de Madame Raquin. Le crime n’a apporté ni bonheur ni liberté&nbsp;: seulement la destruction des coupables.</p>
+
+            <div class="encadre">
+              <p class="titre">En une phrase</p>
+              <p>Deux amants tuent le mari gênant pour s’unir&nbsp;; le remords et la haine les dévorent jusqu’à la mort.</p>
+            </div>
+
+            <h2 id="zola-personnages">Les personnages</h2>
+            <div class="grille">
+              <div class="mini t1">
+                <span class="nom">Thérèse Raquin</span>
+                Nature nerveuse, étouffée dès l’enfance. Passion violente, puis remords et hystérie.
+              </div>
+              <div class="mini t3">
+                <span class="nom">Laurent</span>
+                Nature sanguine, grossière. Amant, meurtrier, puis homme brisé par la peur.
+              </div>
+              <div class="mini t2">
+                <span class="nom">Camille</span>
+                Cousin et mari, faible, enfantin. Victime du couple. Sa présence «&nbsp;revient&nbsp;» après la mort.
+              </div>
+              <div class="mini t1">
+                <span class="nom">Madame Raquin</span>
+                Tante et belle-mère. Amour aveugle pour Camille, puis témoin muet du châtiment.
+              </div>
+            </div>
+
+            <h2 id="zola-themes">Thèmes et enjeux</h2>
+            <ul>
+              <li><strong>Le déterminisme</strong>&nbsp;: les personnages sont poussés par leur tempérament (nerfs / sang) et par le milieu (la boutique sombre, l’ennui).</li>
+              <li><strong>La passion animale</strong>&nbsp;: l’amour n’est pas idéalisé&nbsp;; c’est un instinct qui mène au crime.</li>
+              <li><strong>Le crime et le châtiment</strong>&nbsp;: pas de tribunal, mais un châtiment intérieur — remords, hallucinations, haine.</li>
+              <li><strong>Le regard</strong>&nbsp;: le portrait de Camille, les yeux de Madame Raquin paralysée — être vu rend le crime impossible à oublier.</li>
+              <li><strong>Le naturalisme</strong>&nbsp;: description froide, quasi scientifique, des «&nbsp;bêtes humaines&nbsp;».</li>
+            </ul>
+
+            <h2 id="zola-conclusion">Conclusion : l’essentiel à retenir</h2>
+            <div class="encadre">
+              <p class="titre">Ce qu’il faut savoir pour le contrôle / l’oral</p>
+              <ul class="coches">
+                <li><strong>Auteur</strong>&nbsp;: Émile Zola (1840-1902), chef de file du naturalisme, auteur des Rougon-Macquart.</li>
+                <li><strong>Œuvre</strong>&nbsp;: roman de 1867&nbsp;; étude de tempéraments (Thérèse nerveuse, Laurent sanguin).</li>
+                <li><strong>Intrigue</strong>&nbsp;: adultère → meurtre de Camille → mariage des amants → remords → mort des coupables.</li>
+                <li><strong>Cadre symbolique</strong>&nbsp;: le passage sombre = vie étouffée, absence de lumière et de liberté.</li>
+                <li><strong>Thèmes</strong>&nbsp;: déterminisme, passion animale, crime et remords, regard / châtiment.</li>
+                <li><strong>Style</strong>&nbsp;: descriptions précises, ton clinique, refus du sentimentalisme.</li>
+              </ul>
+            </div>
+            <div class="encadre">
+              <p class="titre">Pour une réponse rédigée</p>
+              <p>Présente Zola et le naturalisme → résume l’intrigue en reliant tempéraments, milieu et crime → conclus sur le châtiment intérieur&nbsp;: le roman montre que l’on ne échappe pas aux conséquences de ses actes, même sans juge.</p>
             </div>
           </div>
         </article>
@@ -3796,6 +4698,47 @@
       }, 50);
     });
   });
+})();
+
+/* Bouton clair / sombre : défaut = mode de l’écran, clic = choix forcé */
+(function () {
+  var btn = document.getElementById("theme-btn");
+  var meta = document.getElementById("theme-color-meta");
+  if (!btn) return;
+
+  function systemDark() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function isDark() {
+    var t = document.documentElement.getAttribute("data-theme");
+    if (t === "dark") return true;
+    if (t === "light") return false;
+    return systemDark();
+  }
+
+  function syncUI(dark) {
+    document.documentElement.classList.toggle("is-dark", dark);
+    btn.setAttribute("aria-label", dark ? "Passer en mode clair" : "Passer en mode sombre");
+    if (meta) meta.setAttribute("content", dark ? "#1c1433" : "#efe9ff");
+  }
+
+  /* Affichage initial sans écraser le choix « suivre l’écran » */
+  syncUI(isDark());
+
+  btn.addEventListener("click", function () {
+    var dark = !isDark();
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+    syncUI(dark);
+  });
+
+  /* Si aucun choix manuel, suivre les changements du mode système */
+  try {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+      if (!localStorage.getItem("theme")) syncUI(systemDark());
+    });
+  } catch (e) {}
 })();
 </script>
 </body>
